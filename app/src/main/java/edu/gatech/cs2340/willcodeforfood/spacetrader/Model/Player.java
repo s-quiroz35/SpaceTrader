@@ -4,12 +4,14 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
  * Represents a Player
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public class Player {
 
     private String name;
     private int skillPoints;
+    private int credits;
+    private Ship ship;
     private int[] skills;
 
     /**
@@ -26,6 +28,8 @@ public class Player {
                   int fighter, int trader, int engineer) {
         this.name = name;
         this.skillPoints = skillPoints;
+        credits = 1000;
+        ship = new Gnat();
         skills = new int[]{pilot, fighter, trader, engineer};
     }
 
@@ -56,6 +60,38 @@ public class Player {
      */
     public void setSkillPoints(int skillPoints) {
         this.skillPoints = skillPoints;
+    }
+
+    /**
+     * @return player credits
+     */
+    public int getCredits() {
+        return credits;
+    }
+
+    /**
+     * Sets player credits
+     *
+     * @param credits new credit amount
+     */
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    /**
+     * @return player ship
+     */
+    public Ship getShip() {
+        return ship;
+    }
+
+    /**
+     * Sets player ship
+     *
+     * @param ship new ship
+     */
+    public void setShip(Ship ship) {
+        this.ship = ship;
     }
 
     /**
