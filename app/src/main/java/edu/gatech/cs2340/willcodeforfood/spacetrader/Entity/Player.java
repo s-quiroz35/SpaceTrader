@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
+package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 /**
  * Represents a Player
@@ -42,71 +42,53 @@ public class Player {
     /**
      * @return player name
      */
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     /**
      * @return player skill points
      */
-    public int getSkillPoints() {
-        return skillPoints;
-    }
+    public int getSkillPoints() { return skillPoints; }
 
     /**
      * Sets player skill points
      *
      * @param skillPoints new skill point amount
      */
-    public void setSkillPoints(int skillPoints) {
-        this.skillPoints = skillPoints;
-    }
+    public void setSkillPoints(int skillPoints) { this.skillPoints = skillPoints; }
 
     /**
      * @return player credits
      */
-    public int getCredits() {
-        return credits;
-    }
+    public int getCredits() { return credits; }
 
     /**
      * Sets player credits
      *
      * @param credits new credit amount
      */
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
+    public void setCredits(int credits) { this.credits = credits; }
 
     /**
      * @return player ship
      */
-    public Ship getShip() {
-        return ship;
-    }
+    public Ship getShip() { return ship; }
 
     /**
      * Sets player ship
      *
      * @param ship new ship
      */
-    public void setShip(Ship ship) {
-        this.ship = ship;
-    }
+    public void setShip(Ship ship) { this.ship = ship; }
 
     /**
      * @return player skills
      */
-    public int[] getSkills() {
-        return skills;
-    }
+    public int[] getSkills() { return skills; }
 
     /**
      * Sets player skills
      *
      * @param skills new skills
      */
-    public void setSkills(int[] skills) {
-        this.skills = skills;
-    }
+    public void setSkills(int[] skills) { this.skills = skills; }
 }
