@@ -77,8 +77,11 @@ public class ConfigActivity extends AppCompatActivity {
             Toast.makeText(this, serviceViewModel.makeLowPointRequest("Too low points"),
                     Toast.LENGTH_LONG).show();
         } else {
-            player.setName(name.getText().toString());
-            player.setSkillPoints(points);
+            if (name.length() != 0) {
+                player.setName(name.getText().toString());
+            } else {
+                player.setName("Player");
+            }
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
             //set difficulty of game here after implemented game class
             Log.w("Add", "Player added: " + player.toString());
