@@ -82,6 +82,7 @@ public class ConfigActivity extends AppCompatActivity {
             } else {
                 player.setName("Player");
             }
+            player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
             //set difficulty of game here after implemented game class
             Log.w("Add", "Player added: " + player.toString());
