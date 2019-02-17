@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_name_header"
+        android:text="Name:"
+        android:textSize="20sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_name_input"
+        android:layout_below="@id/player_name_header"
+        android:inputType="textPersonName"
+        android:layout_alignParentStart="true"
+        android:text="Enter name"
+        android:ems="15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/game_diff_header"
+        android:layout_below="@id/player_name_input"
+        android:layout_alignParentStart="true"
+        android:text="Difficulty:"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/diff_spinner"
+        android:layout_below="@id/player_name_input"
+        android:layout_toEndOf="@id/game_diff_header"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/skills_header"
+        android:layout_below="@id/game_diff_header"
+        android:layout_centerInParent="true"
+        android:text="Skills"
+        android:layout_marginTop="20sp"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pilot_header"
+        android:layout_below="@id/skills_header"
+        android:layout_alignParentStart="true"
+        android:text="Pilot:"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fighter_header"
+        android:layout_below="@id/pilot_header"
+        android:layout_alignParentStart="true"
+        android:text="Fighter:"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trader_header"
+        android:layout_below="@id/fighter_header"
+        android:layout_alignParentStart="true"
+        android:text="Trader:"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/engineer_header"
+        android:layout_below="@id/trader_header"
+        android:layout_alignParentStart="true"
+        android:text="Engineer:"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pilot_count"
+        android:layout_toEndOf="@id/pilot_header"
+        android:layout_below="@id/skills_header"
+        android:text="0"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="20sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fighter_count"
+        android:layout_toEndOf="@id/fighter_header"
+        android:layout_below="@id/pilot_header"
+        android:text="0"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="20sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trader_count"
+        android:layout_toEndOf="@id/trader_header"
+        android:layout_below="@id/fighter_header"
+        android:text="0"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="20sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/engineer_count"
+        android:layout_toEndOf="@id/engineer_header"
+        android:layout_below="@id/trader_header"
+        android:text="0"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="20sp"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pilot_inc_button"
+        android:layout_below="@id/skills_header"
+        android:layout_alignTop="@id/pilot_header"
+        android:layout_alignParentEnd="true"
+        android:text="+"
+        android:textSize="20sp"
+        android:onClick="pilotIncPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fighter_inc_button"
+        android:layout_below="@id/pilot_inc_button"
+        android:layout_alignTop="@id/fighter_header"
+        android:layout_alignParentEnd="true"
+        android:text="+"
+        android:textSize="20sp"
+        android:onClick="fighterIncPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trader_inc_button"
+        android:layout_below="@id/fighter_inc_button"
+        android:layout_alignTop="@id/trader_header"
+        android:layout_alignParentEnd="true"
+        android:text="+"
+        android:textSize="20sp"
+        android:onClick="traderIncPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/engineer_inc_button"
+        android:layout_below="@id/trader_inc_button"
+        android:layout_alignTop="@id/engineer_header"
+        android:layout_alignParentEnd="true"
+        android:text="+"
+        android:textSize="20sp"
+        android:onClick="engineerIncPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pilot_dec_button"
+        android:layout_below="@id/skills_header"
+        android:layout_toStartOf="@id/pilot_inc_button"
+        android:layout_alignTop="@id/pilot_header"
+        android:text="-"
+        android:textSize="20sp"
+        android:onClick="pilotDecPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fighter_dec_button"
+        android:layout_below="@id/pilot_header"
+        android:layout_toStartOf="@id/fighter_inc_button"
+        android:layout_alignTop="@id/fighter_header"
+        android:text="-"
+        android:textSize="20sp"
+        android:onClick="fighterDecPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trader_dec_button"
+        android:layout_below="@id/fighter_header"
+        android:layout_toStartOf="@id/trader_inc_button"
+        android:layout_alignTop="@id/trader_header"
+        android:text="-"
+        android:textSize="20sp"
+        android:onClick="traderDecPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/engineer_dec_button"
+        android:layout_below="@id/trader_header"
+        android:layout_toStartOf="@id/engineer_inc_button"
+        android:layout_alignTop="@id/engineer_header"
+        android:text="-"
+        android:textSize="20sp"
+        android:onClick="engineerDecPressed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_points_header"
+        android:layout_below="@id/engineer_header"
+        android:layout_alignParentStart="true"
+        android:text="Remaining Points:"
+        android:layout_marginTop="40sp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_points_count"
+        android:layout_toEndOf="@id/player_points_header"
+        android:layout_below="@id/engineer_header"
+        android:text="0"
+        android:layout_marginTop="40sp"
+        android:layout_marginStart="20sp"
+        android:textSize="15sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_player_button"
+        android:layout_below="@id/player_points_header"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40sp"
+        android:text="Create Player"
+        android:onClick="onCreatePlayerPressed" />
+</RelativeLayout>
