@@ -45,6 +45,13 @@ public class Player {
     public String getName() { return name; }
 
     /**
+     * Sets player name
+     *
+     * @param name new name
+     */
+    public void setName(String name) { this.name = name; }
+
+    /**
      * @return player skill points
      */
     public int getSkillPoints() { return skillPoints; }
