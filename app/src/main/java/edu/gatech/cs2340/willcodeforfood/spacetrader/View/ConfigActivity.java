@@ -9,11 +9,13 @@ import android.widget.TextView;
 import android.widget.Spinner;
 import android.view.View;
 import android.util.Log;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ServiceViewModel;
 
 /**
  * Handles Player Config Activity
@@ -23,6 +25,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
  */
 public class ConfigActivity extends AppCompatActivity {
 
+    private ServiceViewModel serviceViewModel;
     private ConfigViewModel viewModel;
     private Player player;
 
@@ -55,6 +58,7 @@ public class ConfigActivity extends AppCompatActivity {
         player = new Player("Matt", 16, 0, 0, 0, 0);
         pointsCount.setText(String.format("%d", 16 ));
         viewModel = ViewModelProviders.of(this).get(ConfigViewModel.class);
+        serviceViewModel = ViewModelProviders.of(this).get(ServiceViewModel.class);
     }
 
     /**
@@ -69,12 +73,17 @@ public class ConfigActivity extends AppCompatActivity {
         int engineer = Integer.parseInt(engineerCount.getText().toString());
         int points = Integer.parseInt(pointsCount.getText().toString());
 
-        player.setName(name.getText().toString());
-        player.setSkillPoints(points);
-        player.setSkills(new int[]{pilot, fighter, trader, engineer});
-        //set difficulty of game here after implemented game class
-        Log.w("Add", "Player added: " + player.toString());
-        viewModel.addPlayer(player);
+        if (points != 0) {
+            Toast.makeText(this, serviceViewModel.makeLowPointRequest("Too low points"),
+                    Toast.LENGTH_LONG).show();
+        } else {
+            player.setName(name.getText().toString());
+            player.setSkillPoints(points);
+            player.setSkills(new int[]{pilot, fighter, trader, engineer});
+            //set difficulty of game here after implemented game class
+            Log.w("Add", "Player added: " + player.toString());
+            viewModel.addPlayer(player);
+        }
     }
 
     /**
