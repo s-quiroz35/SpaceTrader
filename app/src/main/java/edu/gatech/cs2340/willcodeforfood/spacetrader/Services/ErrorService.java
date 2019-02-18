@@ -16,5 +16,4 @@ public abstract class ErrorService {
     }
 
     public abstract String callService();
-
 }
