@@ -74,8 +74,8 @@ public class ConfigActivity extends AppCompatActivity {
         int points = Integer.parseInt(pointsCount.getText().toString());
 
         if (points != 0) {
-            Toast.makeText(this, serviceViewModel.makeLowPointRequest("Too low points"),
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, serviceViewModel.
+                    makeLowPointRequest("Must use all skill points"), Toast.LENGTH_SHORT).show();
         } else {
             if (name.length() != 0) {
                 player.setName(name.getText().toString());

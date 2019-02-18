@@ -14,7 +14,6 @@ public class LowPointService extends ErrorService {
 
     @Override
     public String callService() {
-        return "You must use all skill points to create character";
+        return request;
     }
-
 }

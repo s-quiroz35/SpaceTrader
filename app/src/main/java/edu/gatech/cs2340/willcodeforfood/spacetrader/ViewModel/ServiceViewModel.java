@@ -14,15 +14,12 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Services.LowPointService;
  * @author Emma Chadwick
  * @version 1.0
  */
-
 public class ServiceViewModel extends AndroidViewModel {
 
-    public ServiceViewModel (@NonNull Application application) { super(application);}
+    public ServiceViewModel (@NonNull Application application) { super(application); }
 
     public String makeLowPointRequest(String request) {
         ErrorService lowPoint = new LowPointService(request);
         return lowPoint.callService();
     }
-
-
 }
