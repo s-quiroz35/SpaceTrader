@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Spinner;
 import android.view.View;
-import android.util.Log;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
@@ -85,7 +84,6 @@ public class ConfigActivity extends AppCompatActivity {
             player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
             //set difficulty of game here after implemented game class
-            Log.w("Add", "Player added: " + player.toString());
             viewModel.addPlayer(player);
         }
     }
