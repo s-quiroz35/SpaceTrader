@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
+import android.util.Log;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -29,6 +31,7 @@ public class Repository {
      */
     public void addPlayer(Player player) {
         players.add(player);
+        Log.w("Add", "New player added: " + player.toString());
     }
 
     /**
