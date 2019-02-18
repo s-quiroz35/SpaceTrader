@@ -80,7 +80,7 @@ public class ConfigActivity extends AppCompatActivity {
             if (name.length() != 0) {
                 player.setName(name.getText().toString());
             } else {
-                player.setName("Player");
+                player.setName("Guardian");
             }
             player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
