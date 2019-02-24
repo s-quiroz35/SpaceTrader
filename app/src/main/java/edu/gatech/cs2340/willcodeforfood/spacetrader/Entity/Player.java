@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Matt Bernet
  * @version 1.2
  */
-public class Player implements Serializable {
+public class Player {
 
     private String name;
     private int skillPoints;
