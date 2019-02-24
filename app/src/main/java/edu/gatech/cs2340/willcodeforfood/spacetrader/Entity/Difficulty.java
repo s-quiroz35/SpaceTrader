@@ -24,6 +24,8 @@ public enum Difficulty {
         difficulty = diff;
     }
 
-    @Override
-    public String toString() {return difficulty;}
+    /**
+     * @return difficulty
+     */
+    public String getDifficulty() { return difficulty; }
 }
