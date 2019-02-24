@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_new_game"
+        android:layout_below="@id/skills_header"
+        android:layout_alignTop="@id/pilot_header"
+        android:layout_alignParentEnd="true"
+        android:text="+"
+        android:textSize="20sp"
+        android:onClick="createNewGame" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/continue_game"
+        android:layout_below="@id/skills_header"
+        android:layout_alignTop="@id/pilot_header"
+        android:layout_alignParentEnd="true"
+        android:text="+"
+        android:textSize="20sp"
+        android:onClick="continueGame" />
+
+</LinearLayout>

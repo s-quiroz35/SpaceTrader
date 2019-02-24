@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.arch.lifecycle.ViewModelProviders;
@@ -19,8 +20,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ServiceViewModel;
 /**
  * Handles Player Config Activity
  *
- * @author Matt Bernet
- * @version 1.1
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.2
  */
 public class ConfigActivity extends AppCompatActivity {
 
@@ -86,6 +87,16 @@ public class ConfigActivity extends AppCompatActivity {
             //set difficulty of game here after implemented game class
             viewModel.addPlayer(player);
         }
+    }
+
+    /**
+     * Cancel button takes user back to main screen
+     *
+     * @param view button pressed
+     */
+    public void onCancel(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
     /**
