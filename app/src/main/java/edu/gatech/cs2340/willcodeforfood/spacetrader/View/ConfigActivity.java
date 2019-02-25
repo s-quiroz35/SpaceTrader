@@ -15,7 +15,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ServiceViewModel;
 
 /**
  * Handles Player Config Activity
@@ -25,7 +24,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ServiceViewModel;
  */
 public class ConfigActivity extends AppCompatActivity {
 
-    private ServiceViewModel serviceViewModel;
     private ConfigViewModel viewModel;
     private Player player;
 
@@ -58,7 +56,6 @@ public class ConfigActivity extends AppCompatActivity {
         player = new Player("Matt", 16, 0, 0, 0, 0);
         pointsCount.setText(String.format("%d", 16 ));
         viewModel = ViewModelProviders.of(this).get(ConfigViewModel.class);
-        serviceViewModel = ViewModelProviders.of(this).get(ServiceViewModel.class);
     }
 
     /**
@@ -74,8 +71,8 @@ public class ConfigActivity extends AppCompatActivity {
         int points = Integer.parseInt(pointsCount.getText().toString());
 
         if (points != 0) {
-            Toast.makeText(this, serviceViewModel.
-                    makeLowPointRequest("Must use all skill points"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Must use all skill points",
+                    Toast.LENGTH_SHORT).show();
         } else {
             if (name.length() != 0) {
                 player.setName(name.getText().toString());
