@@ -1,10 +1,12 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * Represents a Player
  *
  * @author Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class Player {
 

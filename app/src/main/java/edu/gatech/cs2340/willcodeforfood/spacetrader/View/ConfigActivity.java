@@ -1,12 +1,15 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Spinner;
 import android.view.View;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
@@ -16,8 +19,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
 /**
  * Handles Player Config Activity
  *
- * @author Matt Bernet
- * @version 1.0
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.2
  */
 public class ConfigActivity extends AppCompatActivity {
 
@@ -52,6 +55,7 @@ public class ConfigActivity extends AppCompatActivity {
 
         player = new Player("Matt", 16, 0, 0, 0, 0);
         pointsCount.setText(String.format("%d", 16 ));
+        viewModel = ViewModelProviders.of(this).get(ConfigViewModel.class);
     }
 
     /**
@@ -66,11 +70,30 @@ public class ConfigActivity extends AppCompatActivity {
         int engineer = Integer.parseInt(engineerCount.getText().toString());
         int points = Integer.parseInt(pointsCount.getText().toString());
 
-        player.setName(name.getText().toString());
-        player.setSkillPoints(points);
-        player.setSkills(new int[]{pilot, fighter, trader, engineer});
+        if (points != 0) {
+            Toast.makeText(this, "Must use all skill points",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            if (name.length() != 0) {
+                player.setName(name.getText().toString());
+            } else {
+                player.setName("Guardian");
+            }
+            player.setSkillPoints(points);
+            player.setSkills(new int[]{pilot, fighter, trader, engineer});
+            //set difficulty of game here after implemented game class
+            viewModel.addPlayer(player);
+        }
+    }
 
-        //set difficulty of game here after implemented game class
+    /**
+     * Cancel button takes user back to main screen
+     *
+     * @param view button pressed
+     */
+    public void onCancel(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
     /**
