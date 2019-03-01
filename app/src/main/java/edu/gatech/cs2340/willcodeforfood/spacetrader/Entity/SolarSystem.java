@@ -19,7 +19,7 @@ public class SolarSystem {
     private ResourceLevel resourceLevel;
     private List<Planet> planets;
 
-    private String[] openNames;
+    private final String[] openNames = {"SS1", "SS2", "SS3", "SS4", "SS5"};
 
     /**
      * Initializes a random solar system
@@ -36,15 +36,6 @@ public class SolarSystem {
         for (int i = 0; i < 3; i++) {
             planets.add(new Planet());
         }
-    }
-
-    /**
-     * Sets the open names for solar systems and planets
-     *
-     * @param names array of names
-     */
-    public void setOpenNames(String[] names) {
-        this.openNames = names;
     }
 
     /**
@@ -76,4 +67,11 @@ public class SolarSystem {
      * @return solar system planets
      */
     public List<Planet> getPlanets() { return planets; }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
+                "ResourceLevel: %d", name, xCoor, yCoor, techLevel.getTechLevel(),
+                resourceLevel.getResourceLevel());
+    }
 }
