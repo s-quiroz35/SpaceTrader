@@ -10,64 +10,65 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 
 /**
- * Adapts players to recycler view
+ * Adapts games to recycler view
  *
  * @author Matt Bernet
  * @version 1.0
  */
-public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder> {
+public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder> {
 
-    private List<Player> players = new ArrayList<>();
-    private OnPlayerClickListener listener;
+    private List<Game> games = new ArrayList<>();
+    private OnGameClickListener listener;
 
     @NonNull
     @Override
-    public PlayerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.player_item, parent, false);
 
-        return new PlayerViewHolder(itemView);
+        return new GameViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlayerViewHolder holder, int position) {
-        Player player = players.get(position);
+    public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
+        Player player = games.get(position).getPlayer();
         holder.playerName.setText(player.getName());
     }
 
     @Override
-    public int getItemCount() { return players.size(); }
+    public int getItemCount() { return games.size(); }
 
     /**
-     * Set players from model
+     * Set games from model
      *
-     * @param players list of players
+     * @param games list of games
      */
-    public void setPlayers(List<Player> players) {
-        this.players = players;
+    public void setGames(List<Game> games) {
+        this.games = games;
         notifyDataSetChanged();
     }
 
     /**
-     * Sets a listener for player click activity
+     * Sets a listener for game click activity
      *
      * @param listener new listener
      */
-    public void setOnPlayerClickListener(OnPlayerClickListener listener) {
+    public void setOnGameClickListener(OnGameClickListener listener) {
         this.listener = listener;
     }
 
     /**
-     * Holder for single player item in list
+     * Holder for single game in list
      */
-    class PlayerViewHolder extends RecyclerView.ViewHolder {
+    class GameViewHolder extends RecyclerView.ViewHolder {
         private TextView playerName;
 
-        PlayerViewHolder(@NonNull View itemView) {
+        GameViewHolder(@NonNull View itemView) {
             super(itemView);
             playerName = itemView.findViewById(R.id.player_name);
 
@@ -77,7 +78,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerView
                     int position = getAdapterPosition();
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
-                        listener.onPlayerClicked(players.get(position));
+                        listener.onGameClicked(games.get(position));
                     }
                 }
             });
@@ -87,7 +88,8 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerView
     /**
      * Interface with method to be implemented in parent activity for click response
      */
-    public interface OnPlayerClickListener {
-        void onPlayerClicked(Player player);
+    public interface OnGameClickListener {
+        void onGameClicked(Game game);
     }
 }
+

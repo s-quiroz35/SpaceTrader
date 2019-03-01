@@ -37,7 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void continueGame(View view) {
-        Intent intent = new Intent(this, ViewAllPlayersActivity.class);
+        Intent intent = new Intent(this, ViewAllGamesActivity.class);
         startActivity(intent);
     }
 }
