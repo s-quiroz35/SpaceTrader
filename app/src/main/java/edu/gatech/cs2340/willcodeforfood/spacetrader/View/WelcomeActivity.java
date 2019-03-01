@@ -5,15 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 
 /**
  * Welcome Screen View
  *
- * @author Emma Chadwick
- * @version 1.0
+ * @author Emma Chadwick and Matt Bernet
+ * @version 1.1
  */
-import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
-
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
@@ -33,11 +32,12 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     * When button continue game is pressed, this is not implemented yet
+     * Switch to screen to choose player
      *
      * @param view button pressed
      */
     public void continueGame(View view) {
-
+        Intent intent = new Intent(this, ViewAllPlayersActivity.class);
+        startActivity(intent);
     }
 }
