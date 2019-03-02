@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.view.View;
 import android.widget.Toast;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
@@ -20,12 +21,13 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
  * Handles Player Config Activity
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.2
+ * @version 1.3
  */
 public class ConfigActivity extends AppCompatActivity {
 
     private ConfigViewModel viewModel;
     private Player player;
+    private Universe universe;
 
     private EditText name;
     private Spinner diffSpinner;
@@ -83,7 +85,14 @@ public class ConfigActivity extends AppCompatActivity {
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
             //set difficulty of game here after implemented game class
             viewModel.addPlayer(player);
+
+            universe = new Universe(); // create universe
+            viewModel.addUniverse(universe); // add universe to view model
+
+            Intent intent = new Intent(this, UniverseActivity.class);
+            startActivity(intent);
         }
+
     }
 
     /**

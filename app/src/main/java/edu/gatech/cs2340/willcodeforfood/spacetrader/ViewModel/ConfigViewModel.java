@@ -5,8 +5,10 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.PlayerInteractor;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.UniverseInteractor;
 
 /**
  * View model for player configuration
@@ -16,6 +18,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.PlayerInteractor;
  */
 public class ConfigViewModel extends AndroidViewModel {
     private PlayerInteractor interactor;
+    private UniverseInteractor uInteractor;
 
     /**
      * Initializes the view model
@@ -25,6 +28,7 @@ public class ConfigViewModel extends AndroidViewModel {
     public ConfigViewModel(@NonNull Application application) {
         super(application);
         interactor = Model.getInstance().getPlayerInteractor();
+        uInteractor = Model.getInstance().getUniverseInteractor();
     }
 
     /**
@@ -34,5 +38,13 @@ public class ConfigViewModel extends AndroidViewModel {
      */
     public void addPlayer(Player player) {
         interactor.addPlayer(player);
+    }
+
+    /**
+     * Sends universe to model to be added
+     * @param universe new universe
+     */
+    public void addUniverse(Universe universe) {
+        uInteractor.addUniverse(universe);
     }
 }

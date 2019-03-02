@@ -17,6 +17,10 @@
             android:label="SpaceTrader">
         </activity>
         <activity
+            android:name="edu.gatech.cs2340.willcodeforfood.spacetrader.View.UniverseActivity"
+            android:label="SpaceTrader">
+        </activity>
+        <activity
             android:name="edu.gatech.cs2340.willcodeforfood.spacetrader.View.WelcomeActivity"
             android:label="@string/app_name">
             <intent-filter>
@@ -25,5 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 </manifest>

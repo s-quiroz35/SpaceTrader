@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Represents a Solar System
  *
- * @author Matt Bernet
- * @version 1.0
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.1
  */
 public class SolarSystem {
 
@@ -27,6 +27,18 @@ public class SolarSystem {
     public SolarSystem() {
         Random rn = new Random();
 
+        String[] array = { "Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
+                "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
+                "Deneva", "Davidia", "Draylon", "Drema", "Endor", "Esmee", "Fourmi", "Helena", "Hulst",
+                "Iodine", "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Klaestron", "Korma",
+                "Kravat", "Largo", "Lave", "Ligon", "Lowry", "Montor", "Mordan", "Myrthe", "Nelvana", "Nix",
+                "Nyle", "Odet", "Othello", "Parade", "Penthara", "Picard", "Pollux",	  "Ran", "Rhymus",
+                "Rochani", "Rubicum", "Rutia", "Sarpeidon", "Sefalla", "Seltrice", "Somari", "Stakoron", "Styris",
+                "Talani", "Tamus", "Tantalos", "Tanuga", "Tarchannen", "Terosa", "Thera", "Titan", "Torin", "Triacus",
+                "Turkana", "Tyrus",  "Vadera", "Vagra", "Vandor", "Ventax", "Xenon", "Xerxes", "Yew", "Zuul"};
+
+        setOpenNames(array);
+
         name = openNames[rn.nextInt(openNames.length)];
         xCoor = rn.nextInt(151);
         yCoor = rn.nextInt(101);
@@ -38,6 +50,11 @@ public class SolarSystem {
         }
     }
 
+    @Override
+    public String toString() {
+        return String.format("Name: %s XCoor: %d YCoor: %d techLevel: %d resourcelevel: %d", name,
+                xCoor, yCoor, techLevel.getTechLevel(), resourceLevel.getResourceLevel());
+    }
     /**
      * Sets the open names for solar systems and planets
      *
