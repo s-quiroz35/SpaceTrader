@@ -27,6 +27,7 @@ public class ConfigActivity extends AppCompatActivity {
 
     private ConfigViewModel viewModel;
     private Player player;
+    private Game game;
 
     private EditText name;
     private Spinner diffSpinner;
@@ -35,6 +36,8 @@ public class ConfigActivity extends AppCompatActivity {
     private TextView traderCount;
     private TextView engineerCount;
     private TextView pointsCount;
+
+    private boolean editing;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
