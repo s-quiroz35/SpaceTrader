@@ -4,7 +4,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * Represents a Player
  *
  * @author Matt Bernet
- * @version 1.2
+ * @version 1.3
  */
 public class Player {
 
@@ -29,7 +29,7 @@ public class Player {
         this.name = name;
         this.skillPoints = skillPoints;
         credits = 1000;
-        ship = new Gnat();
+        ship = new Ship(ShipType.GNAT, "black", 100);
         skills = new int[]{pilot, fighter, trader, engineer};
     }
 
