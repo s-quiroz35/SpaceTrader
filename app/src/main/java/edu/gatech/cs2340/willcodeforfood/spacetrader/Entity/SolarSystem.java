@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
  * Represents a Solar System
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.1
+ * @version 1.2
  */
 public class SolarSystem {
 
@@ -19,30 +21,33 @@ public class SolarSystem {
     private ResourceLevel resourceLevel;
     private List<Planet> planets;
 
-    private final String[] openNames = {"Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
-            "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
-            "Deneva", "Davidia", "Draylon", "Drema", "Endor", "Esmee", "Fourmi", "Helena", "Hulst",
-            "Iodine", "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Klaestron", "Korma",
-            "Kravat", "Largo", "Lave", "Ligon", "Lowry", "Montor", "Mordan", "Myrthe", "Nelvana", "Nix",
-            "Nyle", "Odet", "Othello", "Parade", "Penthara", "Picard", "Pollux",	  "Ran", "Rhymus",
-            "Rochani", "Rubicum", "Rutia", "Sarpeidon", "Sefalla", "Seltrice", "Somari", "Stakoron", "Styris",
-            "Talani", "Tamus", "Tantalos", "Tanuga", "Tarchannen", "Terosa", "Thera", "Titan", "Torin", "Triacus",
-            "Turkana", "Tyrus",  "Vadera", "Vagra", "Vandor", "Ventax", "Xenon", "Xerxes", "Yew", "Zuul"};
+    private final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades",
+            "Hamlet","Og", "Omega", "Omphalos", "Orias", "Umberlee", "Utopia","Exo", "Ferris", "Festen",
+            "Magrat", "Malcoria", "Mentar","Quator", "Rakhar", "Yojimbo", "Zalkon", "Sigma", "Sol",
+            "Khefa", "Kira", "Klaatu", "Ichinda", "Ierus", "Veaturn", "Vasilea", "Octavia", "Geria", "Perenulia",
+            "Tunusuru", "Elilax", "Parusbel", "Limaran", "Blitede", "Blitz", "Zeta", "Acisoid", "Zemoru", "Alpha",
+            "Blitea", "Dawnstar", "Falkreath", "Markarth", "Morthal", "Riften", "Solitude", "Whiterun", "Windhelm",
+            "Hjerim", "Helgen", "Riverwood", "Rorikstead", "Lawrence", "Seattle", "Atlanta", "Arlington", "Hillwood",
+            "Shermer", "Apollo", "Opportunity", "Eerie", "Milan", "Merik", "Mintaka","Regulas", "Relva","Krios", "Laertes"));
 
     /**
      * Initializes a random solar system
      */
-    public SolarSystem() {
+    public SolarSystem(String n) {
         Random rn = new Random();
 
-        name = openNames[rn.nextInt(openNames.length)];
+        name = n;
+
         xCoor = rn.nextInt(151);
         yCoor = rn.nextInt(101);
         techLevel = TechLevel.values()[rn.nextInt(8)];
         resourceLevel = ResourceLevel.values()[rn.nextInt(13)];
         planets = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            planets.add(new Planet());
+            int index = rn.nextInt(openNames.size());
+            String name = openNames.get(index);
+            openNames.remove(index);
+            planets.add(new Planet(name));
         }
     }
 
