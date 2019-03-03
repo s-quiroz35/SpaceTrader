@@ -4,9 +4,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.GameInteractor;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
  * View model for game configuration

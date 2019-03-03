@@ -21,7 +21,7 @@ public class Universe {
      */
     public Universe() {
         solarSystems = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             solarSystems.add(new SolarSystem());
         }
     }
@@ -40,4 +40,13 @@ public class Universe {
      * @return max width
      */
     public int getMaxWidth() {return maxY; }
+
+    @Override
+    public String toString() {
+        String string = "The universe at the location " + maxX + ", " + maxY + " contains the solar systems: " + "\n";
+        for (SolarSystem s : solarSystems) {
+            string = string + s.toString() + "\n";
+        }
+        return string;
+    }
 }

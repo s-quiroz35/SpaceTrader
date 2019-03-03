@@ -21,7 +21,9 @@ public class Model {
     /**
      * @return model instance
      */
-    public static Model getInstance() { return instance; }
+    public static Model getInstance() {
+        return instance;
+    }
 
     /**
      * Initializes model
@@ -45,4 +47,5 @@ public class Model {
     public GameInteractor getGameInteractor() {
         return (GameInteractor) iMap.get("Game");
     }
+
 }
