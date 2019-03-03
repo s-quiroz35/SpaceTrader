@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
-import java.io.Serializable;
-
 /**
  * Represents a Player
  *

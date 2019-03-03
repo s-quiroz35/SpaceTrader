@@ -12,7 +12,7 @@ public class Planet {
 
     private String name;
 
-    private String[] openNames;
+    private final String[] openNames = {"Planet1, Planet2, Planet3"};
 
     /**
      * Initializes a random planet
@@ -24,16 +24,12 @@ public class Planet {
     }
 
     /**
-     * Sets the open names for solar systems and planets
-     *
-     * @param names array of names
-     */
-    public void setOpenNames(String[] names) {
-        this.openNames = names;
-    }
-
-    /**
      * @return planet name
      */
     public String getPlanetName() { return name; }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s", name);
+    }
 }
