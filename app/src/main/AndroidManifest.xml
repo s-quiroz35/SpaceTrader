@@ -13,8 +13,8 @@
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name="edu.gatech.cs2340.willcodeforfood.spacetrader.View.ViewAllPlayersActivity"
-            android:label="SpaceTrader">
+            android:name="edu.gatech.cs2340.willcodeforfood.spacetrader.View.ViewAllGamesActivity"
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="edu.gatech.cs2340.willcodeforfood.spacetrader.View.UniverseActivity"

@@ -19,5 +19,4 @@ public class UniverseActivity extends AppCompatActivity {
         setContentView(R.layout.content_universe);
 
     }
-    //Deals with universe activity
 }

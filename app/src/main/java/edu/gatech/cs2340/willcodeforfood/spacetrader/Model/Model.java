@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Business logic interface (interactor setup)
  *
- * @author Matt Bernet and Emma Chadwick
+ * @author Matt Bernet
  * @version 1.1
  */
 public class Model {
@@ -21,7 +21,9 @@ public class Model {
     /**
      * @return model instance
      */
-    public static Model getInstance() { return instance; }
+    public static Model getInstance() {
+        return instance;
+    }
 
     /**
      * Initializes model
@@ -36,20 +38,14 @@ public class Model {
      * Create interactors
      */
     private void createInteractors() {
-        iMap.put("Player", new PlayerInteractor(repo));
-        iMap.put("Universe", new UniverseInteractor(repo));
+        iMap.put("Game", new GameInteractor(repo));
     }
 
     /**
-     * @return the player interactor
+     * @return the game interactor
      */
-    public PlayerInteractor getPlayerInteractor() {
-        return (PlayerInteractor) iMap.get("Player");
+    public GameInteractor getGameInteractor() {
+        return (GameInteractor) iMap.get("Game");
     }
 
-    /**
-     *
-     * @return the universe interactor
-     */
-    public UniverseInteractor getUniverseInteractor() { return (UniverseInteractor) iMap.get("Universe");}
 }
