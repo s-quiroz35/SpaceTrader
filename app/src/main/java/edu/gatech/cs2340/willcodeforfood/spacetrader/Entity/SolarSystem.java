@@ -15,11 +15,11 @@ import java.util.ArrayList;
 public class SolarSystem {
 
     private String name;
-    private int xCoor;
-    private int yCoor;
+    private Coordinate coordinates;
     private TechLevel techLevel;
     private ResourceLevel resourceLevel;
     private List<Planet> planets;
+    private ArrayList<Coordinate> coordinateList;
 
     private final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades",
             "Hamlet","Og", "Omega", "Omphalos", "Orias", "Umberlee", "Utopia","Exo", "Ferris", "Festen",
@@ -37,11 +37,11 @@ public class SolarSystem {
         Random rn = new Random();
 
         name = n;
-
-        xCoor = rn.nextInt(151);
-        yCoor = rn.nextInt(101);
+        coordinateList = new ArrayList<>();
+        coordinates = createCoordinates();
         techLevel = TechLevel.values()[rn.nextInt(8)];
         resourceLevel = ResourceLevel.values()[rn.nextInt(13)];
+
         planets = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int index = rn.nextInt(openNames.size());
@@ -51,20 +51,30 @@ public class SolarSystem {
         }
     }
 
+    private Coordinate createCoordinates() {
+        Random rn = new Random();
+
+        int x = rn.nextInt(151);
+        int y = rn.nextInt(101);
+
+        Coordinate c = new Coordinate(x, y);
+        if (!coordinateList.contains(c)) {
+            coordinateList.add(c);
+            return c;
+        } else {
+            getCoordinates();
+        }
+        return null;
+    }
     /**
      * @return solar system name
      */
     public String getSolarSystemName() { return name; }
 
     /**
-     * @return solar system x coordinate
+     * @return solar system's coordinates
      */
-    public int getXCoor() { return xCoor; }
-
-    /**
-     * @return solar system y coordinate
-     */
-    public int getYCoor() { return yCoor; }
+    public Coordinate getCoordinates() { return coordinates; }
 
     /**
      * @return solar system tech level
@@ -83,12 +93,13 @@ public class SolarSystem {
 
     @Override
     public String toString() {
-        String beginning = String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
-                        "ResourceLevel: %d . With the following planets", name, xCoor, yCoor, techLevel.getTechLevel(),
+        String string = String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
+                        "ResourceLevel: %d . With the following planets", name, coordinates.getXCor(),
+                coordinates.getYCor(), techLevel.getTechLevel(),
                 resourceLevel.getResourceLevel());
         for (Planet p : planets) {
-            beginning = beginning + " " + p.toString();
+            string = string + " " + p.toString();
         }
-        return beginning;
+        return string;
     }
 }
