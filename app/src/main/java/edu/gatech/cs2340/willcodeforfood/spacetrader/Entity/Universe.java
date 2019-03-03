@@ -18,8 +18,7 @@ public class Universe {
     private final int maxX = 150;
     private final int maxY = 100;
 
-
-    private final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
+    private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
             "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
             "Deneva", "Davidia", "Draylon", "Drema", "Endor", "Esmee", "Fourmi", "Helena", "Hulst",
             "Iodine", "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Klaestron", "Korma",
@@ -61,7 +60,7 @@ public class Universe {
 
     @Override
     public String toString() {
-        String string = "The universe at the location " + maxX + ", " + maxY + " contains the solar systems: " + "\n";
+        String string = "Universe Created: Width: " + maxX + ", Height: " + maxY + ", Contains the solar systems: " + "\n";
         for (SolarSystem s : solarSystems) {
             string = string + s.toString() + "\n";
         }
