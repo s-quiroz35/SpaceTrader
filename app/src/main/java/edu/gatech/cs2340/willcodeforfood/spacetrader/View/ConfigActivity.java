@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.view.View;
 import android.widget.Toast;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
@@ -20,12 +22,13 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
  * Handles Player Config Activity
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.2
+ * @version 1.3
  */
 public class ConfigActivity extends AppCompatActivity {
 
     private ConfigViewModel viewModel;
     private Player player;
+    private Game game;
 
     private EditText name;
     private Spinner diffSpinner;
@@ -34,6 +37,8 @@ public class ConfigActivity extends AppCompatActivity {
     private TextView traderCount;
     private TextView engineerCount;
     private TextView pointsCount;
+
+    private boolean editing;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +59,7 @@ public class ConfigActivity extends AppCompatActivity {
         diffSpinner.setAdapter(diffAdapter);
 
         player = new Player("Matt", 16, 0, 0, 0, 0);
-        pointsCount.setText(String.format("%d", 16 ));
+        pointsCount.setText(String.format("%d", 16));
         viewModel = ViewModelProviders.of(this).get(ConfigViewModel.class);
     }
 
@@ -74,26 +79,31 @@ public class ConfigActivity extends AppCompatActivity {
             Toast.makeText(this, "Must use all skill points",
                     Toast.LENGTH_SHORT).show();
         } else {
-            if (name.length() != 0) {
+            if (name.length() != 0 && !name.getText().toString().equals("Enter name")) {
                 player.setName(name.getText().toString());
             } else {
                 player.setName("Guardian");
             }
             player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
-            //set difficulty of game here after implemented game class
-            viewModel.addPlayer(player);
+
+            Difficulty diff = (Difficulty) diffSpinner.getSelectedItem();
+            Universe universe = new Universe();
+            viewModel.addGame(new Game(player, diff, universe));
+
+            Intent intent = new Intent(this, UniverseActivity.class);
+            startActivity(intent);
         }
+
     }
 
     /**
-     * Cancel button takes user back to main screen
+     * Cancel button takes user back a page
      *
      * @param view button pressed
      */
     public void onCancel(View view) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
+        onBackPressed();
     }
 
     /**

@@ -40,4 +40,13 @@ public class Universe {
      * @return max width
      */
     public int getMaxWidth() {return maxY; }
+
+    @Override
+    public String toString() {
+        String string = "The universe at the location " + maxX + ", " + maxY + " contains the solar systems: " + "\n";
+        for (SolarSystem s : solarSystems) {
+            string = string + s.toString() + "\n";
+        }
+        return string;
+    }
 }

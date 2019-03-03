@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Represents a Solar System
  *
- * @author Matt Bernet
- * @version 1.0
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.1
  */
 public class SolarSystem {
 
@@ -19,7 +19,15 @@ public class SolarSystem {
     private ResourceLevel resourceLevel;
     private List<Planet> planets;
 
-    private String[] openNames;
+    private final String[] openNames = {"Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
+            "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
+            "Deneva", "Davidia", "Draylon", "Drema", "Endor", "Esmee", "Fourmi", "Helena", "Hulst",
+            "Iodine", "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Klaestron", "Korma",
+            "Kravat", "Largo", "Lave", "Ligon", "Lowry", "Montor", "Mordan", "Myrthe", "Nelvana", "Nix",
+            "Nyle", "Odet", "Othello", "Parade", "Penthara", "Picard", "Pollux",	  "Ran", "Rhymus",
+            "Rochani", "Rubicum", "Rutia", "Sarpeidon", "Sefalla", "Seltrice", "Somari", "Stakoron", "Styris",
+            "Talani", "Tamus", "Tantalos", "Tanuga", "Tarchannen", "Terosa", "Thera", "Titan", "Torin", "Triacus",
+            "Turkana", "Tyrus",  "Vadera", "Vagra", "Vandor", "Ventax", "Xenon", "Xerxes", "Yew", "Zuul"};
 
     /**
      * Initializes a random solar system
@@ -36,15 +44,6 @@ public class SolarSystem {
         for (int i = 0; i < 3; i++) {
             planets.add(new Planet());
         }
-    }
-
-    /**
-     * Sets the open names for solar systems and planets
-     *
-     * @param names array of names
-     */
-    public void setOpenNames(String[] names) {
-        this.openNames = names;
     }
 
     /**
@@ -76,4 +75,15 @@ public class SolarSystem {
      * @return solar system planets
      */
     public List<Planet> getPlanets() { return planets; }
+
+    @Override
+    public String toString() {
+        String beginning = String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
+                        "ResourceLevel: %d . With the following planets", name, xCoor, yCoor, techLevel.getTechLevel(),
+                resourceLevel.getResourceLevel());
+        for (Planet p : planets) {
+            beginning = beginning + " " + p.toString();
+        }
+        return beginning;
+    }
 }

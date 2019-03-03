@@ -4,11 +4,11 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * Represents a Ship
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public class Ship {
 
-    private String name;
+    private ShipType type;
     private String color;
     private int fuelCapacity;
     private int fuel;
@@ -16,21 +16,21 @@ public class Ship {
     /**
      * Initializes a Ship
      *
-     * @param name ship name
+     * @param type ship type
      * @param color ship color
      * @param fuelCapacity max fuel
      */
-    public Ship(String name, String color, int fuelCapacity) {
-        this.name = name;
+    public Ship(ShipType type, String color, int fuelCapacity) {
+        this.type = type;
         this.color = color;
         this.fuelCapacity = fuelCapacity;
         fuel = fuelCapacity;
     }
 
     /**
-     * @return ship name
+     * @return ship type
      */
-    public String getName() { return name; }
+    public ShipType getType() { return type; }
 
     /**
      * @return ship color
