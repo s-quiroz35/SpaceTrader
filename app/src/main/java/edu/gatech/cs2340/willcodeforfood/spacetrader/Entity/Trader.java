@@ -26,8 +26,9 @@ public class Trader {
         List<Good> allGoods = Good.theGoods();
         inventory = new HashMap<>();
         int i = 0;
-        while(this.techLevel >= allGoods.get(i).minTechLvlMk) {
+        while(this.techLevel >= allGoods.get(i).minTechLvlMk && i < allGoods.size()) {
             inventory.put(allGoods.get(i), this.calcPrice(allGoods.get(i)));
+            i++;
         }
     }
 
