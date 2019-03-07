@@ -19,13 +19,15 @@ public class Trader {
     /**
      * Good constructor
      *
-     * @param system The SolarSystem this trader is in
+     * @param techLevel The system's techLevel
+     * @param resourceLevel The system's resourceLevel
      */
-    public Trader(SolarSystem system) {
-        this.techLevel = system.getTechLevel().getTechLevel();
-        this.resourceLevel = system.getResourceLevel();
+    public Trader(int techLevel, ResourceLevel resourceLevel) {
+        this.techLevel = techLevel;
+        this.resourceLevel = resourceLevel;
         List<Good> allGoods = Good.theGoods();
         inventory = new HashMap<>();
+        cargo = new Cargo();
         int i = 0;
         while(this.techLevel >= allGoods.get(i).getMinTechLvlUse() && i < allGoods.size()) {
             inventory.put(allGoods.get(i), this.calcPrice(allGoods.get(i)));

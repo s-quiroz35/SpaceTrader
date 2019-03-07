@@ -9,11 +9,13 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 public class Planet {
 
     private String name;
+    private Trader trader;
 
     /**
      * Initializes a random planet
      */
-    public Planet(String n) {
+    public Planet(String n, Trader t) {
+        trader = t;
         name = n;
     }
 

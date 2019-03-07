@@ -113,6 +113,9 @@ public class Player {
      * @return Whether the trade was successful or not
      */
     public boolean buy(Trader trader, Good good, int quantity) {
+        if (trader == null) {
+            return false;
+        }
         if (trader.getInventory().containsKey(good)
                     && quantity <= trader.getCargo().getInventory().get(good)) {
             if (credits - trader.getInventory().get(good) * quantity < 0) {
@@ -134,6 +137,9 @@ public class Player {
      * @return Whether the trade was successful or not
      */
     public boolean sell(Trader trader, Good good, int quantity) {
+        if (trader == null) {
+            return false;
+        }
         if (trader.getTechLevel() >= good.getMinTechLvlUse()) {
             boolean b = cargo.remove(good, quantity);
             if (b) {
