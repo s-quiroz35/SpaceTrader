@@ -14,6 +14,7 @@ public class Trader {
     private int techLevel;
     private ResourceLevel resourceLevel;
     private Map<Good, Integer> inventory;
+    private Cargo cargo;
 
     /**
      * Good constructor
@@ -28,6 +29,7 @@ public class Trader {
         int i = 0;
         while(this.techLevel >= allGoods.get(i).getMinTechLvlUse() && i < allGoods.size()) {
             inventory.put(allGoods.get(i), this.calcPrice(allGoods.get(i)));
+            cargo.put(allGoods.get(i), this.calcQuantity(allGoods.get(i)));
             i++;
         }
     }
@@ -35,6 +37,8 @@ public class Trader {
     /**
      * Calculates the price of a good and either doubles it or
      * halves it depending on if the SolarSystem meets the resourceLevel requirements
+     *
+     * @return Final price of the good
      */
     public int calcPrice(Good good) {
         int price = good.price(this.techLevel);
@@ -49,6 +53,19 @@ public class Trader {
     }
 
     /**
+     * Calculates how much of a good the trader has
+     *
+     * @return Amount of a good that the trader has
+     */
+    public int calcQuantity(Good good) {
+        int quantity = 20 + (20 * (int) Math.random() * good.getVariance());
+        if (this.techLevel == good.getTechWMostProd()) {
+            quantity *= 2;
+        }
+        return quantity;
+    }
+
+    /**
      * @return the trader's inventory
      */
     public Map<Good, Integer> getInventory() {
@@ -60,5 +77,12 @@ public class Trader {
      */
     public int getTechLevel() {
         return techLevel;
+    }
+
+    /**
+     * @return the trader's cargo
+     */
+    public Cargo getCargo() {
+        return cargo;
     }
 }

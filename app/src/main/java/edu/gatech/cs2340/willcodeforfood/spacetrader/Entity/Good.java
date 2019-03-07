@@ -139,4 +139,17 @@ public class Good {
         return basePrice;
     }
 
+    /**
+     * @return the good's variance for price and quantity for traders
+     */
+    public int getVariance() {
+        return variance;
+    }
+
+    /**
+     * @return the tech level with the most production of this good
+     */
+    public int getTechWMostProd() {
+        return techWMostProd;
+    }
 }

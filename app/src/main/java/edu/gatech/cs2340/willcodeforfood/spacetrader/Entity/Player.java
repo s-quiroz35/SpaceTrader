@@ -113,12 +113,13 @@ public class Player {
      * @return Whether the trade was successful or not
      */
     public boolean buy(Trader trader, Good good, int quantity) {
-        if (trader.getInventory().containsKey(good)) {
+        if (trader.getInventory().containsKey(good)
+                    && quantity <= trader.getCargo().getInventory().get(good)) {
             if (credits - trader.getInventory().get(good) * quantity < 0) {
                 return false;
             } else {
                 credits -= trader.getInventory().get(good) * quantity;
-                return cargo.put(good, quantity);
+                return cargo.put(good, quantity) && trader.getCargo().remove(good, quantity);
             }
         }
         return false;
