@@ -11,9 +11,9 @@ import java.util.List;
  * @version 1.0
  */
 public class Trader {
-    int techLevel;
-    ResourceLevel resourceLevel;
-    Map<Good, Integer> inventory;
+    private int techLevel;
+    private ResourceLevel resourceLevel;
+    private Map<Good, Integer> inventory;
 
     /**
      * Good constructor
@@ -26,7 +26,7 @@ public class Trader {
         List<Good> allGoods = Good.theGoods();
         inventory = new HashMap<>();
         int i = 0;
-        while(this.techLevel >= allGoods.get(i).minTechLvlMk && i < allGoods.size()) {
+        while(this.techLevel >= allGoods.get(i).getMinTechLvlUse() && i < allGoods.size()) {
             inventory.put(allGoods.get(i), this.calcPrice(allGoods.get(i)));
             i++;
         }
@@ -46,5 +46,19 @@ public class Trader {
             }
         }
         return price;
+    }
+
+    /**
+     * @return the trader's inventory
+     */
+    public Map<Good, Integer> getInventory() {
+        return inventory;
+    }
+
+    /**
+     * @return the trader's tech level
+     */
+    public int getTechLevel() {
+        return techLevel;
     }
 }

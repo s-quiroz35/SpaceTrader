@@ -23,12 +23,12 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Water;
  */
 public class Good {
     //good implementation
-    int minTechLvlMk;
-    int minTechLvlUse;
-    int techWMostProd;
-    int basePrice;
-    int priceIncPerLvl;
-    int variance;
+    private int minTechLvlMk;
+    private int minTechLvlUse;
+    private int techWMostProd;
+    private int basePrice;
+    private int priceIncPerLvl;
+    private int variance;
     //int increaseEvent;
     ResourceLevel lowPriceCondition;
     ResourceLevel highPriceCondition;
@@ -116,6 +116,27 @@ public class Good {
     public int price(int techLvl) {
         return basePrice + priceIncPerLvl*(techLvl - minTechLvlMk)
                 + (int) (Math.random() * (variance + 1));
+    }
+
+    /**
+     * @return Minimum tech level for a trader to have the good
+     */
+    public int getMinTechLvlMk() {
+        return minTechLvlMk;
+    }
+
+    /**
+     * @return Minimum tech level for a trader to buy the good from player
+     */
+    public int getMinTechLvlUse() {
+        return minTechLvlUse;
+    }
+
+    /**
+     * @return The good's base price
+     */
+    public int getBasePrice() {
+        return basePrice;
     }
 
 }

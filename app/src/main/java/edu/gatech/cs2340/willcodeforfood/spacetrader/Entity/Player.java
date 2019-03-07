@@ -4,7 +4,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * Represents a Player
  *
  * @author Matt Bernet
- * @version 1.3
+ * @version 1.4
  */
 public class Player {
 
@@ -13,6 +13,7 @@ public class Player {
     private int credits;
     private Ship ship;
     private int[] skills;
+    private Cargo cargo;
 
     /**
      * Initializes a player
@@ -31,6 +32,7 @@ public class Player {
         credits = 1000;
         ship = new Ship(ShipType.GNAT, "black", 100);
         skills = new int[]{pilot, fighter, trader, engineer};
+        cargo = new Cargo();
     }
 
     @Override
@@ -98,4 +100,46 @@ public class Player {
      * @param skills new skills
      */
     public void setSkills(int[] skills) { this.skills = skills; }
+
+    /**
+     * Buying a good from a Trader. I have it as returning a boolean that
+     * says if the trade was successful or not, maybe Exceptions
+     * would be better for telling why a trade was unsuccessful but
+     * this should work fine.
+     *
+     * @param trader The current trader that player is interacting with
+     * @param good The good you want to buy
+     * @param quantity The amount of good you want to buy
+     * @return Whether the trade was successful or not
+     */
+    public boolean buy(Trader trader, Good good, int quantity) {
+        if (trader.getInventory().containsKey(good)) {
+            if (credits - trader.getInventory().get(good) * quantity < 0) {
+                return false;
+            } else {
+                credits -= trader.getInventory().get(good) * quantity;
+                return cargo.put(good, quantity);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Selling a good to a trader
+     *
+     * @param trader The current trader that player is interacting with
+     * @param good The good you want to sell
+     * @param quantity The amount of good you want to sell
+     * @return Whether the trade was successful or not
+     */
+    public boolean sell(Trader trader, Good good, int quantity) {
+        if (trader.getTechLevel() >= good.getMinTechLvlUse()) {
+            boolean b = cargo.remove(good, quantity);
+            if (b) {
+                credits -= trader.getInventory().get(good) * quantity;
+            }
+            return b;
+        }
+        return false;
+    }
 }
