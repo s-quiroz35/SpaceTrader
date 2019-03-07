@@ -29,7 +29,7 @@ public class Trader {
         inventory = new HashMap<>();
         cargo = new Cargo();
         int i = 0;
-        while(this.techLevel >= allGoods.get(i).getMinTechLvlUse() && i < allGoods.size()) {
+        while(i < allGoods.size() && this.techLevel >= allGoods.get(i).getMinTechLvlUse()) {
             inventory.put(allGoods.get(i), this.calcPrice(allGoods.get(i)));
             cargo.put(allGoods.get(i), this.calcQuantity(allGoods.get(i)));
             i++;
