@@ -44,7 +44,7 @@ public class SolarSystem {
             int index = rn.nextInt(openNames.size());
             String name = openNames.get(index);
             openNames.remove(index);
-            planets.add(new Planet(name, new Trader(techLevel.getTechLevel(), resourceLevel)));
+            planets.add(new Planet(name));
         }
     }
 
