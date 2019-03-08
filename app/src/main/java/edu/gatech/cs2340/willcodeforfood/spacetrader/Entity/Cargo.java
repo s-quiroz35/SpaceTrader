@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a Cargo for player or ship
+ * Represents a Cargo for ship
  *
  * @author Sam Quiroz
  * @version 1.0
@@ -70,7 +70,7 @@ public class Cargo {
         if (inventory.get(good) == null) {
             inventory.put(good, quantity);
         } else {
-            inventory.put(good, inventory.get(good) + quantity);
+            inventory.put(good,  inventory.get(good) + quantity);
         }
         contents += quantity;
         return true;
