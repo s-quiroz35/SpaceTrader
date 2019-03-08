@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
 /**
- * Represents total data storage
+ * Represents data abstraction
  *
  * @author Matt Bernet
  * @version 1.1
