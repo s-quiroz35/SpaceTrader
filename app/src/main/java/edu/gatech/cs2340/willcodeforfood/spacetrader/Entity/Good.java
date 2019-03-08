@@ -4,24 +4,27 @@ import java.util.List;
 import java.util.ArrayList;
 import java.lang.Math;
 
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Firearms;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Food;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Furs;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Games;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Machines;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Medicine;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Narcotics;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Ore;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Robots;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Goods.Water;
 
 /**
- * Superclass for all goods
+ * Good enum
  *
  * @author Sam Quiroz
  * @version 1.0
  */
-public class Good {
+public enum Good {
+
+    WATER(0, 0, 2, 30, 3, 4, ResourceLevel.LOTSOFWATER, ResourceLevel.DESERT),
+    FURS(0, 0, 0, 250, 10, 10, ResourceLevel.RICHFAUNA, ResourceLevel.LIFELESS),
+    FOOD(1, 0, 1, 100, 5, 5, ResourceLevel.RICHSOIL, ResourceLevel.POORSOIL),
+    ORE(2, 2, 3, 350, 20, 10, ResourceLevel.MINERALRICH, ResourceLevel.MINERALPOOR),
+    GAMES(3, 1, 6, 250, -10, 5, ResourceLevel.ARTISTIC),
+    FIREARMS(3, 1, 5, 1250, -75, 100, ResourceLevel.WARLIKE),
+    MEDICINE(4, 1, 6, 650, -20, 10, ResourceLevel.LOTSOFHERBS),
+    MACHINES(4, 3, 5, 900, -30, 5),
+    NARCOTICS(5, 0, 5, 3500, -125, 150, ResourceLevel.WEIRDMUSHROOMS),
+    ROBOTS(6, 4, 7, 5000, -150, 100);
+
+
     //good implementation
     private int minTechLvlMk;
     private int minTechLvlUse;
@@ -45,7 +48,7 @@ public class Good {
      * @param lowPriceCondition Condition that lowers the price
      * @param highPriceCondition Condition that raises the price
      */
-    public Good(int minTechLvlMk, int minTechLvlUse, int techWMostProd,int basePrice,
+    Good(int minTechLvlMk, int minTechLvlUse, int techWMostProd,int basePrice,
                 int priceIncPerLvl, int variance, ResourceLevel lowPriceCondition,
                 ResourceLevel highPriceCondition) {
         this.minTechLvlMk = minTechLvlMk;
@@ -69,7 +72,7 @@ public class Good {
      * @param variance The price variance for traders
      * @param lowPriceCondition Condition that lowers the price
      */
-    public Good(int minTechLvlMk, int minTechLvlUse, int techWMostProd, int basePrice,
+    Good(int minTechLvlMk, int minTechLvlUse, int techWMostProd, int basePrice,
                 int priceIncPerLvl, int variance, ResourceLevel lowPriceCondition) {
         this(minTechLvlMk, minTechLvlUse, techWMostProd, basePrice, priceIncPerLvl,
                 variance, lowPriceCondition, ResourceLevel.NOSPECIALRESOURCES);
@@ -85,7 +88,7 @@ public class Good {
      * @param priceIncPerLvl The amount price increases per tech level
      * @param variance The price variance for traders
      */
-    public Good(int minTechLvlMk, int minTechLvlUse, int techWMostProd, int basePrice,
+    Good(int minTechLvlMk, int minTechLvlUse, int techWMostProd, int basePrice,
                 int priceIncPerLvl, int variance) {
         this(minTechLvlMk, minTechLvlUse, techWMostProd, basePrice, priceIncPerLvl,
                 variance, ResourceLevel.NOSPECIALRESOURCES, ResourceLevel.NOSPECIALRESOURCES);
@@ -97,16 +100,9 @@ public class Good {
      */
     public static List<Good> theGoods() {
        List<Good> theList = new ArrayList<>();
-       theList.add(new Water());
-       theList.add(new Furs());
-       theList.add(new Food());
-       theList.add(new Ore());
-       theList.add(new Games());
-       theList.add(new Firearms());
-       theList.add(new Medicine());
-       theList.add(new Machines());
-       theList.add(new Narcotics());
-       theList.add(new Robots());
+       for (Good g : Good.values()) {
+           theList.add(g);
+       }
        return theList;
     }
 

@@ -68,6 +68,22 @@ public class Trader {
     }
 
     /**
+     * @param good The kind of good you want the quantity of
+     * @return How much of a good the trader has
+     */
+    public int getGoodQuantity(Good good) {
+        return cargo.getInventory().get(good);
+    }
+
+    /**
+     * @param good The kind of good you want the price of
+     * @return How much the good costs
+     */
+    public int getGoodPrice(Good good) {
+        return inventory.get(good);
+    }
+
+    /**
      * @return the trader's inventory
      */
     public Map<Good, Integer> getInventory() {

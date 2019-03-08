@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a Cargo for player or ship
@@ -10,7 +11,7 @@ import java.util.HashMap;
  */
 public class Cargo {
     //cargo implementation
-    private HashMap<Good, Integer> inventory;
+    private Map<Good, Integer> inventory;
     private int capacity;
     private int contents;
 
@@ -51,7 +52,7 @@ public class Cargo {
     /**
      * @return the cargo's inventory
      */
-    public HashMap<Good, Integer> getInventory() {
+    public Map<Good, Integer> getInventory() {
         return inventory;
     }
 

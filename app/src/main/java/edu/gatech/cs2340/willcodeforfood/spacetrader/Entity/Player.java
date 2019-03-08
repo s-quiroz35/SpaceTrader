@@ -117,11 +117,11 @@ public class Player {
             return false;
         }
         if (trader.getInventory().containsKey(good)
-                    && quantity <= trader.getCargo().getInventory().get(good)) {
-            if (credits - trader.getInventory().get(good) * quantity < 0) {
+                    && quantity <= trader.getGoodQuantity(good)) {
+            if (credits - trader.getGoodPrice(good) * quantity < 0) {
                 return false;
             } else {
-                credits -= trader.getInventory().get(good) * quantity;
+                credits -= trader.getGoodPrice(good) * quantity;
                 return cargo.put(good, quantity) && trader.getCargo().remove(good, quantity);
             }
         }
@@ -143,7 +143,7 @@ public class Player {
         if (trader.getTechLevel() >= good.getMinTechLvlUse()) {
             boolean b = cargo.remove(good, quantity);
             if (b) {
-                credits -= trader.getInventory().get(good) * quantity;
+                credits -= trader.getGoodPrice(good) * quantity;
             }
             return b;
         }
