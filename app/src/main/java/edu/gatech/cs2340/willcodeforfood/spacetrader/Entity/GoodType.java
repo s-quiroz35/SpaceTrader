@@ -3,7 +3,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 /**
  * Type of Good
  *
- * @author Matt Bernet
+ * @author Sam Quiroz and Matt Bernet
  * @version 1.0
  */
 public enum GoodType {
