@@ -6,17 +6,14 @@ import android.support.annotation.NonNull;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.GameInteractor;
 
 /**
  * View model for game configuration
  *
  * @author Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class ConfigViewModel extends AndroidViewModel {
-
-    private GameInteractor interactor;
 
     /**
      * Initializes the view model
@@ -25,7 +22,6 @@ public class ConfigViewModel extends AndroidViewModel {
      */
     public ConfigViewModel(@NonNull Application application) {
         super(application);
-        interactor = Model.getInstance().getGameInteractor();
     }
 
     /**
@@ -34,6 +30,6 @@ public class ConfigViewModel extends AndroidViewModel {
      * @param game new game
      */
     public void addGame(Game game) {
-        interactor.addGame(game);
+        Model.getInstance().addGame(game);
     }
 }
