@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a Cargo for player or ship
+ * Represents a Cargo for ship
  *
  * @author Sam Quiroz
  * @version 1.0
  */
 public class Cargo {
     //cargo implementation
-    private Map<Good, Integer> inventory;
+    private Map<GoodType, Integer> inventory;
     private int capacity;
     private int contents;
 
@@ -52,7 +52,7 @@ public class Cargo {
     /**
      * @return the cargo's inventory
      */
-    public Map<Good, Integer> getInventory() {
+    public Map<GoodType, Integer> getInventory() {
         return inventory;
     }
 
@@ -63,14 +63,14 @@ public class Cargo {
      * @param quantity The amount you want to place in cargo
      * @return Whether there was room to add the good
      */
-    public boolean put(Good good, int quantity) {
+    public boolean put(GoodType good, int quantity) {
         if (contents + quantity > capacity) {
             return false;
         }
         if (inventory.get(good) == null) {
             inventory.put(good, quantity);
         } else {
-            inventory.put(good, inventory.get(good) + quantity);
+            inventory.put(good,  inventory.get(good) + quantity);
         }
         contents += quantity;
         return true;
@@ -83,7 +83,7 @@ public class Cargo {
      * @param quantity The amount you want to remove
      * @return Whether the remove was successful
      */
-    public boolean remove(Good good, int quantity) {
+    public boolean remove(GoodType good, int quantity) {
         if (inventory.get(good) == null || quantity > inventory.get(good)) {
             return false;
         } else {
