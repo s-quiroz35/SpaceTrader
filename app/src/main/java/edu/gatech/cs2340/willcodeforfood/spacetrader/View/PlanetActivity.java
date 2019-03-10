@@ -9,6 +9,7 @@ import android.widget.TextView;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 
 /**
+<<<<<<< HEAD
  * Handles Planet Activity
  *
  * @author Sam Quiroz
@@ -27,15 +28,5 @@ public class PlanetActivity extends AppCompatActivity {
         nameTextView.setText(planetName);
         String techLvlString = "TechLevel: " + techLevel;
         techLevelTextView.setText(techLvlString);
-    }
-
-    /**
-     * Button handler for Trade button
-     *
-     * @param view button pressed
-     */
-    public void beginTrading(View view) {
-        Intent intent = new Intent(this, MarketActivity.class);
-        startActivity(intent);
     }
 }

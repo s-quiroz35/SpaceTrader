@@ -99,6 +99,11 @@ public class Player {
      */
     public void setSkills(int[] skills) { this.skills = skills; }
 
+    /**
+     * @return cargo
+     */
+    public Cargo getCargo() { return ship.getCargo(); }
+
 //    /**
 //     * Buying a good from a Trader. I have it as returning a boolean that
 //     * says if the trade was successful or not, maybe Exceptions
