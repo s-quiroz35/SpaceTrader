@@ -2,10 +2,8 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
 import android.util.Log;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
 /**
@@ -49,4 +47,11 @@ class Repository {
      * @return ship cargo
      */
     Cargo getCargo() { return game.getPlayer().getCargo(); }
+
+    /**
+     * Sells a cargo item
+     *
+     * @param item item to sell
+     */
+    void sellItem(CargoItem item) { game.getPlayer().getCargo().remove(item, 1); }
 }

@@ -36,7 +36,7 @@ public class MarketActivity extends AppCompatActivity {
         cAdapter = new CargoAdapter(viewModel.getCargo(), new CargoAdapter.CargoClickListener() {
             @Override
             public void onSellClick(CargoItem item) {
-                //sell 1 of cargo items
+                viewModel.sellItem(item);
             }
         });
         rView.setAdapter(cAdapter);

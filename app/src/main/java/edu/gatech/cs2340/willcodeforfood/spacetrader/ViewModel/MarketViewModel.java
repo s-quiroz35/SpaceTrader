@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
@@ -28,4 +29,11 @@ public class MarketViewModel extends AndroidViewModel {
      * @return player ship cargo
      */
     public Cargo getCargo() { return Model.getInstance().getCargo(); }
+
+    /**
+     * Sells a cargo item
+     *
+     * @param item item to sell
+     */
+    public void sellItem(CargoItem item) { Model.getInstance().sellItem(item); }
 }

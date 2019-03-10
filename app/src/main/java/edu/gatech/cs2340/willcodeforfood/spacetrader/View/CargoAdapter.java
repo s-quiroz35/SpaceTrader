@@ -47,6 +47,8 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     public void onBindViewHolder(@NonNull CargoViewHolder holder, int position) {
         GoodType good = cargoItems.get(position).getType();
         holder.itemName.setText(good.getName());
+        holder.itemAmount.setText(String.format("Remaining: %d",
+                cargoItems.get(position).getAmount()));
     }
 
     @Override
@@ -57,11 +59,13 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      */
     class CargoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView itemName;
+        private TextView itemAmount;
         private TextView sellText;
 
         CargoViewHolder(@NonNull View itemView) {
             super(itemView);
             itemName = itemView.findViewById(R.id.cargo_item_type);
+            itemAmount = itemView.findViewById(R.id.cargo_item_amount);
             sellText = itemView.findViewById(R.id.cargo_sell_text);
 
             itemView.setOnClickListener(this);

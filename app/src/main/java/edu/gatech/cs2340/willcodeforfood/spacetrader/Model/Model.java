@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
 /**
@@ -30,6 +31,7 @@ public class Model {
         repo = new Repository();
     }
 
+
     /* Game functionality */
 
     /**
@@ -48,4 +50,11 @@ public class Model {
      * @return player ship cargo
      */
     public Cargo getCargo() { return repo.getCargo(); }
+
+    /**
+     * Sells a cargo item
+     *
+     * @param item item to sell
+     */
+    public void sellItem(CargoItem item) { repo.sellItem(item); }
 }
