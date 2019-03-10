@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
-import java.util.List;
-
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
 /**
@@ -43,6 +42,10 @@ public class Model {
     /**
      * @return all games
      */
-    public List<Game> getGames() { return repo.getGames(); }
+    public Game getGame() { return repo.getGame(); }
 
+    /**
+     * @return player ship cargo
+     */
+    public Cargo getCargo() { return repo.getCargo(); }
 }
