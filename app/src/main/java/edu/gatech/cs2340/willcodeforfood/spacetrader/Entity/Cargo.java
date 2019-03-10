@@ -33,6 +33,17 @@ public class Cargo {
         this.capacity = capacity;
         this.contents = 0;
         items = new ArrayList<>();
+        dummyData();
+    }
+
+    /**
+     * Loads dummy data into cargo for testing
+     */
+    private void dummyData() {
+        items.add(new CargoItem(GoodType.FOOD));
+        items.add(new CargoItem(GoodType.WATER));
+        items.add(new CargoItem(GoodType.MEDICINE, 5));
+        items.add(new CargoItem(GoodType.FIREARMS, 7));
     }
 
     /**
@@ -67,12 +78,12 @@ public class Cargo {
         if (contents + quantity > capacity) {
             return false;
         }
-        if (items.indexOf(item) == -1) {
-            items.add(item);
+        int index = items.indexOf(item);
+        if (index == -1) {
             item.setAmount(quantity);
-
+            items.add(item);
         } else {
-            item.setAmount(item.getAmount() + quantity);
+            items.get(index).setAmount(item.getAmount() + quantity);
         }
         contents += quantity;
         return true;
@@ -86,10 +97,11 @@ public class Cargo {
      * @return Whether the remove was successful
      */
     public boolean remove(CargoItem item, int quantity) {
-        if (items.indexOf(item) == -1 || quantity > item.getAmount()) {
+        int index = items.indexOf(item);
+        if (index == -1 || quantity > items.get(index).getAmount()) {
             return false;
         } else {
-            item.setAmount(item.getAmount() - quantity);
+            items.get(index).setAmount(item.getAmount() - quantity);
             contents -= quantity;
             return true;
         }
