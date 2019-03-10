@@ -7,9 +7,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/planet_name"
-        android:text="Hello World this is a test"
         android:layout_gravity="center_vertical|center_horizontal"
         android:textSize="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/techLevel"
+        android:layout_below="@id/planet_name"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textSize="20dp"
         />
 
     <Button
@@ -20,6 +29,6 @@
         android:textSize="20sp"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginTop="150dp"
-        android:onClick="createNewGame" />
+        android:onClick="beginTrading" />
 
 </LinearLayout>

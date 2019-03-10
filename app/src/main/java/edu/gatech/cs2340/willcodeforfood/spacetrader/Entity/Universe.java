@@ -66,4 +66,18 @@ public class Universe {
         }
         return string;
     }
+
+    /**
+     * @return The planet that the player starts on
+     */
+    public Planet starterPlanet() {
+        return solarSystems.get(0).getPlanets().get(0);
+    }
+
+    /**
+     * @return The tech level of the system that the player starts on
+     */
+    public TechLevel starterPlanetTechLvl() {
+        return solarSystems.get(0).getTechLevel();
+    }
 }

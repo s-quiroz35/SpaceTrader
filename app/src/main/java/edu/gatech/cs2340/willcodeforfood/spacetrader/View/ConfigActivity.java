@@ -92,8 +92,8 @@ public class ConfigActivity extends AppCompatActivity {
             viewModel.addGame(new Game(player, diff, universe));
 
             Intent intent = new Intent(this, PlanetActivity.class);
-            intent.putExtra("planetName", universe.getSolarSystems().get(0).getPlanets().get(0).getPlanetName());
-            intent.putExtra("techLevel", universe.getSolarSystems().get(0).getTechLevel().getName());
+            intent.putExtra("planetName", universe.starterPlanet().getPlanetName());
+            intent.putExtra("techLevel", universe.starterPlanetTechLvl().getName());
             startActivity(intent);
         }
 
