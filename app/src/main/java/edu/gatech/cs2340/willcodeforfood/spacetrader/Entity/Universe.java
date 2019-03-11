@@ -9,11 +9,12 @@ import java.util.Random;
  * Represents a Universe
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.1
+ * @version 1.3
  */
 public class Universe {
 
     private List<SolarSystem> solarSystems;
+    private static Planet currentPlanet;
 
     private final int maxX = 150;
     private final int maxY = 100;
@@ -35,12 +36,14 @@ public class Universe {
         Random rn = new Random();
 
         solarSystems = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             int index = rn.nextInt(openNames.size());
             String name = openNames.get(index);
             openNames.remove(index);
             solarSystems.add(new SolarSystem(name));
         }
+
+        currentPlanet = this.getSolarSystems().get(0).getPlanets().get(0);
     }
 
     /**
@@ -53,6 +56,11 @@ public class Universe {
      */
     public int getMaxLength() { return maxX; }
 
+    /**
+     *
+     * @return current planet
+     */
+    public Planet getCurrentPlanet() { return currentPlanet; }
     /**
      * @return max width
      */

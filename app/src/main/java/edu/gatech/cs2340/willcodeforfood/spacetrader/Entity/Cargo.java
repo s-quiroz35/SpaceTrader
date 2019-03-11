@@ -1,24 +1,24 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a Cargo for ship
  *
- * @author Sam Quiroz
+ * @author Sam Quiroz and Matt Bernet
  * @version 1.0
  */
 public class Cargo {
     //cargo implementation
-    private Map<GoodType, Integer> inventory;
+    private List<CargoItem> items;
     private int capacity;
     private int contents;
 
     private static final int DEFAULT_CAPACITY = 100;
 
     /**
-     * Initializes a cargo with a capacity of 1000
+     * Initializes a cargo with a capacity of 100
      */
     public Cargo() {
         this(DEFAULT_CAPACITY);
@@ -32,7 +32,18 @@ public class Cargo {
     public Cargo(int capacity) {
         this.capacity = capacity;
         this.contents = 0;
-        inventory = new HashMap<>();
+        items = new ArrayList<>();
+        dummyData();
+    }
+
+    /**
+     * Loads dummy data into cargo for testing
+     */
+    private void dummyData() {
+        items.add(new CargoItem(GoodType.FOOD));
+        items.add(new CargoItem(GoodType.WATER));
+        items.add(new CargoItem(GoodType.MEDICINE, 5));
+        items.add(new CargoItem(GoodType.FIREARMS, 7));
     }
 
     /**
@@ -52,25 +63,27 @@ public class Cargo {
     /**
      * @return the cargo's inventory
      */
-    public Map<GoodType, Integer> getInventory() {
-        return inventory;
+    public List<CargoItem> getInventory() {
+        return items;
     }
 
     /**
      * Adds good to cargo
      *
-     * @param good The kind of good you want to place in cargo
+     * @param item item to add to cargo
      * @param quantity The amount you want to place in cargo
      * @return Whether there was room to add the good
      */
-    public boolean put(GoodType good, int quantity) {
+    public boolean put(CargoItem item, int quantity) {
         if (contents + quantity > capacity) {
             return false;
         }
-        if (inventory.get(good) == null) {
-            inventory.put(good, quantity);
+        int index = items.indexOf(item);
+        if (index == -1) {
+            item.setAmount(quantity);
+            items.add(item);
         } else {
-            inventory.put(good,  inventory.get(good) + quantity);
+            items.get(index).setAmount(item.getAmount() + quantity);
         }
         contents += quantity;
         return true;
@@ -79,15 +92,16 @@ public class Cargo {
     /**
      * Removes an amount of good to cargo
      *
-     * @param good The kind of good you want to remove
+     * @param item item to remove
      * @param quantity The amount you want to remove
      * @return Whether the remove was successful
      */
-    public boolean remove(GoodType good, int quantity) {
-        if (inventory.get(good) == null || quantity > inventory.get(good)) {
+    public boolean remove(CargoItem item, int quantity) {
+        int index = items.indexOf(item);
+        if (index == -1 || quantity > items.get(index).getAmount()) {
             return false;
         } else {
-            inventory.put(good, inventory.get(good) - quantity);
+            items.get(index).setAmount(item.getAmount() - quantity);
             contents -= quantity;
             return true;
         }

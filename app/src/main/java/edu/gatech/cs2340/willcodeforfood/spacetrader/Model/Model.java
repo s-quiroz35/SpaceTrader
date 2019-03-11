@@ -1,14 +1,15 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
-import java.util.List;
-
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 
 /**
  * Handles business logic
  *
- * @author Matt Bernet
- * @version 1.2
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.3
  */
 public class Model {
 
@@ -31,6 +32,7 @@ public class Model {
         repo = new Repository();
     }
 
+
     /* Game functionality */
 
     /**
@@ -43,6 +45,23 @@ public class Model {
     /**
      * @return all games
      */
-    public List<Game> getGames() { return repo.getGames(); }
+    public Game getGame() { return repo.getGame(); }
 
+    /**
+     * @return player ship cargo
+     */
+    public Cargo getCargo() { return repo.getCargo(); }
+
+    /**
+     * Sells a cargo item
+     *
+     * @param item item to sell
+     */
+    public void sellItem(CargoItem item) { repo.sellItem(item); }
+
+    /**
+     * Grabs the object of the current planet
+     * @return the current planet
+     */
+    public Planet getCurrentPlanet() { return repo.getCurrentPlanet(); }
 }

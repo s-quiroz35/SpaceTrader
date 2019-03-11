@@ -9,14 +9,11 @@ import java.util.ArrayList;
  * Represents a Solar System
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.2
+ * @version 1.3
  */
 public class SolarSystem {
 
     private String name;
-    private Coordinate coordinate;
-    private TechLevel techLevel;
-    private ResourceLevel resourceLevel;
     private List<Planet> planets;
 
     private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades",
@@ -35,9 +32,6 @@ public class SolarSystem {
         Random rn = new Random();
 
         name = n;
-        coordinate = new Coordinate();
-        techLevel = TechLevel.values()[rn.nextInt(8)];
-        resourceLevel = ResourceLevel.values()[rn.nextInt(13)];
 
         planets = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -54,33 +48,15 @@ public class SolarSystem {
     public String getSolarSystemName() { return name; }
 
     /**
-     * @return solar system's coordinates
-     */
-    public Coordinate getCoordinates() { return coordinate; }
-
-    /**
-     * @return solar system tech level
-     */
-    public TechLevel getTechLevel() { return techLevel; }
-
-    /**
-     * @return solar system resource level
-     */
-    public ResourceLevel getResourceLevel() { return resourceLevel; }
-
-    /**
      * @return solar system planets
      */
     public List<Planet> getPlanets() { return planets; }
 
     @Override
     public String toString() {
-        String string = String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
-                        "ResourceLevel: %d . With the following planets", name, coordinate.getXCor(),
-                coordinate.getYCor(), techLevel.getTechLevel(),
-                resourceLevel.getResourceLevel());
+        String string = String.format("Solar System Name: %s \n", name);
         for (Planet p : planets) {
-            string = string + " " + p.toString();
+            string = string + " " + p.toString() + "\n";
         }
         return string;
     }

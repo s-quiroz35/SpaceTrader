@@ -22,13 +22,13 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
  * Handles Player Config Activity
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class ConfigActivity extends AppCompatActivity {
 
     private ConfigViewModel viewModel;
-    private Player player;
-    private Game game;
+    public static Player player;
+    public static Game game;
 
     private EditText name;
     private Spinner diffSpinner;
@@ -91,7 +91,7 @@ public class ConfigActivity extends AppCompatActivity {
             Universe universe = new Universe();
             viewModel.addGame(new Game(player, diff, universe));
 
-            Intent intent = new Intent(this, UniverseActivity.class);
+            Intent intent = new Intent(this, PlanetActivity.class);
             startActivity(intent);
         }
 
