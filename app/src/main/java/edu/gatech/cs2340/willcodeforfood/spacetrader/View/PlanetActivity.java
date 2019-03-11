@@ -27,8 +27,16 @@ public class PlanetActivity extends AppCompatActivity {
         planet = Model.getInstance().getCurrentPlanet();
 
         TextView title = findViewById(R.id.planet_title);
-        String str = planet.getPlanetName();
-        title.setText(str);
+        title.setText(planet.getPlanetName());
+
+        TextView resource = findViewById(R.id.planet_resource_level);
+        resource.setText("Resource Level: " + planet.getResourceLevel().getResourceLevel());
+
+        TextView tech = findViewById(R.id.planet_tech_level);
+        tech.setText("Tech Level: " + planet.getTechLevel().getTechLevel());
+
+        TextView coordinates = findViewById(R.id.planet_coordinates);
+        coordinates.setText("Location: " + planet.getCoordinates().toString());
     }
 
     /**

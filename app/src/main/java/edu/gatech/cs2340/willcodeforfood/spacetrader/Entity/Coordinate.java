@@ -48,4 +48,9 @@ public class Coordinate {
      * @return the y coordinate of the system
      */
     public int getYCor() { return yCor; }
+
+    @Override
+    public String toString() {
+        return (xCor + "° " + yCor + "°");
+    }
 }

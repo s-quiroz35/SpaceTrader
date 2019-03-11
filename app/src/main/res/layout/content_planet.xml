@@ -8,9 +8,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/planet_title"
-        android:text="Planet"
+        android:layout_centerHorizontal="true"
+        android:textSize="90sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/planet_resource_level"
+        android:layout_below="@+id/planet_title"
         android:layout_centerHorizontal="true"
         android:textSize="30sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/planet_tech_level"
+        android:layout_below="@+id/planet_resource_level"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/planet_coordinates"
+        android:layout_below="@+id/planet_tech_level"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp" />
 
     <Button
         android:layout_width="wrap_content"
