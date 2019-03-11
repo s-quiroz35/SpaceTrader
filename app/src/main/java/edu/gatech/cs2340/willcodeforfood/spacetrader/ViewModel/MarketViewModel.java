@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.MarketItem;
 
 /**
  * View model for market
@@ -43,4 +44,11 @@ public class MarketViewModel extends AndroidViewModel {
      * @param item item to buy
      */
     public void buyItem(CargoItem item) { Model.getInstance().buyItem(item); }
+
+    /**
+     * Buys a market item
+     *
+     * @param item item to buy
+     */
+    public void buyItem(MarketItem item) { Model.getInstance().buyItem(item); }
 }

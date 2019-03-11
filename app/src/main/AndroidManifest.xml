@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".View.CargoActivity"></activity>
         <activity android:name=".View.MarketActivity"></activity>
+        <activity android:name=".View.MarketWelcomeActivity"></activity>
         <activity android:name=".View.PlanetActivity"></activity>
         <activity
             android:name=".View.ConfigActivity"

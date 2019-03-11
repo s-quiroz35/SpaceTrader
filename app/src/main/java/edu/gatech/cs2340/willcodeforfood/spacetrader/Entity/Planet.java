@@ -14,9 +14,9 @@ public class Planet {
     /**
      * Initializes a random planet
      */
-    public Planet(String n) {
+    public Planet(String n, Market m) {
         name = n;
-        market = new Market();
+        market = m;
     }
 
     /**

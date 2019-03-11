@@ -79,11 +79,18 @@ public class Cargo {
             return false;
         }
         int index = items.indexOf(item);
+        int i = 0;
+        while (i < items.size()) {
+            if (items.get(i).getType() == item.getType()) {
+                index = i;
+            }
+            i++;
+        }
         if (index == -1) {
             item.setAmount(quantity);
             items.add(item);
         } else {
-            items.get(index).setAmount(item.getAmount() + quantity);
+            items.get(index).setAmount(items.get(index).getAmount() + quantity);
         }
         contents += quantity;
         return true;

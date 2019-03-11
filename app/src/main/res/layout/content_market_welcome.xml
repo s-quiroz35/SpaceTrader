@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hello_world"
+        android:text="Welcome To Market"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textSize="35sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sell_market_button"
+        android:layout_below="@id/hello_world"
+        android:text="Sell"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="150dp"
+        android:onClick="onSellMarketPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buy_market_button"
+        android:layout_below="@id/sell_market_button"
+        android:text="Buy"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="45dp"
+        android:onClick="onBuyMarketPressed" />
+</LinearLayout>

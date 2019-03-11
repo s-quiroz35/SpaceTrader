@@ -2,9 +2,11 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -76,6 +78,8 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         public void onClick(View view) {
             if (view.getId() == sellText.getId()) {
                 listener.onSellClick(cargoItems.get(getAdapterPosition()));
+                itemAmount.setText(String.format("Remaining: %d",
+                        cargoItems.get(getAdapterPosition()).getAmount()));
             }
         }
     }
@@ -85,6 +89,5 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      */
     public interface CargoClickListener {
         void onSellClick(CargoItem item);
-        void onBuyClick(CargoItem item);
     }
 }

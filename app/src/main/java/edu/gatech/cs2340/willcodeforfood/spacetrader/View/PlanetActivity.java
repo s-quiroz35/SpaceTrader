@@ -28,4 +28,9 @@ public class PlanetActivity extends AppCompatActivity {
         String techLvlString = "TechLevel: " + techLevel;
         //techLevelTextView.setText(techLvlString);
     }
+
+    public void onMarketPressed(View view) {
+        Intent intent = new Intent(this, MarketWelcomeActivity.class);
+        startActivity(intent);
+    }
 }

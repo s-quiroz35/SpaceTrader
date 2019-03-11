@@ -3,6 +3,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.MarketItem;
 
 /**
  * Handles business logic
@@ -64,4 +65,11 @@ public class Model {
      * @param item item to buy
      */
     public void buyItem(CargoItem item) { repo.buyItem(item); }
+
+    /**
+     * Buys a market item
+     *
+     * @param item item to buy
+     */
+    public void buyItem(MarketItem item) { repo.buyItem(item); }
 }
