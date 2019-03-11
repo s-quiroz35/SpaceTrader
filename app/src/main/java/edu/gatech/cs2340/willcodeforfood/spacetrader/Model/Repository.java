@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
 /**
- * Represents total data storage
+ * Represents data abstraction
  *
  * @author Matt Bernet
  * @version 1.1
  */
-public class Repository {
+class Repository {
 
     private List<Game> games;
 
     /**
      * Initializes repo
      */
-    public Repository() {
+    Repository() {
         games = new ArrayList<>();
     }
 
@@ -29,12 +29,18 @@ public class Repository {
      *
      * @param game new game
      */
-    public void addGame(Game game) {
+    void addGame(Game game) {
         games.add(game);
-        Log.w("Add", String.format("Game created: %s, %s", game.getPlayer().getName()
-                , game.getDifficulty()));
-        Log.w("Add", "Universe created: " + game.getUniverse().toString());
+        Log.w("Add", String.format("Game created: Name: %s, Difficulty: %s, Pilot: %d, " +
+                        "Fighter: %d, Trader: %d, Engineer: %d", game.getPlayer().getName()
+                ,game.getDifficulty(), game.getPlayer().getSkills()[0],
+                game.getPlayer().getSkills()[1], game.getPlayer().getSkills()[2],
+                game.getPlayer().getSkills()[3]));
+        Log.w("Add", game.getUniverse().toString());
     }
 
-    public List<Game> getGames() { return games; }
+    /**
+     * @return all games
+     */
+    List<Game> getGames() { return games; }
 }
