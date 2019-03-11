@@ -58,6 +58,7 @@ public class Planet {
 
     @Override
     public String toString() {
-        return String.format("Name: %s Tech Level: %d Resource Level: %d", name, techLevel.getTechLevel(), resourceLevel.getResourceLevel());
+        return String.format("Name: %s Tech Level: %d Resource Level: %d Location %s", name, techLevel.getTechLevel(), resourceLevel.getResourceLevel(),
+        coordinate.toString());
     }
 }
