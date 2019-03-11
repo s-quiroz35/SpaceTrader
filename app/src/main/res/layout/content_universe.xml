@@ -7,19 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/hello_world"
-        android:text="Hello World this is a test"
+        android:text="This is the universe"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:textSize="30dp"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cargo_button"
-        android:text="CARGO"
-        android:textSize="20sp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="150dp"
-        android:onClick="createNewGame" />
-
+        android:textSize="30sp" />
 </LinearLayout>

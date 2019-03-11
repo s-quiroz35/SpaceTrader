@@ -9,9 +9,5 @@
         android:id="@+id/hello_world"
         android:text="this is cargo"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:textSize="30dp"
-        />
-
-
-
+        android:textSize="30dp" />
 </LinearLayout>

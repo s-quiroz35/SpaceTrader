@@ -19,11 +19,5 @@ public class UniverseActivity extends AppCompatActivity {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_universe);
-
-    }
-
-    public void createNewGame(View view) {
-        Intent intent = new Intent(this, CargoActivity.class);
-        startActivity(intent);
     }
 }
