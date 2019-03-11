@@ -5,16 +5,17 @@ import android.util.Log;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 
 /**
  * Represents data abstraction
  *
- * @author Matt Bernet
- * @version 1.2
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.3
  */
 class Repository {
 
-    private Game game;
+    private static Game game;
 
     /**
      * Initializes repo
@@ -54,4 +55,10 @@ class Repository {
      * @param item item to sell
      */
     void sellItem(CargoItem item) { game.getPlayer().getCargo().remove(item, 1); }
+
+    /**
+     * Grabs the object of the current planet
+     * @return the current planet
+     */
+    Planet getCurrentPlanet() { return game.getUniverse().getCurrentPlanet(); }
 }
