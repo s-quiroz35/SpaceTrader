@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
-import java.util.Random;
-
 /**
  * Represents a Planet
  *
@@ -16,7 +14,6 @@ public class Planet {
      * Initializes a random planet
      */
     public Planet(String n) {
-        Random rn = new Random();
         name = n;
     }
 

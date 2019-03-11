@@ -11,5 +11,49 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:textSize="30dp"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/solar_system_1"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop= "30dp"
+        android:layout_below= "@+id/hello_world"
+        android:onClick="goToSolarSystemOne" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/solar_system_2"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop= "30dp"
+        android:layout_below="@+id/solar_system_1"
+        android:onClick="goToSolarSystemTwo" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/solar_system_3"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop= "30dp"
+        android:layout_below="@+id/solar_system_2"
+        android:onClick="goToSolarSystemThree" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/solar_system_4"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop= "30dp"
+        android:layout_below="@+id/solar_system_3"
+        android:onClick="goToSolarSystemFour" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/solar_system_5"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop= "30dp"
+        android:layout_below="@+id/solar_system_4"
+        android:onClick="goToSolarSystemFive" />
 </LinearLayout>

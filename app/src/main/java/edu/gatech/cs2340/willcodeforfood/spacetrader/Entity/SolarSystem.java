@@ -62,10 +62,11 @@ public class SolarSystem {
             coordinateList.add(c);
             return c;
         } else {
-            getCoordinates();
+            createCoordinates();
         }
         return null;
     }
+
     /**
      * @return solar system name
      */
