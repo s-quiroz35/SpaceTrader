@@ -57,4 +57,11 @@ public class Model {
      * @param item item to sell
      */
     public void sellItem(CargoItem item) { repo.sellItem(item); }
+
+    /**
+     * Buys a cargo item
+     *
+     * @param item item to buy
+     */
+    public void buyItem(CargoItem item) { repo.buyItem(item); }
 }

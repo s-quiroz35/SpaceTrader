@@ -10,14 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.CargoActivity"></activity>
-<<<<<<< HEAD
         <activity android:name=".View.MarketActivity"></activity>
         <activity android:name=".View.PlanetActivity"></activity>
         <activity
             android:name=".View.ConfigActivity"
-            android:label="@string/app_name"></activity>
-        <activity
-            android:name=".View.ViewAllGamesActivity"
             android:label="@string/app_name"></activity>
         <activity
             android:name=".View.UniverseActivity"
@@ -25,13 +21,6 @@
         <activity
             android:name=".View.WelcomeActivity"
             android:label="@string/app_name">
-=======
-        <activity android:name=".View.ConfigActivity"></activity>
-        <activity android:name=".View.UniverseActivity"></activity>
-        <activity android:name=".View.PlanetActivity"></activity>
-        <activity android:name=".View.MarketActivity"></activity>
-        <activity android:name=".View.WelcomeActivity">
->>>>>>> 651f2beb38afb9d91a77a21f8d6fd5d686c5ca4e
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

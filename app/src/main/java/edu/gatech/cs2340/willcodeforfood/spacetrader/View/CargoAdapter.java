@@ -85,5 +85,6 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      */
     public interface CargoClickListener {
         void onSellClick(CargoItem item);
+        void onBuyClick(CargoItem item);
     }
 }

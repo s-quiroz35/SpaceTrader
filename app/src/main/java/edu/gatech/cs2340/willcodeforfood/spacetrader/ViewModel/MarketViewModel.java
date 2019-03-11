@@ -36,4 +36,11 @@ public class MarketViewModel extends AndroidViewModel {
      * @param item item to sell
      */
     public void sellItem(CargoItem item) { Model.getInstance().sellItem(item); }
+
+    /**
+     * Buys a cargo item
+     *
+     * @param item item to buy
+     */
+    public void buyItem(CargoItem item) { Model.getInstance().buyItem(item); }
 }

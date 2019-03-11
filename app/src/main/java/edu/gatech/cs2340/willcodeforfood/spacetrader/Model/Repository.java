@@ -54,4 +54,11 @@ class Repository {
      * @param item item to sell
      */
     void sellItem(CargoItem item) { game.getPlayer().getCargo().remove(item, 1); }
+
+    /**
+     * Buys a cargo item
+     *
+     * @param item item to buy
+     */
+    void buyItem(CargoItem item) { game.getPlayer().getCargo().put(item, 1); }
 }
