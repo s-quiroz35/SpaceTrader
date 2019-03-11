@@ -2,9 +2,11 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 
 /**
@@ -49,6 +53,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         holder.itemName.setText(good.getName());
         holder.itemAmount.setText(String.format("Remaining: %d",
                 cargoItems.get(position).getAmount()));
+        holder.sellText.setText("Sell: " +  cargoItems.get(position).getPrice());
     }
 
     @Override
@@ -76,6 +81,9 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         public void onClick(View view) {
             if (view.getId() == sellText.getId()) {
                 listener.onSellClick(cargoItems.get(getAdapterPosition()));
+                itemAmount.setText(String.format("Remaining: %d",
+                        cargoItems.get(getAdapterPosition()).getAmount()));
+                sellText.setText("Sell: " +  cargoItems.get(getAdapterPosition()).getPrice());
             }
         }
     }

@@ -3,6 +3,8 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.MarketItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 
 /**
@@ -53,6 +55,10 @@ public class Model {
     public Cargo getCargo() { return repo.getCargo(); }
 
     /**
+     * @return the market of the current planet
+     */
+    public Market getMarket() { return this.getCurrentPlanet().getMarket(); }
+    /**
      * Sells a cargo item
      *
      * @param item item to sell
@@ -64,4 +70,17 @@ public class Model {
      * @return the current planet
      */
     public Planet getCurrentPlanet() { return repo.getCurrentPlanet(); }
+
+     /** Buys a cargo item
+     *
+     * @param item item to buy
+     */
+    public void buyItem(CargoItem item) { repo.buyItem(item); }
+
+    /**
+     * Buys a market item
+     *
+     * @param item item to buy
+     */
+    public void buyItem(MarketItem item) { repo.buyItem(item); }
 }

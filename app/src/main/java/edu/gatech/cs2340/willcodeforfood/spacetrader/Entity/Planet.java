@@ -21,7 +21,6 @@ public class Planet {
      */
     public Planet(String n) {
         name = n;
-        market = new Market();
 
         Random rn = new Random();
 
@@ -29,6 +28,7 @@ public class Planet {
         techLevel = TechLevel.values()[rn.nextInt(8)];
         resourceLevel = ResourceLevel.values()[rn.nextInt(13)];
 
+        market = new Market(techLevel.getTechLevel(), resourceLevel);
     }
 
     /**

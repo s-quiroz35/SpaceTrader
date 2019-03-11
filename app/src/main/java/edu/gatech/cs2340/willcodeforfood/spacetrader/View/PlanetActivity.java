@@ -11,16 +11,16 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 
 /**
- * Handles planet activity
+ * Handles Planet Activity
  *
- * @author Matt Bernet
+ * @author Sam Quiroz
  * @version 1.0
  */
 public class PlanetActivity extends AppCompatActivity {
     private Planet planet;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_planet);
 
@@ -37,14 +37,18 @@ public class PlanetActivity extends AppCompatActivity {
 
         TextView coordinates = findViewById(R.id.planet_coordinates);
         coordinates.setText("Location: " + planet.getCoordinates().toString());
+        //TextView nameTextView = (TextView) findViewById(R.id.planet_name);
+        //TextView techLevelTextView = (TextView) findViewById(R.id.techLevel);
+        Intent intent = getIntent();
+        String planetName = intent.getStringExtra("planetName");
+        String techLevel = intent.getStringExtra("techLevel");
+        //nameTextView.setText(planetName);
+        String techLvlString = "TechLevel: " + techLevel;
+        //techLevelTextView.setText(techLvlString);
     }
 
-    /**
-     * Button handler for entering market
-     *
-     * @param view button pressed
-     */
     public void onMarketPressed(View view) {
-        startActivity(new Intent(PlanetActivity.this, MarketActivity.class));
+        Intent intent = new Intent(this, MarketWelcomeActivity.class);
+        startActivity(intent);
     }
 }

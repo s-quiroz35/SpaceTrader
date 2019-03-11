@@ -10,11 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.CargoActivity"></activity>
-        <activity android:name=".View.ConfigActivity"></activity>
-        <activity android:name=".View.UniverseActivity"></activity>
-        <activity android:name=".View.PlanetActivity"></activity>
         <activity android:name=".View.MarketActivity"></activity>
-        <activity android:name=".View.WelcomeActivity">
+        <activity android:name=".View.MarketWelcomeActivity"></activity>
+        <activity android:name=".View.PlanetActivity"></activity>
+        <activity
+            android:name=".View.ConfigActivity"
+            android:label="@string/app_name"></activity>
+        <activity
+            android:name=".View.UniverseActivity"
+            android:label="SpaceTrader"></activity>
+        <activity
+            android:name=".View.WelcomeActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
