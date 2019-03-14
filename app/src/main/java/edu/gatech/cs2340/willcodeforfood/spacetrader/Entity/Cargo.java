@@ -15,7 +15,7 @@ public class Cargo {
     private int capacity;
     private int contents;
 
-    private static final int DEFAULT_CAPACITY = 15;
+    private static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Initializes a cargo with a capacity of 100
@@ -33,18 +33,6 @@ public class Cargo {
         this.capacity = capacity;
         this.contents = 0;
         items = new ArrayList<>();
-        dummyData();
-    }
-
-    /**
-     * Loads dummy data into cargo for testing
-     */
-    private void dummyData() {
-        items.add(new CargoItem(GoodType.FOOD));
-        items.add(new CargoItem(GoodType.WATER));
-        items.add(new CargoItem(GoodType.MEDICINE, 5));
-        items.add(new CargoItem(GoodType.FIREARMS, 7));
-        contents = 12;
     }
 
     /**
