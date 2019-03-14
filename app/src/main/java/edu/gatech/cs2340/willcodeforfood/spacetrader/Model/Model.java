@@ -54,10 +54,11 @@ public class Model {
      */
     public Cargo getCargo() { return repo.getCargo(); }
 
+    public void createMarket() { repo.createMarket();}
     /**
      * @return the market of the current planet
      */
-    public Market getMarket() { return this.getCurrentPlanet().getMarket(); }
+    public Market getMarket() { return repo.getMarket(); }
     /**
      * Sells a cargo item
      *

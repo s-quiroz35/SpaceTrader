@@ -8,19 +8,23 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 public class Market {
 
+    Planet planet;
+    Cargo cargo;
     private int techLevel;
     private ResourceLevel resourceLevel;
     private List<MarketItem> inventory;
+    private List<CargoItem> cargoContents;
 
     /**
      * Good constructor
      *
-     * @param techLevel The system's techLevel
-     * @param resourceLevel The system's resourceLevel
      */
-    public Market(int techLevel, ResourceLevel resourceLevel) {
-        this.techLevel = techLevel;
-        this.resourceLevel = resourceLevel;
+    public Market() {
+        planet = Model.getInstance().getCurrentPlanet();
+        techLevel = planet.getTechLevel().getTechLevel();
+        resourceLevel = planet.getResourceLevel();
+        cargo = Model.getInstance().getCargo();
+
         GoodType[] allGoods = GoodType.values();
         inventory = new ArrayList<>();
         int i = 0;
@@ -28,6 +32,12 @@ public class Market {
             inventory.add(new MarketItem(allGoods[i], calcPrice(allGoods[i])));
             i++;
         }
+        List<CargoItem> cargoContents = cargo.getInventory();
+        for (CargoItem c: cargoContents) {
+            int price = calcPrice(c.getType());
+            c.setPrice(price);
+        }
+
     }
 
     /**
@@ -50,6 +60,14 @@ public class Market {
         return price;
     }
 
+    /**
+     * If a new cargo item is added to the cargo, initialize new price
+     * @param cargoItem the CargoItem
+     */
+    public void setNewCargoPrice(CargoItem cargoItem) {
+        int price = calcPrice(cargoItem.getType());
+        cargoItem.setPrice(price);
+    }
     /**
      * @param good The kind of good you want the price of
      * @return How much the good costs

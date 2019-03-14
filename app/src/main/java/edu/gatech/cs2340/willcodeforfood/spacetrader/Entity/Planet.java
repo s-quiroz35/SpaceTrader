@@ -2,6 +2,8 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 import java.util.Random;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
+
 /**
  * Represents a Planet
  *
@@ -11,10 +13,10 @@ import java.util.Random;
 public class Planet {
 
     private String name;
-    private Market market;
     private Coordinate coordinate;
     private TechLevel techLevel;
     private ResourceLevel resourceLevel;
+    private Market market;
 
     /**
      * Initializes a random planet
@@ -27,8 +29,6 @@ public class Planet {
         coordinate = new Coordinate();
         techLevel = TechLevel.values()[rn.nextInt(8)];
         resourceLevel = ResourceLevel.values()[rn.nextInt(13)];
-
-        market = new Market(techLevel.getTechLevel(), resourceLevel);
     }
 
     /**
@@ -51,10 +51,8 @@ public class Planet {
      */
     public ResourceLevel getResourceLevel() { return resourceLevel; }
 
-    /**
-     * @return planet market
-     */
-    public Market getMarket() { return market; }
+    public void setMarket() {market = Model.getInstance().getMarket(); }
+
 
     @Override
     public String toString() {
