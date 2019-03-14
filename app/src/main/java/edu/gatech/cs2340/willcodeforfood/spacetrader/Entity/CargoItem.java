@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
-import java.util.Random;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
  * Represents a cargo item
@@ -32,8 +32,6 @@ public class CargoItem {
     public CargoItem(GoodType type, int amount) {
         this.type = type;
         this.amount = amount;
-        Random ran = new Random();
-        this.price = ran.nextInt(17 * 100);
     }
     /**
      * Base constructor for cargo item
@@ -57,6 +55,8 @@ public class CargoItem {
      * @return good amount
      */
     public int getAmount() { return amount; }
+
+    public void setPrice(int price) { this.price = price; }
 
     /**
      * Sets amount to new value

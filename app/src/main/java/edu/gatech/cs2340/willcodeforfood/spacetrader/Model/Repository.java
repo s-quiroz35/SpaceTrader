@@ -8,6 +8,7 @@ import android.widget.Toast;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.CargoItem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.MarketItem;
 
@@ -22,6 +23,7 @@ import static java.security.AccessController.getContext;
 class Repository {
 
     private static Game game;
+    private Market market;
 
     /**
      * Initializes repo
@@ -68,8 +70,10 @@ class Repository {
                 game.getPlayer().setCredits(game.getPlayer().getCredits() + item.getPrice());
                 Log.v("Purchase status", "succeed");
             } else {
-                Log.v("Purchase status", "failed");
+                Log.v("Purchase status", "failed. The tech level for the planet is too low.");
             }
+        } else {
+            Log.v("Purchase status", "failed. You do not have enough of the item to sell.");
         }
     }
 
@@ -86,6 +90,10 @@ class Repository {
     void buyItem(CargoItem item) { game.getPlayer().getCargo().put(item, 1); }
 
 
+    void createMarket() { market = new Market(); }
+
+    Market getMarket() { return market;}
+
     /**
      * Buys a market item
      *
@@ -97,9 +105,10 @@ class Repository {
         if (game.getPlayer().getCredits() - item.getPrice() >= 0 && (cargo.getCapacity() > cargo.getContents())) {
                 cargo.put(cargoItem, 1);
                 game.getPlayer().setCredits(game.getPlayer().getCredits() - item.getPrice());
+                    Model.getInstance().getMarket().setNewCargoPrice(cargoItem);
                 Log.v("Purchase status", "succeed");
         } else {
-            Log.v("Purchase status", "failed");
+            Log.v("Purchase status", "failed. You do not have enough room in your cargo.");
         }
     }
 }

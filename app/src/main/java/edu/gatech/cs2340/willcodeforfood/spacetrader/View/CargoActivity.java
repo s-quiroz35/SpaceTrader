@@ -39,6 +39,8 @@ public class CargoActivity extends AppCompatActivity {
             }
 
         });
+        capacity.setText("Capacity: " + Model.getInstance().getCargo().getCapacity() + " with " +
+                Model.getInstance().getCargo().getContents() + " goods");
         cAdapter.notifyDataSetChanged();
         rView.setAdapter(cAdapter);
         DividerItemDecoration divider = new DividerItemDecoration(rView.getContext(),

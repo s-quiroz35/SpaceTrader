@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
@@ -17,9 +18,11 @@ public class MarketWelcomeActivity extends AppCompatActivity {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_market_welcome);
-        Intent intent = getIntent();
 
         player = Model.getInstance().getGame().getPlayer();
+
+        Model.getInstance().createMarket();
+        Model.getInstance().getCurrentPlanet().setMarket();
 
         TextView title = findViewById(R.id.player_credits);
         title.setText("Total credits: " + player.getCredits());
