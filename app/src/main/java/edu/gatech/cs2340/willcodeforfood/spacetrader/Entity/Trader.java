@@ -26,13 +26,13 @@
 //    public Trader(int techLevel, ResourceLevel resourceLevel) {
 //        this.techLevel = techLevel;
 //        this.resourceLevel = resourceLevel;
-//        List<Good> allGoods = Good.theGoods();
+//        GoodType[] allGoods = GoodType.values();
 //        inventory = new HashMap<>();
 //        cargo = new Cargo();
 //        int i = 0;
 //        while(i < allGoods.size() && this.techLevel >= allGoods.get(i).getMinTechLvlUse()) {
-//            inventory.put(allGoods.get(i), this.calcPrice(allGoods.get(i)));
-//            cargo.put(allGoods.get(i), this.calcQuantity(allGoods.get(i)));
+//            inventory.put(allGoods[i], this.calcPrice(allGoods[i]));
+//            cargo.put(allGoods[i], this.calcQuantity(allGoods.get(i)));
 //            i++;
 //        }
 //    }

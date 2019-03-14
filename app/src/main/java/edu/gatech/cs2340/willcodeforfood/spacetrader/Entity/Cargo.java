@@ -15,7 +15,7 @@ public class Cargo {
     private int capacity;
     private int contents;
 
-    private static final int DEFAULT_CAPACITY = 100;
+    private static final int DEFAULT_CAPACITY = 15;
 
     /**
      * Initializes a cargo with a capacity of 100
@@ -44,6 +44,7 @@ public class Cargo {
         items.add(new CargoItem(GoodType.WATER));
         items.add(new CargoItem(GoodType.MEDICINE, 5));
         items.add(new CargoItem(GoodType.FIREARMS, 7));
+        contents = 12;
     }
 
     /**
@@ -60,6 +61,7 @@ public class Cargo {
         return contents;
     }
 
+    public void setContents(int c) { this.contents = c; }
     /**
      * @return the cargo's inventory
      */
@@ -79,11 +81,18 @@ public class Cargo {
             return false;
         }
         int index = items.indexOf(item);
+        int i = 0;
+        while (i < items.size()) {
+            if (items.get(i).getType() == item.getType()) {
+                index = i;
+            }
+            i++;
+        }
         if (index == -1) {
             item.setAmount(quantity);
             items.add(item);
         } else {
-            items.get(index).setAmount(item.getAmount() + quantity);
+            items.get(index).setAmount(items.get(index).getAmount() + quantity);
         }
         contents += quantity;
         return true;

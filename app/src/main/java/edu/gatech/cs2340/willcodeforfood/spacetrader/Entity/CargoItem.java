@@ -1,15 +1,18 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.util.Random;
+
 /**
  * Represents a cargo item
  *
- * @author Matt Bernet
- * @version 1.0
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.1
  */
 public class CargoItem {
 
     private GoodType type;
     private int amount;
+    private int price;
 
     /**
      * Constructor for cargo item without specified amount
@@ -17,7 +20,7 @@ public class CargoItem {
      * @param type type of item
      */
     public CargoItem(GoodType type) {
-        this(type, 0);
+        this(type, 0, 0);
     }
 
     /**
@@ -29,6 +32,19 @@ public class CargoItem {
     public CargoItem(GoodType type, int amount) {
         this.type = type;
         this.amount = amount;
+        Random ran = new Random();
+        this.price = ran.nextInt(17 * 100);
+    }
+    /**
+     * Base constructor for cargo item
+     *
+     * @param type type of good
+     * @param amount good amount
+     */
+    public CargoItem(GoodType type, int amount, int price) {
+        this.type = type;
+        this.amount = amount;
+        this.price = price;
     }
 
     /**
@@ -36,6 +52,7 @@ public class CargoItem {
      */
     public GoodType getType() { return type; }
 
+    public int getPrice() { return price; }
     /**
      * @return good amount
      */

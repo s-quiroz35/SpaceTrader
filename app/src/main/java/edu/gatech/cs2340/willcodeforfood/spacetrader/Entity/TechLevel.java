@@ -7,15 +7,16 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * @version 1.0
  */
 public enum TechLevel {
-    PREAGRICULTURE(0),
-    AGRICULTURE(1),
-    MEDIEVAL(2),
-    RENAISSANCE(3),
-    EARLYINDUSTRIAL(4),
-    INDUSTRIAL(5),
-    POSTINDUSTRIAL(6),
-    HITECH(7);
+    PREAGRICULTURE("Pre-Agriculture", 0),
+    AGRICULTURE("Agriculture", 1),
+    MEDIEVAL("Medieval", 2),
+    RENAISSANCE("Renaissance", 3),
+    EARLYINDUSTRIAL("Early Industrial", 4),
+    INDUSTRIAL("Industrial", 5),
+    POSTINDUSTRIAL("Post-Industrial", 6),
+    HITECH("High Tech", 7);
 
+    private String name;
     private int level;
 
     /**
@@ -23,7 +24,8 @@ public enum TechLevel {
      *
      * @param level tech level
      */
-    TechLevel(int level) {
+    TechLevel(String name, int level) {
+        this.name = name;
         this.level = level;
     }
 
@@ -31,4 +33,6 @@ public enum TechLevel {
      * @return difficulty
      */
     public int getTechLevel() { return level; }
+
+    public String getName() { return name; }
 }
