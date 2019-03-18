@@ -91,7 +91,7 @@ public class ConfigActivity extends AppCompatActivity {
             Universe universe = new Universe();
             viewModel.addGame(new Game(player, diff, universe));
 
-            Intent intent = new Intent(this, UniverseActivity.class);
+            Intent intent = new Intent(this, PlanetActivity.class);
             startActivity(intent);
         }
 
