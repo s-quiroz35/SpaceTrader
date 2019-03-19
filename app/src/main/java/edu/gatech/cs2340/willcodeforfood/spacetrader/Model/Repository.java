@@ -5,23 +5,24 @@ import android.util.Log;
 import java.util.List;
 import java.util.ArrayList;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
 /**
  * Represents data abstraction
  *
  * @author Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 class Repository {
 
-    private List<Game> games;
+    private Game game;
 
     /**
      * Initializes repo
      */
     Repository() {
-        games = new ArrayList<>();
+        //nothing for now
     }
 
     /**
@@ -30,7 +31,7 @@ class Repository {
      * @param game new game
      */
     void addGame(Game game) {
-        games.add(game);
+        this.game = game;
         Log.w("Add", String.format("Game created: Name: %s, Difficulty: %s, Pilot: %d, " +
                         "Fighter: %d, Trader: %d, Engineer: %d", game.getPlayer().getName()
                 ,game.getDifficulty(), game.getPlayer().getSkills()[0],
@@ -40,7 +41,9 @@ class Repository {
     }
 
     /**
-     * @return all games
+     * @return current game
      */
-    List<Game> getGames() { return games; }
+    Game getGame() { return game; }
+
+    Cargo getCargo() { return game.getPlayer().getCargo(); }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
  * @version 1.0
  */
 public class Cargo {
-    //cargo implementation
+
     private Map<GoodType, Integer> inventory;
     private int capacity;
     private int contents;
@@ -18,14 +18,14 @@ public class Cargo {
     private static final int DEFAULT_CAPACITY = 100;
 
     /**
-     * Initializes a cargo with a capacity of 1000
+     * Initializes cargo with a capacity of 1000
      */
     public Cargo() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
-     * Initializes a player with custom capacity
+     * Initializes cargo with custom capacity
      *
      * @param capacity how many goods can fit
      */
@@ -33,6 +33,14 @@ public class Cargo {
         this.capacity = capacity;
         this.contents = 0;
         inventory = new HashMap<>();
+        dummyData();
+    }
+
+    void dummyData() {
+        inventory.put(GoodType.FOOD, 3);
+        inventory.put(GoodType.WATER, 6);
+        inventory.put(GoodType.MACHINE, 1);
+        inventory.put(GoodType.FURS, 20);
     }
 
     /**
