@@ -2,6 +2,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
 
 /**
  * Handles business logic
@@ -48,5 +49,10 @@ public class Model {
      * @return player cargo
      */
     public Cargo getCargo() { return repo.getCargo(); }
+
+    /**
+     * @return planet market
+     */
+    public Market getMarket() { return repo.getMarket(); }
 
 }

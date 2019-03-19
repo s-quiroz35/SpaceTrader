@@ -36,6 +36,7 @@ public class Cargo {
         dummyData();
     }
 
+    //temp dummy data
     void dummyData() {
         inventory.put(GoodType.FOOD, 3);
         inventory.put(GoodType.WATER, 6);

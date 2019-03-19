@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
 
 /**
  * Represents data abstraction
@@ -45,5 +46,13 @@ class Repository {
      */
     Game getGame() { return game; }
 
+    /**
+     * @return player cargo
+     */
     Cargo getCargo() { return game.getPlayer().getCargo(); }
+
+    /**
+     * @return planet market
+     */
+    Market getMarket() { return new Market(); } //creating new market here temporarily
 }

@@ -4,28 +4,28 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
- * View model for cargo
+ * View Model for Market
  *
  * @author Matt Bernet
  * @version 1.0
  */
-public class CargoViewModel extends AndroidViewModel {
+public class MarketViewModel extends AndroidViewModel {
 
     /**
      * Initializes the view model
      *
      * @param application the application
      */
-    public CargoViewModel(@NonNull Application application) {
+    public MarketViewModel(@NonNull Application application) {
         super(application);
     }
 
     /**
-     * @return player cargo
+     * @return planet market
      */
-    public Cargo getCargo() { return Model.getInstance().getCargo(); }
+    public Market getMarket() { return Model.getInstance().getMarket(); }
 }
