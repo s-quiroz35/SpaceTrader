@@ -72,12 +72,18 @@ class Repository {
      *
      * @param good bought item
      */
-    void buyItem(GoodType good) { game.getPlayer().getCargo().put(good, 1); }
+    void buyItem(GoodType good) {
+        game.getPlayer().getCargo().add(good, 1);
+        game.getUniverse().getCurrentPlanet().removeGood(good, 1);
+    }
 
     /**
      * Sells item
      *
      * @param good sold item
      */
-    void sellItem(GoodType good) { game.getPlayer().getCargo().remove(good, 1); }
+    void sellItem(GoodType good) {
+        game.getPlayer().getCargo().remove(good, 1);
+        game.getUniverse().getCurrentPlanet().addGood(good, 1);
+    }
 }

@@ -62,7 +62,7 @@ public class Cargo {
      * @param good The kind of good you want to place in cargo
      * @param quantity The amount you want to place in cargo
      */
-    public void put(GoodType good, int quantity) {
+    public void add(GoodType good, int quantity) {
         if (inventory.get(good) == null) {
             inventory.put(good, quantity);
         } else {

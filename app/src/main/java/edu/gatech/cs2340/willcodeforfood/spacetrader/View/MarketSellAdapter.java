@@ -82,6 +82,7 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
         public void onClick(View view) {
             if (view.getId() == sellText.getId()) {
                 listener.onSellClick(keys.get(getAdapterPosition()));
+                notifyDataSetChanged();
             }
         }
     }

@@ -59,6 +59,30 @@ public class Planet {
      */
     public Map<GoodType, Integer> getMarket() { return market; }
 
+    /**
+     * Adds good to market
+     *
+     * @param good new good
+     * @param quantity amount
+     */
+    public void addGood(GoodType good, int quantity) {
+        if (market.get(good) == null) {
+            market.put(good, 1);
+        } else {
+            market.put(good, market.get(good) + 1);
+        }
+    }
+
+    /**
+     * Removes good from market
+     *
+     * @param good new good
+     * @param quantity amount
+     */
+    public void removeGood(GoodType good, int quantity) {
+        market.put(good, market.get(good) - 1);
+    }
+
     @Override
     public String toString() {
         return String.format("Name: %s", name);
