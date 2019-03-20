@@ -9,7 +9,7 @@ import java.util.Random;
  * Represents a Universe
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.1
+ * @version 1.2
  */
 public class Universe {
 
@@ -44,6 +44,9 @@ public class Universe {
             openNames.remove(index);
             solarSystems.add(new SolarSystem(name));
         }
+
+        currentSolarSystem = solarSystems.get(0);
+        currentPlanet = currentSolarSystem.getPlanets().get(0);
     }
 
     /**

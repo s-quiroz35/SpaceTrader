@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Represents a Solar System
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.2
+ * @version 1.3
  */
 public class SolarSystem {
 
@@ -44,7 +44,7 @@ public class SolarSystem {
             int index = rn.nextInt(openNames.size());
             String name = openNames.get(index);
             openNames.remove(index);
-            planets.add(new Planet(name));
+            planets.add(new Planet(name, techLevel, resourceLevel));
         }
     }
 

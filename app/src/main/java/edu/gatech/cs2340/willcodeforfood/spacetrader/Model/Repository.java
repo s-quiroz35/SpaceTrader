@@ -7,12 +7,13 @@ import java.util.Map;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 
 /**
  * Represents data abstraction
  *
  * @author Matt Bernet
- * @version 1.2
+ * @version 1.3
  */
 class Repository {
 
@@ -54,4 +55,9 @@ class Repository {
      * @return current planet market
      */
     Map<GoodType, Integer> getMarket() { return game.getUniverse().getCurrentPlanet().getMarket(); }
+
+    /**
+     * @return current planet
+     */
+    Planet getCurrentPlanet() { return game.getUniverse().getCurrentPlanet(); }
 }

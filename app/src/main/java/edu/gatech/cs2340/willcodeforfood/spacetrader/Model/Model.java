@@ -5,12 +5,13 @@ import java.util.Map;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 
 /**
  * Handles business logic
  *
  * @author Matt Bernet
- * @version 1.3
+ * @version 1.4
  */
 public class Model {
 
@@ -57,4 +58,8 @@ public class Model {
      */
     public Map<GoodType, Integer> getMarket() { return instance.repo.getMarket(); }
 
+    /**
+     * @return current planet
+     */
+    public Planet getCurrentPlanet() { return instance.repo.getCurrentPlanet(); }
 }
