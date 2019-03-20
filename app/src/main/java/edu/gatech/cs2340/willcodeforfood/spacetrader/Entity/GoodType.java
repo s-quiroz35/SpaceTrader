@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.util.Random;
+
 /**
  * Type of Good
  *
@@ -89,6 +91,40 @@ public enum GoodType {
         this.priceDecEvent = priceDecEvent;
         this.priceIncEvent = priceIncEvent;
     }
+
+    /**
+     * @return price of good
+     */
+    public int getPrice(TechLevel t, ResourceLevel r) {
+        Random rn = new Random();
+        int var = rn.nextInt(variance);
+        var = var / 100;
+        int price = basePrice + (priceIncPerLevel * (t.getTechLevel()
+                + minTechToProduce)) + (basePrice * var);
+        if (r.getResourceLevel() == priceIncEvent.getResourceLevel()) {
+            return price * 2;
+        } else if (r.getResourceLevel() == priceDecEvent.getResourceLevel()) {
+            return price / 2;
+        }
+
+        return price;
+    }
+
+    /**
+     * Determines whether can buy on planet
+     *
+     * @param t planet tech level
+     * @return true if able to buy, false otherwise
+     */
+    public boolean canBuy(TechLevel t) { return t.getTechLevel() >= minTechToProduce; }
+
+    /**
+     * Determines whether can sell on planet
+     *
+     * @param t planet tech level
+     * @return true if able to sell, false otherwise
+     */
+    public boolean canSell(TechLevel t) { return t.getTechLevel() >= minTechToUse; }
 
     /**
      * @return name of good
