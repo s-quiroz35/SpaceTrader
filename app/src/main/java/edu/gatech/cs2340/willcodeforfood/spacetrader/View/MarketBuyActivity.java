@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
@@ -37,7 +38,17 @@ public class MarketBuyActivity extends AppCompatActivity {
                 new MarketBuyAdapter.BuyClickListener() {
                     @Override
                     public void onBuyClick(GoodType good) {
-                        Log.w("Market", "Buy clicked!");
+                        if (viewModel.buyItem(good)) {
+                            Toast toast = Toast.makeText(MarketBuyActivity.this,
+                                    "Purchase Successful!", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        } else {
+                            Toast toast = Toast.makeText(MarketBuyActivity.this,
+                                    "Unable to Purchase!", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }
                     }
                 });
         rView.setAdapter(adapter);

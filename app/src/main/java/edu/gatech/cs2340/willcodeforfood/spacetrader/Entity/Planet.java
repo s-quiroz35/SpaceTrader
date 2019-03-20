@@ -2,6 +2,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Represents a Planet
@@ -26,12 +27,14 @@ public class Planet {
         resourceLevel = r;
         market = new HashMap<>();
 
-        /* market item quantity needs to vary per planet, right now market is only set up
-           to include the items that are allowed to be sold
+        /* market item quantity needs to vary per planet based upon tech and resource levels,
+           right now market is only set up to include the items that are allowed to be sold
          */
+        Random rn = new Random();
         for (GoodType good: GoodType.values()) {
             if (good.canBuy(t)) {
-                market.put(good, good.getPrice(techLevel, resourceLevel));
+                good.setPrice(techLevel, resourceLevel);
+                market.put(good, rn.nextInt(21) + 1);
             }
         }
     }

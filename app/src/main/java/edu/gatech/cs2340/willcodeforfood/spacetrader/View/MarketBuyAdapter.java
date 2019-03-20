@@ -18,7 +18,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
  * Adapts market goods to recycler view to be bought
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyViewHolder> {
 
@@ -48,9 +48,11 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
     @Override
     public void onBindViewHolder(@NonNull BuyViewHolder holder, int position) {
         GoodType good = keys.get(position);
+        int price = good.getPrice();
         Integer amount = market.get(good);
         holder.itemName.setText(good.getName());
-        holder.itemPrice.setText(String.format("Price: $%d", amount));
+        holder.itemPrice.setText(String.format("Price: $%d", price));
+        holder.itemAmount.setText(String.format("Quantity: %d", amount));
     }
 
     @Override
@@ -62,12 +64,14 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
     class BuyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView itemName;
         private TextView itemPrice;
+        private TextView itemAmount;
         private TextView buyText;
 
         BuyViewHolder(@NonNull View itemView) {
             super(itemView);
             itemName = itemView.findViewById(R.id.item_name);
             itemPrice = itemView.findViewById(R.id.item_price);
+            itemAmount = itemView.findViewById(R.id.item_amount);
             buyText = itemView.findViewById(R.id.buy_text);
 
             itemView.setOnClickListener(this);

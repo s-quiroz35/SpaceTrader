@@ -8,6 +8,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 
 /**
  * Represents data abstraction
@@ -47,6 +48,11 @@ class Repository {
     Game getGame() { return game; }
 
     /**
+     * @return current player
+     */
+    Player getPlayer() { return game.getPlayer(); }
+
+    /**
      * @return player cargo
      */
     Cargo getCargo() { return game.getPlayer().getCargo(); }
@@ -60,4 +66,11 @@ class Repository {
      * @return current planet
      */
     Planet getCurrentPlanet() { return game.getUniverse().getCurrentPlanet(); }
+
+    /**
+     * Buys item
+     *
+     * @param good bought item
+     */
+    void buyItem(GoodType good) { game.getPlayer().getCargo().put(good, 1); }
 }

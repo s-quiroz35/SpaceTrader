@@ -6,6 +6,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 
 /**
  * Handles business logic
@@ -49,6 +50,11 @@ public class Model {
     public Game getGame() { return instance.repo.getGame(); }
 
     /**
+     * @return current player
+     */
+    public Player getPlayer() { return instance.repo.getPlayer(); }
+
+    /**
      * @return player cargo
      */
     public Cargo getCargo() { return instance.repo.getCargo(); }
@@ -62,4 +68,11 @@ public class Model {
      * @return current planet
      */
     public Planet getCurrentPlanet() { return instance.repo.getCurrentPlanet(); }
+
+    /**
+     * Buys item
+     *
+     * @param good bought item
+     */
+    public void buyItem(GoodType good) { instance.repo.buyItem(good); }
 }

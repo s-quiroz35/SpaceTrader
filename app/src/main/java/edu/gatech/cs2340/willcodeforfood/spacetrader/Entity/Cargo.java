@@ -6,8 +6,8 @@ import java.util.Map;
 /**
  * Represents a Cargo for ship
  *
- * @author Sam Quiroz
- * @version 1.0
+ * @author Sam Quiroz and Matt Bernet
+ * @version 1.1
  */
 public class Cargo {
 
@@ -33,15 +33,6 @@ public class Cargo {
         this.capacity = capacity;
         this.contents = 0;
         inventory = new HashMap<>();
-        dummyData();
-    }
-
-    //temp dummy data
-    void dummyData() {
-        inventory.put(GoodType.FOOD, 3);
-        inventory.put(GoodType.WATER, 6);
-        inventory.put(GoodType.MACHINE, 1);
-        inventory.put(GoodType.FURS, 20);
     }
 
     /**
@@ -70,19 +61,14 @@ public class Cargo {
      *
      * @param good The kind of good you want to place in cargo
      * @param quantity The amount you want to place in cargo
-     * @return Whether there was room to add the good
      */
-    public boolean put(GoodType good, int quantity) {
-        if (contents + quantity > capacity) {
-            return false;
-        }
+    public void put(GoodType good, int quantity) {
         if (inventory.get(good) == null) {
             inventory.put(good, quantity);
         } else {
             inventory.put(good,  inventory.get(good) + quantity);
         }
         contents += quantity;
-        return true;
     }
 
     /**

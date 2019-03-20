@@ -48,9 +48,11 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
     @Override
     public void onBindViewHolder(@NonNull SellViewHolder holder, int position) {
         GoodType good = keys.get(position);
+        int price = good.getPrice();
         Integer amount = cargo.get(good);
         holder.itemName.setText(good.getName());
-        holder.itemPrice.setText(String.format("Price: $%d", amount));
+        holder.itemPrice.setText(String.format("Price: $%d", price));
+        holder.itemAmount.setText(String.format("Quantity: %d", amount));
     }
 
     @Override
@@ -62,12 +64,14 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
     class SellViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView itemName;
         private TextView itemPrice;
+        private TextView itemAmount;
         private TextView sellText;
 
         SellViewHolder(@NonNull View itemView) {
             super(itemView);
             itemName = itemView.findViewById(R.id.item_name);
             itemPrice = itemView.findViewById(R.id.item_price);
+            itemAmount = itemView.findViewById(R.id.item_amount);
             sellText = itemView.findViewById(R.id.sell_text);
 
             itemView.setOnClickListener(this);
