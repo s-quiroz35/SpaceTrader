@@ -6,29 +6,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.CargoViewModel;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
 /**
  * Handles market selling activity
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public class MarketSellActivity extends AppCompatActivity {
 
     private MarketSellAdapter adapter;
-    private CargoViewModel viewModel;
+    private UniverseViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_market_sell);
 
-        viewModel = ViewModelProviders.of(this).get(CargoViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
 
         RecyclerView rView = findViewById(R.id.market_sell_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
@@ -37,7 +38,17 @@ public class MarketSellActivity extends AppCompatActivity {
                 new MarketSellAdapter.SellClickListener() {
             @Override
             public void onSellClick(GoodType good) {
-                Log.w("Market", "Sell clicked!");
+                if (viewModel.sellItem(good)) {
+                    Toast toast = Toast.makeText(MarketSellActivity.this,
+                            "Sell successful!", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                } else {
+                    Toast toast = Toast.makeText(MarketSellActivity.this,
+                            "Unable to Sell!", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
             }
         });
         rView.setAdapter(adapter);

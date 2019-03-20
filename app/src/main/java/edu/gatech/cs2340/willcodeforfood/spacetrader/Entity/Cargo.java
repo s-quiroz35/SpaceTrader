@@ -76,15 +76,9 @@ public class Cargo {
      *
      * @param good The kind of good you want to remove
      * @param quantity The amount you want to remove
-     * @return Whether the remove was successful
      */
-    public boolean remove(GoodType good, int quantity) {
-        if (inventory.get(good) == null || quantity > inventory.get(good)) {
-            return false;
-        } else {
-            inventory.put(good, inventory.get(good) - quantity);
-            contents -= quantity;
-            return true;
-        }
+    public void remove(GoodType good, int quantity) {
+        inventory.put(good, inventory.get(good) - quantity);
+        contents -= quantity;
     }
 }

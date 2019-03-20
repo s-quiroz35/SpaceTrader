@@ -17,7 +17,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  * Handles market buy activity
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public class MarketBuyActivity extends AppCompatActivity {
 

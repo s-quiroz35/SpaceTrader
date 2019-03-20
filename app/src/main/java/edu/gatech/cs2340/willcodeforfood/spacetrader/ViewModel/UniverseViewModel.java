@@ -3,10 +3,10 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.Map;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
@@ -16,11 +16,12 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  * View model for universe
  *
  * @author Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class UniverseViewModel extends AndroidViewModel {
 
     private Player player = Model.getInstance().getPlayer();
+    private Planet currentPlanet = Model.getInstance().getCurrentPlanet();
 
     /**
      * Initializes the view model
@@ -44,7 +45,12 @@ public class UniverseViewModel extends AndroidViewModel {
     /**
      * @return current planet
      */
-    public Planet getCurrentPlanet() { return Model.getInstance().getCurrentPlanet(); }
+    public Planet getCurrentPlanet() { return currentPlanet; }
+
+    /**
+     * @return player cargo
+     */
+    public Cargo getCargo() { return Model.getInstance().getCargo(); }
 
     /**
      * Buys item if possible
@@ -54,7 +60,6 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public boolean buyItem(GoodType good) {
         if (player.getCredits() < good.getPrice()) {
-            Log.w("Market", "Insufficient credits");
             return false;
         }
         int contents = player.getCargo().getContents();
@@ -65,6 +70,27 @@ public class UniverseViewModel extends AndroidViewModel {
         }
         Model.getInstance().buyItem(good);
         player.setCredits(player.getCredits() - good.getPrice());
+        return true;
+    }
+
+    /**
+     * Sells item if possible
+     *
+     * @param good sold item
+     * @return true if item sold, false otherwise
+     */
+    public boolean sellItem(GoodType good) {
+        Map<GoodType, Integer> inventory = player.getCargo().getInventory();
+        if (inventory.get(good) == null || inventory.get(good) < 1) {
+            return false;
+        }
+
+        if (!good.canSell(currentPlanet.getTechLevel())) {
+            return false;
+        }
+
+        Model.getInstance().sellItem(good);
+        player.setCredits(player.getCredits() + good.getPrice());
         return true;
     }
 }

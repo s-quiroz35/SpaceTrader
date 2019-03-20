@@ -75,4 +75,11 @@ public class Model {
      * @param good bought item
      */
     public void buyItem(GoodType good) { instance.repo.buyItem(good); }
+
+    /**
+     * Sells item
+     *
+     * @param good sold item
+     */
+    public void sellItem(GoodType good) { instance.repo.sellItem(good); }
 }
