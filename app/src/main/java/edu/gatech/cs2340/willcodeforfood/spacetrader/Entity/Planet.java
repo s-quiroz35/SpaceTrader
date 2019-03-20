@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents a Planet
  *
@@ -9,14 +12,14 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 public class Planet {
 
     private String name;
-    private Market market;
+    private Map<GoodType, Integer> market;
 
     /**
      * Initializes a random planet
      */
     public Planet(String n) {
         name = n;
-        market = new Market();
+        market = new HashMap<>();
     }
 
     /**
@@ -27,7 +30,7 @@ public class Planet {
     /**
      * @return planet market
      */
-    public Market getMarket() { return market; }
+    public Map<GoodType, Integer> getMarket() { return market; }
 
     @Override
     public String toString() {

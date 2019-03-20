@@ -4,7 +4,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
+import java.util.Map;
+
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
@@ -27,5 +29,5 @@ public class MarketViewModel extends AndroidViewModel {
     /**
      * @return planet market
      */
-    public Market getMarket() { return Model.getInstance().getMarket(); }
+    public Map<GoodType, Integer> getMarket() { return Model.getInstance().getMarket(); }
 }

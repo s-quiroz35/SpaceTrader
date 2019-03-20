@@ -2,12 +2,11 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
 import android.util.Log;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 
 /**
  * Represents data abstraction
@@ -52,7 +51,7 @@ class Repository {
     Cargo getCargo() { return game.getPlayer().getCargo(); }
 
     /**
-     * @return planet market
+     * @return current planet market
      */
-    Market getMarket() { return new Market(); } //creating new market here temporarily
+    Map<GoodType, Integer> getMarket() { return game.getUniverse().getCurrentPlanet().getMarket(); }
 }

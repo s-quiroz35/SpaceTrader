@@ -18,6 +18,9 @@ public class Universe {
     private final int maxX = 150;
     private final int maxY = 100;
 
+    private SolarSystem currentSolarSystem;
+    private Planet currentPlanet;
+
     private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
             "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
             "Deneva", "Davidia", "Draylon", "Drema", "Endor", "Esmee", "Fourmi", "Helena", "Hulst",
@@ -66,4 +69,28 @@ public class Universe {
         }
         return string;
     }
+
+    /**
+     * @return current solar system
+     */
+    public SolarSystem getCurrentSolarSystem() { return currentSolarSystem; }
+
+    /**
+     * Sets current solar system
+     *
+     * @param s new solar system
+     */
+    public void setCurrentSolarSystem(SolarSystem s) { currentSolarSystem = s; }
+
+    /**
+     * @return current planet
+     */
+    public Planet getCurrentPlanet() { return currentPlanet; }
+
+    /**
+     * Sets current planet
+     *
+     * @param p new planet
+     */
+    public void setCurrentPlanet(Planet p) { currentPlanet = p; }
 }

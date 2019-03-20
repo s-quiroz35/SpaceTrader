@@ -33,7 +33,7 @@ public class MarketBuyActivity extends AppCompatActivity {
         RecyclerView rView = findViewById(R.id.market_buy_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);
-        adapter = new MarketBuyAdapter(viewModel.getMarket().getInventory(),
+        adapter = new MarketBuyAdapter(viewModel.getMarket(),
                 new MarketBuyAdapter.BuyClickListener() {
                     @Override
                     public void onBuyClick(GoodType good) {

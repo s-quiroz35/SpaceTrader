@@ -1,8 +1,10 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
+import java.util.Map;
+
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Market;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 
 /**
  * Handles business logic
@@ -38,21 +40,21 @@ public class Model {
      *
      * @param game new game
      */
-    public void addGame(Game game) { repo.addGame(game); }
+    public void addGame(Game game) { instance.repo.addGame(game); }
 
     /**
      * @return current game
      */
-    public Game getGame() { return repo.getGame(); }
+    public Game getGame() { return instance.repo.getGame(); }
 
     /**
      * @return player cargo
      */
-    public Cargo getCargo() { return repo.getCargo(); }
+    public Cargo getCargo() { return instance.repo.getCargo(); }
 
     /**
      * @return planet market
      */
-    public Market getMarket() { return repo.getMarket(); }
+    public Map<GoodType, Integer> getMarket() { return instance.repo.getMarket(); }
 
 }
