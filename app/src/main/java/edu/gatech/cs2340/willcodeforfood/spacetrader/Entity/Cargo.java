@@ -79,6 +79,9 @@ public class Cargo {
      */
     public void remove(GoodType good, int quantity) {
         inventory.put(good, inventory.get(good) - quantity);
+        if (inventory.get(good) <= 0) {
+            inventory.remove(good);
+        }
         contents -= quantity;
     }
 }

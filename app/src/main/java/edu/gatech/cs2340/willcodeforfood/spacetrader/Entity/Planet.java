@@ -67,9 +67,9 @@ public class Planet {
      */
     public void addGood(GoodType good, int quantity) {
         if (market.get(good) == null) {
-            market.put(good, 1);
+            market.put(good, quantity);
         } else {
-            market.put(good, market.get(good) + 1);
+            market.put(good, market.get(good) + quantity);
         }
     }
 
@@ -80,7 +80,10 @@ public class Planet {
      * @param quantity amount
      */
     public void removeGood(GoodType good, int quantity) {
-        market.put(good, market.get(good) - 1);
+        market.put(good, market.get(good) - quantity);
+        if (market.get(good) <= 0) {
+            market.remove(good);
+        }
     }
 
     @Override
