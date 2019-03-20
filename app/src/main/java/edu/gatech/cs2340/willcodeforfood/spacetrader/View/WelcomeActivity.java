@@ -32,11 +32,11 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Switch to screen to choose player
+     * Continue game on button press
      *
      * @param view button pressed
      */
     public void continueGame(View view) {
-        //go to universe of previously saved game
+        startActivity(new Intent(this, UniverseActivity.class));
     }
 }
