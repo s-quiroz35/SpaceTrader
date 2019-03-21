@@ -38,7 +38,7 @@ public class Universe {
         Random rn = new Random();
 
         solarSystems = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             int index = rn.nextInt(openNames.size());
             String name = openNames.get(index);
             openNames.remove(index);
