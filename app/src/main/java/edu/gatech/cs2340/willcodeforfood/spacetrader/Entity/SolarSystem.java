@@ -56,7 +56,7 @@ public class SolarSystem {
     /**
      * @return solar system's coordinates
      */
-    public Coordinate getCoordinates() { return coordinate; }
+    public Coordinate getCoordinate() { return coordinate; }
 
     /**
      * @return solar system tech level

@@ -1,6 +1,17 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import java.util.List;
+
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
 /**
  * Handles universe activity
@@ -10,5 +21,33 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class UniverseActivity extends AppCompatActivity {
 
+    private UniverseViewModel viewModel;
+    private Universe universe;
+    private List<SolarSystem> solarSystems;
 
+    private ImageView solarSystem1;
+    private ImageView solarSystem2;
+    private ImageView solarSystem3;
+    private ImageView solarSystem4;
+    private ImageView solarSystem5;
+
+    @Override
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.content_universe);
+
+        solarSystem1 = findViewById(R.id.solar_system_1);
+        solarSystem2 = findViewById(R.id.solar_system_2);
+        solarSystem3 = findViewById(R.id.solar_system_3);
+        solarSystem4 = findViewById(R.id.solar_system_4);
+        solarSystem5 = findViewById(R.id.solar_system_5);
+
+        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        universe = viewModel.getUniverse();
+        solarSystems = universe.getSolarSystems();
+
+        //look into layout params for positioning image views, you can use the solar system
+        //coordinate to position the image view with setMargins
+        //there could be alternatives
+    }
 }

@@ -7,6 +7,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
 /**
  * Handles business logic
@@ -53,6 +54,11 @@ public class Model {
      * @return current player
      */
     public Player getPlayer() { return instance.repo.getPlayer(); }
+
+    /**
+     * @return current universe
+     */
+    public Universe getUniverse() { return instance.repo.getUniverse(); }
 
     /**
      * @return player cargo

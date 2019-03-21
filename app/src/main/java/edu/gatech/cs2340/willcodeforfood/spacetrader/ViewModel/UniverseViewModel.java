@@ -10,13 +10,14 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
  * View model for universe
  *
  * @author Matt Bernet
- * @version 1.2
+ * @version 1.3
  */
 public class UniverseViewModel extends AndroidViewModel {
 
@@ -36,6 +37,11 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return current player
      */
     public Player getPlayer() { return player; }
+
+    /**
+     * @return current universe
+     */
+    public Universe getUniverse() { return Model.getInstance().getUniverse(); }
 
     /**
      * @return current planet market
