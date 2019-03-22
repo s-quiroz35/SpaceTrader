@@ -14,9 +14,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/travel_button"
+        android:text="Travel to Universe"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/planet_name"
+        android:onClick="onTravelPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/market_button"
         android:text="Market"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/travel_button"
         android:onClick="onMarketPressed" />
 
 </RelativeLayout>

@@ -7,13 +7,14 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
 /**
  * Handles business logic
  *
- * @author Matt Bernet
- * @version 1.4
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.5
  */
 public class Model {
 
@@ -74,6 +75,45 @@ public class Model {
      * @return current planet
      */
     public Planet getCurrentPlanet() { return instance.repo.getCurrentPlanet(); }
+
+    /**
+     *
+     * @param p new current planet
+     */
+    public void setCurrentPlanet(Planet p) { instance.repo.setCurrentPlanet(p);}
+
+    /**
+     * @return current planet
+     */
+    public Planet getTravelPlanet() { return instance.repo.getTravelPlanet(); }
+
+    /**
+     *
+     * @param p new current planet
+     */
+    public void setTravelPlanet(Planet p) { instance.repo.setTravelPlanet(p);}
+
+    /**
+     * @return current planet
+     */
+    public SolarSystem getCurrentSolarSystem() { return instance.repo.getCurrentSolarSystem(); }
+
+    /**
+     *
+     * @param s new current planet
+     */
+    public void setCurrentSolarSystem(SolarSystem s) { instance.repo.setSolarSystem(s);}
+
+    public int getFuelCapacity() { return instance.repo.getFuelCapacity(); }
+
+    public int getFuelContents() { return instance.repo.getFuelContents(); }
+
+    public void useFuel(int cost) { instance.repo.useFuel(cost);}
+
+    public void buyFuel() { instance.repo.buyFuel();}
+
+    public int fuelPrice() { return instance.repo.fuelPrice();}
+
 
     /**
      * Buys item

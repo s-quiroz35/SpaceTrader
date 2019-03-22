@@ -54,11 +54,6 @@ public class SolarSystem {
     public String getSolarSystemName() { return name; }
 
     /**
-     * @return solar system's coordinates
-     */
-    public Coordinate getCoordinate() { return coordinate; }
-
-    /**
      * @return solar system tech level
      */
     public TechLevel getTechLevel() { return techLevel; }

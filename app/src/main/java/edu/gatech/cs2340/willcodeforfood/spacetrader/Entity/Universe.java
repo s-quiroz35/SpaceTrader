@@ -20,6 +20,7 @@ public class Universe {
 
     private SolarSystem currentSolarSystem;
     private Planet currentPlanet;
+    private Planet travelPlanet;
 
     private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
             "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
@@ -74,6 +75,21 @@ public class Universe {
     }
 
     /**
+     *
+     * @param p planet to travel to
+     * @return total gallons of gas to travel
+     */
+    public int gasPrice(Planet p) {
+        int xDifference = p.getCoordinate().getXCor() - currentPlanet.getCoordinate().getXCor();
+        int yDifference = p.getCoordinate().getYCor() - currentPlanet.getCoordinate().getYCor();
+        xDifference *= xDifference;
+        yDifference *= yDifference;
+        int totalDistance = xDifference + yDifference;
+        totalDistance = (int)(Math.sqrt(totalDistance));
+        return (int)(totalDistance * 1.4);
+    }
+
+    /**
      * @return current solar system
      */
     public SolarSystem getCurrentSolarSystem() { return currentSolarSystem; }
@@ -96,4 +112,16 @@ public class Universe {
      * @param p new planet
      */
     public void setCurrentPlanet(Planet p) { currentPlanet = p; }
+
+    /**
+     * @return current planet
+     */
+    public Planet getTravelPlanet() { return travelPlanet; }
+
+    /**
+     * Sets current planet
+     *
+     * @param p new planet
+     */
+    public void setTravelPlanet(Planet p) { travelPlanet = p; }
 }

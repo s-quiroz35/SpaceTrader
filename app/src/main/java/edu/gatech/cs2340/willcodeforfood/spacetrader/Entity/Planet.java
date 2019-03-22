@@ -17,6 +17,7 @@ public class Planet {
     private TechLevel techLevel;
     private ResourceLevel resourceLevel;
     private Map<GoodType, Integer> market;
+    private Coordinate coordinate;
 
     /**
      * Initializes a random planet
@@ -26,6 +27,7 @@ public class Planet {
         techLevel = t;
         resourceLevel = r;
         market = new HashMap<>();
+        coordinate = new Coordinate();
 
         /* market item quantity needs to vary per planet based upon tech and resource levels,
            right now market is only set up to include the items that are allowed to be sold
@@ -43,6 +45,11 @@ public class Planet {
      * @return planet name
      */
     public String getPlanetName() { return name; }
+
+    /**
+     * @return planet's coordinates
+     */
+    public Coordinate getCoordinate() { return coordinate; }
 
     /**
      * @return planet tech level
@@ -88,6 +95,7 @@ public class Planet {
 
     @Override
     public String toString() {
-        return String.format("Name: %s", name);
+        return String.format("Coordinates: %d,%d \n Resource Level: %d \n Tech Level: %d",
+                coordinate.getXCor(), coordinate.getYCor(), resourceLevel.getResourceLevel(), techLevel.getTechLevel());
     }
 }

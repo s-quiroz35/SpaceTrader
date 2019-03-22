@@ -9,17 +9,19 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
 /**
  * Represents data abstraction
  *
- * @author Matt Bernet
- * @version 1.3
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.4
  */
 class Repository {
 
     private Game game;
+    private Player player;
 
     /**
      * Initializes repo
@@ -41,6 +43,7 @@ class Repository {
                 game.getPlayer().getSkills()[1], game.getPlayer().getSkills()[2],
                 game.getPlayer().getSkills()[3]));
         Log.w("Add", game.getUniverse().toString());
+        player = game.getPlayer();
     }
 
     /**
@@ -51,7 +54,7 @@ class Repository {
     /**
      * @return current player
      */
-    Player getPlayer() { return game.getPlayer(); }
+    Player getPlayer() { return player; }
 
     /**
      * @return current universe
@@ -72,6 +75,44 @@ class Repository {
      * @return current planet
      */
     Planet getCurrentPlanet() { return game.getUniverse().getCurrentPlanet(); }
+
+    /**
+     *
+     * @param p planet for new current planet
+     */
+    void setCurrentPlanet(Planet p) { game.getUniverse().setCurrentPlanet(p);}
+
+    /**
+     * @return current planet
+     */
+    Planet getTravelPlanet() { return game.getUniverse().getTravelPlanet(); }
+
+    /**
+     *
+     * @param p planet for new current planet
+     */
+    void setTravelPlanet(Planet p) { game.getUniverse().setTravelPlanet(p);}
+
+    /**
+     * @return current solar system
+     */
+    SolarSystem getCurrentSolarSystem() { return game.getUniverse().getCurrentSolarSystem(); }
+
+    /**
+     *
+     * @param s new solar system
+     */
+    void setSolarSystem(SolarSystem s) { game.getUniverse().setCurrentSolarSystem(s);}
+
+    int getFuelCapacity() { return player.getShip().getFuelCapacity(); }
+
+    int getFuelContents() { return player.getShip().getFuel(); }
+
+    void useFuel(int spentGas) { player.getShip().spendFuel(spentGas); }
+
+    int fuelPrice() { return player.getShip().fuelPrice(); }
+
+    void buyFuel() { player.getShip().buyFuel(); }
 
     /**
      * Buys item
