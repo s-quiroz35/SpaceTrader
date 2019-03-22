@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
@@ -14,10 +15,38 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/gas_title"
+        android:layout_below="@+id/market_name"
+        android:text="  Gas:  "
+        android:textSize="30sp"/>
+
+    <ProgressBar
+        android:id="@+id/gas_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="25dp"
+        android:minWidth="275dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/gas_title"
+        style = "@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_below="@+id/market_name"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gas_numbers"
+        android:layout_below="@+id/market_name"
+        android:layout_alignRight="@+id/gas_bar"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/player_credits"
         android:text="Currency:"
         android:textSize="20sp"
-        android:layout_below="@id/market_name"
+        android:layout_below="@+id/gas_bar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp" />
 
@@ -40,5 +69,23 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="60sp"
         android:onClick="onSellPressed" />
+
+    <Button
+        android:id="@+id/buy_gas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_sell_button"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onBuyGas" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="160dp"
+        android:id="@+id/cancel_button"
+        android:text="Cancel"
+        android:onClick="onCancel"/>
 
 </RelativeLayout>

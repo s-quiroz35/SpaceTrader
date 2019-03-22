@@ -1,10 +1,14 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -16,8 +20,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
 /**
  * Handles universe activity
  *
- * @author Matt Bernet
- * @version 1.0
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.1
  */
 public class UniverseActivity extends AppCompatActivity {
 
@@ -46,8 +50,48 @@ public class UniverseActivity extends AppCompatActivity {
         universe = viewModel.getUniverse();
         solarSystems = universe.getSolarSystems();
 
+        ProgressBar gasBar = findViewById(R.id.gas_bar);
+        gasBar.setMax(viewModel.getFuelCapacity());
+        gasBar.setProgress(viewModel.getFuelContents());
+
+        TextView gasNum = findViewById(R.id.gas_numbers);
+        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
+        gasNum.setText(num);
+
+        TextView cSolarSystem = findViewById(R.id.current_solar_system);
+        String ssCurrent = "Current Solar System " + viewModel.getCurrentSolarSystem().getSolarSystemName();
+        cSolarSystem.setText(ssCurrent);
+
         //look into layout params for positioning image views, you can use the solar system
         //coordinate to position the image view with setMargins
         //there could be alternatives
+
+        // i'm gonna look into this for solar system view because it doesn't apply for solar systems
     }
+
+    public void onCancel(View view) {
+        onBackPressed();
+    }
+
+    public void onSSOne(View view) {
+        viewModel.setCurrentSolarSystem(solarSystems.get(0));
+        startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
+    }
+    public void onSSTwo(View view) {
+        viewModel.setCurrentSolarSystem(solarSystems.get(1));
+        startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
+    }
+    public void onSSThree(View view) {
+        viewModel.setCurrentSolarSystem(solarSystems.get(2));
+        startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
+    }
+    public void onSSFour(View view) {
+        viewModel.setCurrentSolarSystem(solarSystems.get(3));
+        startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
+    }
+    public void onSSFive(View view) {
+        viewModel.setCurrentSolarSystem(solarSystems.get(4));
+        startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
+    }
+
 }

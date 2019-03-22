@@ -7,14 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
 /**
  * Handles Planet activity
  *
- * @author Matt Bernet
- * @version 1.0
+ * @author Matt Bernet and Emma Chadwick
+ * @version 1.1
  */
 public class PlanetActivity extends AppCompatActivity {
 
@@ -39,5 +40,9 @@ public class PlanetActivity extends AppCompatActivity {
      */
     public void onMarketPressed(View view) {
         startActivity(new Intent(PlanetActivity.this, MarketActivity.class));
+    }
+
+    public void onTravelPressed(View view) {
+        startActivity(new Intent(PlanetActivity.this, UniverseActivity.class));
     }
 }

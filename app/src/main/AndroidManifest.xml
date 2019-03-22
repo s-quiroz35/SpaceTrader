@@ -13,8 +13,10 @@
         <activity android:name=".View.UniverseActivity"></activity>
         <activity android:name=".View.PlanetActivity"></activity>
         <activity android:name=".View.MarketActivity"></activity>
+        <activity android:name=".View.SolarSystemActivity"></activity>
         <activity android:name=".View.MarketBuyActivity"></activity>
         <activity android:name=".View.MarketSellActivity"></activity>
+        <activity android:name=".View.TravelPopUp"></activity>
         <activity android:name=".View.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

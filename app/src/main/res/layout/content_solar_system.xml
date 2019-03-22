@@ -7,26 +7,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/universe_title"
-        android:text="Universe"
-        android:textSize="90dp"
+        android:id="@+id/solar_system_title"
+        android:textSize="90sp"
         android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/current_solar_system"
-        android:textSize="15sp"
+        android:id="@+id/planet_current"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@+id/universe_title"/>
+        android:layout_below="@+id/solar_system_title"
+        android:textSize="15sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gas_title"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/universe_title"
+        android:layout_below="@+id/planet_current"
         android:text="  Gas:  "
         android:textSize="30sp"/>
 
@@ -36,80 +33,53 @@
         android:layout_height="wrap_content"
         android:minHeight="25dp"
         android:minWidth="275dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/gas_title"
         style = "@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_below="@+id/universe_title"
+        android:layout_below="@+id/planet_current"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gas_numbers"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/universe_title"
+        android:layout_below="@+id/planet_current"
         android:layout_alignRight="@+id/gas_bar"
         android:textSize="15sp"/>
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/solar_system_1"
+        android:id="@+id/planet_1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:contentDescription="@null"
         android:layout_below="@+id/gas_bar"
         android:clickable="true"
         android:focusable="true"
-        android:onClick='onSSOne'
+        android:onClick='onPlanetOne'
         android:src="@mipmap/ic_launcher_round" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/solar_system_2"
-        android:layout_below="@+id/solar_system_1"
+        android:id="@+id/planet_2"
+        android:layout_below="@+id/planet_1"
         android:contentDescription="@null"
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:focusable="true"
-        android:onClick='onSSTwo'
+        android:onClick='onPlanetTwo'
         android:src="@mipmap/ic_launcher_round" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/solar_system_3"
-        android:layout_below="@+id/solar_system_2"
+        android:id="@+id/planet_3"
+        android:layout_below="@+id/planet_2"
         android:contentDescription="@null"
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:focusable="true"
-        android:onClick='onSSThree'
-        android:src="@mipmap/ic_launcher_round" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/solar_system_4"
-        android:layout_below="@+id/solar_system_3"
-        android:contentDescription="@null"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick='onSSFour'
-        android:src="@mipmap/ic_launcher_round" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/solar_system_5"
-        android:layout_below="@+id/solar_system_4"
-        android:contentDescription="@null"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick='onSSFive'
+        android:onClick='onPlanetThree'
         android:src="@mipmap/ic_launcher_round" />
 
     <Button
