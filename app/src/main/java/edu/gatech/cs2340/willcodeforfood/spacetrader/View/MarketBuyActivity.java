@@ -11,25 +11,26 @@ import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
 /**
  * Handles market buy activity
  *
  * @author Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class MarketBuyActivity extends AppCompatActivity {
 
     private MarketBuyAdapter adapter;
-    private UniverseViewModel viewModel;
+    private MarketViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_market_buy);
 
-        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         RecyclerView rView = findViewById(R.id.market_buy_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);

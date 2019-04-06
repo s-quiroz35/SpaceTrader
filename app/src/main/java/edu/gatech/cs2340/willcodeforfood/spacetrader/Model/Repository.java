@@ -21,7 +21,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 class Repository {
 
     private Game game;
-    private Player player;
 
     /**
      * Initializes repo
@@ -43,7 +42,6 @@ class Repository {
                 game.getPlayer().getSkills()[1], game.getPlayer().getSkills()[2],
                 game.getPlayer().getSkills()[3]));
         Log.w("Add", game.getUniverse().toString());
-        player = game.getPlayer();
     }
 
     /**
@@ -54,7 +52,7 @@ class Repository {
     /**
      * @return current player
      */
-    Player getPlayer() { return player; }
+    Player getPlayer() { return game.getPlayer(); }
 
     /**
      * @return current universe
@@ -104,33 +102,60 @@ class Repository {
      */
     void setSolarSystem(SolarSystem s) { game.getUniverse().setCurrentSolarSystem(s);}
 
-    int getFuelCapacity() { return player.getShip().getFuelCapacity(); }
+    int getFuelCapacity() { return game.getPlayer().getShip().getFuelCapacity(); }
 
-    int getFuelContents() { return player.getShip().getFuel(); }
+    int getFuelContents() { return game.getPlayer().getShip().getFuel(); }
 
-    void useFuel(int spentGas) { player.getShip().spendFuel(spentGas); }
+    void useFuel(int spentGas) { game.getPlayer().getShip().spendFuel(spentGas); }
 
-    int fuelPrice() { return player.getShip().fuelPrice(); }
+    int fuelPrice() { return game.getPlayer().getShip().fuelPrice(); }
 
-    void buyFuel() { player.getShip().buyFuel(); }
+    void buyFuel() { game.getPlayer().getShip().buyFuel(); }
 
     /**
      * Buys item
      *
      * @param good bought item
+     * @return true if bought item, false otherwise
      */
-    void buyItem(GoodType good) {
+    boolean buyItem(GoodType good) {
+        Player player = game.getPlayer();
+        if (player.getCredits() < good.getPrice()) {
+            return false;
+        }
+        int contents = player.getCargo().getContents();
+        int capacity = player.getCargo().getCapacity();
+
+        if ((contents + 1) > capacity) {
+            return false;
+        }
+
         game.getPlayer().getCargo().add(good, 1);
         game.getUniverse().getCurrentPlanet().removeGood(good, 1);
+        player.setCredits(player.getCredits() - good.getPrice());
+        return true;
     }
 
     /**
      * Sells item
      *
      * @param good sold item
+     * @return true if sold item, false otherwise
      */
-    void sellItem(GoodType good) {
+    boolean sellItem(GoodType good) {
+        Player player = game.getPlayer();
+        Map<GoodType, Integer> inventory = player.getCargo().getInventory();
+        if (inventory.get(good) == null || inventory.get(good) < 1) {
+            return false;
+        }
+
+        if (!good.canSell(game.getUniverse().getCurrentPlanet().getTechLevel())) {
+            return false;
+        }
+
         game.getPlayer().getCargo().remove(good, 1);
         game.getUniverse().getCurrentPlanet().addGood(good, 1);
+        player.setCredits(player.getCredits() + good.getPrice());
+        return true;
     }
 }
