@@ -45,11 +45,6 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public Universe getUniverse() { return Model.getInstance().getUniverse(); }
 
-    /**
-     * @return current planet market
-     */
-    public Map<GoodType, Integer> getMarket() { return Model.getInstance().getMarket(); }
-
     public int getFuelCapacity() { return Model.getInstance().getFuelCapacity(); }
 
     public int getFuelContents() { return Model.getInstance().getFuelContents(); }
@@ -88,46 +83,4 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return player cargo
      */
     public Cargo getCargo() { return Model.getInstance().getCargo(); }
-
-    /**
-     * Buys item if possible
-     *
-     * @param good bought item
-     * @return true if item bought, false otherwise
-     */
-    public boolean buyItem(GoodType good) {
-        if (player.getCredits() < good.getPrice()) {
-            return false;
-        }
-        int contents = player.getCargo().getContents();
-        int capacity = player.getCargo().getCapacity();
-
-        if ((contents + 1) > capacity) {
-            return false;
-        }
-        Model.getInstance().buyItem(good);
-        player.setCredits(player.getCredits() - good.getPrice());
-        return true;
-    }
-
-    /**
-     * Sells item if possible
-     *
-     * @param good sold item
-     * @return true if item sold, false otherwise
-     */
-    public boolean sellItem(GoodType good) {
-        Map<GoodType, Integer> inventory = player.getCargo().getInventory();
-        if (inventory.get(good) == null || inventory.get(good) < 1) {
-            return false;
-        }
-
-        if (!good.canSell(currentPlanet.getTechLevel())) {
-            return false;
-        }
-
-        Model.getInstance().sellItem(good);
-        player.setCredits(player.getCredits() + good.getPrice());
-        return true;
-    }
 }
