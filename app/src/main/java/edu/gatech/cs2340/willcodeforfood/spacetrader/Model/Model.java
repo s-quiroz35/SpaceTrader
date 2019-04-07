@@ -14,7 +14,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * Handles business logic
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.5
+ * @version 1.6
  */
 public class Model {
 
@@ -128,4 +128,11 @@ public class Model {
      * @param good sold item
      */
     public boolean sellItem(GoodType good) { return instance.repo.sellItem(good); }
+
+    /**
+     * Checks to see if random event occurred on travel
+     *
+     * @return event key
+     */
+    public String checkForEvent() { return instance.repo.checkForEvent(); }
 }
