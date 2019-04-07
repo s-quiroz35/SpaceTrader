@@ -18,7 +18,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  * View model for universe
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.4
+ * @version 1.5
  */
 public class UniverseViewModel extends AndroidViewModel {
 
@@ -33,6 +33,15 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public UniverseViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    /**
+     * Checks to see if random event occurred on travel
+     *
+     * @return event key
+     */
+    public String checkForEvent() {
+        return Model.getInstance().checkForEvent();
     }
 
     /**

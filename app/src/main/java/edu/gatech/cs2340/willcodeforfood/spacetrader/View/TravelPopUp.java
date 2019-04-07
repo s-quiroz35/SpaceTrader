@@ -19,8 +19,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
 /**
  * Travel pop up
  *
- * @author Emma Chadwick
- * @version 1.0
+ * @author Emma Chadwick and Matt Bernet
+ * @version 1.2
  */
 public class TravelPopUp extends AppCompatActivity {
 
@@ -67,7 +67,12 @@ public class TravelPopUp extends AppCompatActivity {
         if (fuel - fuelCost >= 0) {
             viewModel.useFuel(fuelCost);
             viewModel.setCurrentPlanet(travelPlanet);
-            startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
+            String event = viewModel.checkForEvent();
+            if (event.equals("pirate")) {
+                startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
+            } else {
+                startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
+            }
         } else {
             Toast toast = Toast.makeText(TravelPopUp.this,
                     "Unable to travel", Toast.LENGTH_SHORT);

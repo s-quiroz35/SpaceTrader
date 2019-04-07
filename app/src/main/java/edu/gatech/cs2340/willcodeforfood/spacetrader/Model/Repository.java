@@ -3,6 +3,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 import android.util.Log;
 
 import java.util.Map;
+import java.util.Random;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
@@ -16,7 +17,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * Represents data abstraction
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.4
+ * @version 1.5
  */
 class Repository {
 
@@ -157,5 +158,22 @@ class Repository {
         game.getUniverse().getCurrentPlanet().addGood(good, 1);
         player.setCredits(player.getCredits() + good.getPrice());
         return true;
+    }
+
+    /**
+     * Checks to see if random event occurred on travel
+     *
+     * @return event key
+     */
+    String checkForEvent() {
+        Random rn = new Random();
+        int check = rn.nextInt(2);
+        if (check == 1) {
+            Log.w("Event", "Random event occurring!");
+            return "pirate";
+        } else {
+            Log.w("Event", "Random event did not occur!");
+            return "nope";
+        }
     }
 }
