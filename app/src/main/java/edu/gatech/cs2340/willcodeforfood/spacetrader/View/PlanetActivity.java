@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
@@ -42,6 +41,10 @@ public class PlanetActivity extends AppCompatActivity {
         startActivity(new Intent(PlanetActivity.this, MarketActivity.class));
     }
 
+    /**
+     * Travel is pressed and the player is directed to the travel screen
+     * @param view a button
+     */
     public void onTravelPressed(View view) {
         startActivity(new Intent(PlanetActivity.this, UniverseActivity.class));
     }

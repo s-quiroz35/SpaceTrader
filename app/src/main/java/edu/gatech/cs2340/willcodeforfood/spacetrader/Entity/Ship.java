@@ -2,7 +2,6 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 import java.io.Serializable;
 
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
  * Represents a Ship
@@ -14,6 +13,7 @@ public class Ship implements Serializable {
 
     private ShipType type;
     private String color;
+    private int fuelCapacity;
     private int fuel;
     private Cargo cargo;
 
@@ -26,7 +26,8 @@ public class Ship implements Serializable {
     public Ship(ShipType type, String color) {
         this.type = type;
         this.color = color;
-        fuel = type.getFuelCapacity();
+        fuelCapacity = type.getFuelCapacity();
+        fuel = fuelCapacity;
         cargo = new Cargo();
     }
 
@@ -50,52 +51,20 @@ public class Ship implements Serializable {
     /**
      * @return ship fuel capacity
      */
-    public int getFuelCapacity() { return type.getFuelCapacity(); }
+    public int getFuelCapacity() { return fuelCapacity; }
 
     /**
-     * @return ship fuel
-     */
-    public int getFuel() { return fuel; }
-
-    /**
-     * Sets ship fuel
      *
-     * @param fuel new fuel amount
+     * @return ship fuel contents
      */
-    public void setFuel(int fuel) { this.fuel = fuel; }
+    public int getFuel() { return fuel;}
 
-    public void spendFuel(int fuelCost) { fuel = fuel - fuelCost;}
+    /**
+     * Sets the fuel contents
+     * @param fuel new fuel
+     */
+    public void setFuel(int fuel) {this.fuel = fuel;}
 
-    public int fuelPrice() {
-        Planet currentPlanet = Model.getInstance().getCurrentPlanet();
-        int techLevel = currentPlanet.getTechLevel().getTechLevel();
-
-        return (int) (.6 * (techLevel + 2)) * 25;
-    }
-
-    public void buyFuel() {
-        Planet currentPlanet = Model.getInstance().getCurrentPlanet();
-        int techLevel = currentPlanet.getTechLevel().getTechLevel();
-
-        int pricePerGallon = (int) ((.6 * techLevel) + 2);
-        int fuelCapacity = this.getFuelCapacity();
-        int credits = Model.getInstance().getPlayer().getCredits();
-        int afterCredits = 0;
-        if ((fuel + 25) <= fuelCapacity) {
-            afterCredits = credits - (25 * pricePerGallon);
-            if (afterCredits >= 0) {
-                fuel += 25;
-                Model.getInstance().getPlayer().setCredits(credits - (25 * pricePerGallon));
-            }
-        } else {
-            int remainingFuel = fuelCapacity - fuel;
-            afterCredits = credits - (remainingFuel * pricePerGallon);
-            if (afterCredits >= 0) {
-                fuel += remainingFuel;
-                Model.getInstance().getPlayer().setCredits(afterCredits);
-            }
-        }
-    }
     /**
      * @return ship cargo
      */
