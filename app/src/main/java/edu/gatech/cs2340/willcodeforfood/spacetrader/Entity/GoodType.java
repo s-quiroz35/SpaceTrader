@@ -43,10 +43,11 @@ public enum GoodType {
      * @param priceIncPerLevel price increase per tech level
      * @param variance max percentage price can vary above or below base
      */
-    GoodType(String name, int planetPrice, int minTechToProduce, int minTechToUse, int techMostProduce,
-             int basePrice, int priceIncPerLevel, int variance) {
-        this(name, planetPrice, minTechToProduce, minTechToUse, techMostProduce, basePrice, priceIncPerLevel,
-                variance, ResourceLevel.NOSPECIALRESOURCES, ResourceLevel.NOSPECIALRESOURCES);
+    GoodType(String name, int planetPrice, int minTechToProduce, int minTechToUse,
+             int techMostProduce, int basePrice, int priceIncPerLevel, int variance) {
+        this(name, planetPrice, minTechToProduce, minTechToUse, techMostProduce, basePrice,
+                priceIncPerLevel, variance, ResourceLevel.NOSPECIALRESOURCES,
+                ResourceLevel.NOSPECIALRESOURCES);
     }
 
     /**
@@ -62,10 +63,11 @@ public enum GoodType {
      * @param variance max percentage price can vary above or below base
      * @param priceDecEvent when present, price of resource is unusually low
      */
-    GoodType(String name, int planetPrice, int minTechToProduce, int minTechToUse, int techMostProduce,
-             int basePrice, int priceIncPerLevel, int variance, ResourceLevel priceDecEvent) {
-        this(name, planetPrice, minTechToProduce, minTechToUse, techMostProduce, basePrice, priceIncPerLevel,
-                variance, priceDecEvent, ResourceLevel.NOSPECIALRESOURCES);
+    GoodType(String name, int planetPrice, int minTechToProduce, int minTechToUse,
+             int techMostProduce, int basePrice, int priceIncPerLevel, int variance,
+             ResourceLevel priceDecEvent) {
+        this(name, planetPrice, minTechToProduce, minTechToUse, techMostProduce, basePrice,
+                priceIncPerLevel, variance, priceDecEvent, ResourceLevel.NOSPECIALRESOURCES);
     }
 
     /**
@@ -82,9 +84,9 @@ public enum GoodType {
      * @param priceDecEvent when present, price of resource is unusually low
      * @param priceIncEvent when present, price of resource is unusually expensive
      */
-    GoodType(String name, int planetPrice, int minTechToProduce, int minTechToUse, int techMostProduce,
-             int basePrice, int priceIncPerLevel, int variance, ResourceLevel priceDecEvent,
-             ResourceLevel priceIncEvent) {
+    GoodType(String name, int planetPrice, int minTechToProduce, int minTechToUse,
+             int techMostProduce, int basePrice, int priceIncPerLevel, int variance,
+             ResourceLevel priceDecEvent, ResourceLevel priceIncEvent) {
         this.name = name;
         this.planetPrice = planetPrice;
         this.minTechToProduce = minTechToProduce;
