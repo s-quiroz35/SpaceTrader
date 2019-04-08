@@ -92,26 +92,50 @@ public class UniverseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Returns to previous activity
+     * @param view button pressed
+     */
     public void onCancel(View view) {
         onBackPressed();
     }
 
+    /**
+     * Selects Solar System One
+     * @param view button pressed
+     */
     public void onSSOne(View view) {
         viewModel.setCurrentSolarSystem(solarSystems.get(0));
         startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
     }
+    /**
+     * Selects Solar System Two
+     * @param view button pressed
+     */
     public void onSSTwo(View view) {
         viewModel.setCurrentSolarSystem(solarSystems.get(1));
         startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
     }
+    /**
+     * Selects Solar System Three
+     * @param view button pressed
+     */
     public void onSSThree(View view) {
         viewModel.setCurrentSolarSystem(solarSystems.get(2));
         startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
     }
+    /**
+     * Selects Solar System Four
+     * @param view button pressed
+     */
     public void onSSFour(View view) {
         viewModel.setCurrentSolarSystem(solarSystems.get(3));
         startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
     }
+    /**
+     * Selects Solar System Five
+     * @param view button pressed
+     */
     public void onSSFive(View view) {
         viewModel.setCurrentSolarSystem(solarSystems.get(4));
         startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));

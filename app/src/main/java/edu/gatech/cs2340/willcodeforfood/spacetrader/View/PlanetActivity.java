@@ -42,6 +42,10 @@ public class PlanetActivity extends AppCompatActivity {
         startActivity(new Intent(PlanetActivity.this, MarketActivity.class));
     }
 
+    /**
+     * Travel is pressed and the player is directed to the travel screen
+     * @param view a button
+     */
     public void onTravelPressed(View view) {
         startActivity(new Intent(PlanetActivity.this, UniverseActivity.class));
     }

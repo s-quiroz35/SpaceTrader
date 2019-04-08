@@ -27,6 +27,7 @@ public class SolarSystemActivity extends AppCompatActivity {
     List<Planet> planets;
     UniverseViewModel viewModel;
 
+    @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_solar_system);
@@ -57,16 +58,26 @@ public class SolarSystemActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    /**
+     * Selects Planet One
+     * @param view button pressed
+     */
     public void onPlanetOne(View view) {
         viewModel.setTravelPlanet(planets.get(0));
         startActivity(new Intent(SolarSystemActivity.this, TravelPopUp.class));
     }
-
+    /**
+     * Selects Planet Two
+     * @param view button pressed
+     */
     public void onPlanetTwo(View view) {
         viewModel.setTravelPlanet(planets.get(1));
         startActivity(new Intent(SolarSystemActivity.this, TravelPopUp.class));
     }
-
+    /**
+     * Selects Planet Three
+     * @param view button pressed
+     */
     public void onPlanetThree(View view) {
         viewModel.setTravelPlanet(planets.get(2));
         startActivity(new Intent(SolarSystemActivity.this, TravelPopUp.class));

@@ -28,6 +28,7 @@ public class TravelPopUp extends AppCompatActivity {
     UniverseViewModel viewModel;
     int fuelCost;
 
+    @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_travel);
@@ -58,10 +59,18 @@ public class TravelPopUp extends AppCompatActivity {
 
     }
 
+    /**
+     * Returns to previous activity
+     * @param view a button
+     */
     public void onCancel(View view) {
         onBackPressed();
     }
 
+    /**
+     * Travels to the desired Planet
+     * @param view a button
+     */
     public void onTravel(View view) {
         int fuel = viewModel.getFuelContents();
         if (fuel - fuelCost >= 0) {
