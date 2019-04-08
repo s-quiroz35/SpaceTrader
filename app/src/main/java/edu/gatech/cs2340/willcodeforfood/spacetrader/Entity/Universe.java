@@ -23,15 +23,17 @@ public class Universe implements Serializable {
     private Planet currentPlanet;
     private Planet travelPlanet;
 
-    private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea", "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia",
-            "Campor", "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
+    private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea",
+            "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia", "Campor",
+            "Capelle", "Carzon", "Castor", "Cestus", "Cheron", "Courteney", "Daled",  "Deneb",
             "Deneva", "Davidia", "Draylon", "Drema", "Endor", "Esmee", "Fourmi", "Helena", "Hulst",
-            "Iodine", "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Klaestron", "Korma",
-            "Kravat", "Largo", "Lave", "Ligon", "Lowry", "Montor", "Mordan", "Myrthe", "Nelvana", "Nix",
-            "Nyle", "Odet", "Othello", "Parade", "Penthara", "Picard", "Pollux",	  "Ran", "Rhymus",
-            "Rochani", "Rubicum", "Rutia", "Sarpeidon", "Sefalla", "Seltrice", "Somari", "Stakoron", "Styris",
-            "Talani", "Tamus", "Tantalos", "Tanuga", "Tarchannen", "Terosa", "Thera", "Titan", "Torin", "Triacus",
-            "Turkana", "Tyrus",  "Vadera", "Vagra", "Vandor", "Ventax", "Xenon", "Xerxes", "Yew", "Zuul"));
+            "Iodine", "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Klaestron",
+            "Korma", "Kravat", "Largo", "Lave", "Ligon", "Lowry", "Montor", "Mordan", "Myrthe",
+            "Nelvana", "Nix", "Nyle", "Odet", "Othello", "Parade", "Penthara", "Picard", "Pollux",
+            "Ran", "Rhymus", "Rochani", "Rubicum", "Rutia", "Sarpeidon", "Sefalla", "Seltrice",
+            "Somari", "Stakoron", "Styris", "Talani", "Tamus", "Tantalos", "Tanuga", "Tarchannen",
+            "Terosa", "Thera", "Titan", "Torin", "Triacus", "Turkana", "Tyrus",  "Vadera", "Vagra",
+            "Vandor", "Ventax", "Xenon", "Xerxes", "Yew", "Zuul"));
 
     /**
      * Initializes a universe
@@ -68,7 +70,8 @@ public class Universe implements Serializable {
 
     @Override
     public String toString() {
-        String string = "Universe Created: Width: " + maxX + ", Height: " + maxY + ", Contains the solar systems: " + "\n";
+        String string = "Universe Created: Width: " + maxX + ", Height: " + maxY
+                + ", Contains the solar systems: " + "\n";
         for (SolarSystem s : solarSystems) {
             string = string + s.toString() + "\n";
         }

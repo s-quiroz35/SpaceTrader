@@ -20,14 +20,17 @@ public class SolarSystem implements Serializable {
     private ResourceLevel resourceLevel;
     private List<Planet> planets;
 
-    private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades",
-            "Hamlet","Og", "Omega", "Omphalos", "Orias", "Umberlee", "Utopia","Exo", "Ferris", "Festen",
+    private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar",
+            "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades", "Hamlet","Og",
+            "Omega", "Omphalos", "Orias", "Umberlee", "Utopia","Exo", "Ferris", "Festen",
             "Magrat", "Malcoria", "Mentar","Quator", "Rakhar", "Yojimbo", "Zalkon", "Sigma", "Sol",
-            "Khefa", "Kira", "Klaatu", "Ichinda", "Ierus", "Veaturn", "Vasilea", "Octavia", "Geria", "Perenulia",
-            "Tunusuru", "Elilax", "Parusbel", "Limaran", "Blitede", "Blitz", "Zeta", "Acisoid", "Zemoru", "Alpha",
-            "Blitea", "Dawnstar", "Falkreath", "Markarth", "Morthal", "Riften", "Solitude", "Whiterun", "Windhelm",
-            "Hjerim", "Helgen", "Riverwood", "Rorikstead", "Lawrence", "Seattle", "Atlanta", "Arlington", "Hillwood",
-            "Shermer", "Apollo", "Opportunity", "Eerie", "Milan", "Merik", "Mintaka","Regulas", "Relva","Krios", "Laertes"));
+            "Khefa", "Kira", "Klaatu", "Ichinda", "Ierus", "Veaturn", "Vasilea", "Octavia", "Geria",
+            "Perenulia", "Tunusuru", "Elilax", "Parusbel", "Limaran", "Blitede", "Blitz", "Zeta",
+            "Acisoid", "Zemoru", "Alpha", "Blitea", "Dawnstar", "Falkreath", "Markarth", "Morthal",
+            "Riften", "Solitude", "Whiterun", "Windhelm", "Hjerim", "Helgen", "Riverwood",
+            "Rorikstead", "Lawrence", "Seattle", "Atlanta", "Arlington", "Hillwood", "Shermer",
+            "Apollo", "Opportunity", "Eerie", "Milan", "Merik", "Mintaka","Regulas",
+            "Relva","Krios", "Laertes"));
 
     /**
      * Initializes a random solar system
@@ -72,8 +75,8 @@ public class SolarSystem implements Serializable {
     @Override
     public String toString() {
         String string = String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
-                        "ResourceLevel: %d . With the following planets", name, coordinate.getXCor(),
-                coordinate.getYCor(), techLevel.getTechLevel(),
+                        "ResourceLevel: %d . With the following planets", name,
+                coordinate.getXCor(), coordinate.getYCor(), techLevel.getTechLevel(),
                 resourceLevel.getResourceLevel());
         for (Planet p : planets) {
             string = string + " " + p.toString();

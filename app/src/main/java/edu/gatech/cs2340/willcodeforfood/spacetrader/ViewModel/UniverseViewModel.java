@@ -80,7 +80,8 @@ public class UniverseViewModel extends AndroidViewModel {
 
     public void buyFuel() { Model.getInstance().buyFuel(); }
 
-    public int getGasCost() { return Model.getInstance().getUniverse().gasPrice(this.getTravelPlanet());}
+    public int getGasCost() { return Model.getInstance().getUniverse()
+            .gasPrice(this.getTravelPlanet());}
 
     /**
      * @return current planet
