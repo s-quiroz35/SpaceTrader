@@ -128,14 +128,33 @@ public class Model {
      */
     public void setCurrentSolarSystem(SolarSystem s) { instance.repo.setSolarSystem(s);}
 
+    /**
+     *
+     * @return fuel capacity
+     */
     public int getFuelCapacity() { return instance.repo.getFuelCapacity(); }
 
+    /**
+     *
+     * @return fuel contents
+     */
     public int getFuelContents() { return instance.repo.getFuelContents(); }
 
+    /**
+     * Uses fuel in the ship
+     * @param cost the fuel used
+     */
     public void useFuel(int cost) { instance.repo.useFuel(cost);}
 
+    /**
+     * Buys more fuel
+     */
     public void buyFuel() { instance.repo.buyFuel();}
 
+    /**
+     *
+     * @return the price of fuel per gallon
+     */
     public int fuelPrice() { return instance.repo.fuelPrice();}
 
 
