@@ -91,7 +91,8 @@ public class UniverseViewModel extends AndroidViewModel {
      * Calculates the gas cost to travel to a planet
      * @return the gas cost
      */
-    public int getGasCost() { return Model.getInstance().getUniverse().gasPrice(this.getTravelPlanet());}
+    public int getGasCost() { return Model.getInstance().getUniverse()
+            .gasPrice(this.getTravelPlanet());}
     /**
      * @return current planet
      */

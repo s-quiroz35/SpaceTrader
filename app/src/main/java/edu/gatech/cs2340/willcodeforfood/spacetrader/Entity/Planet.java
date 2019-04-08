@@ -101,6 +101,7 @@ public class Planet implements Serializable {
     @Override
     public String toString() {
         return String.format("Coordinates: %d,%d \n Resource Level: %d \n Tech Level: %d",
-                coordinate.getXCor(), coordinate.getYCor(), resourceLevel.getResourceLevel(), techLevel.getTechLevel());
+                coordinate.getXCor(), coordinate.getYCor(), resourceLevel.getResourceLevel(),
+                techLevel.getTechLevel());
     }
 }

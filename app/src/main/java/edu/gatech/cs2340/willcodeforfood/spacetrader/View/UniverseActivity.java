@@ -61,7 +61,8 @@ public class UniverseActivity extends AppCompatActivity {
         gasNum.setText(num);
 
         TextView cSolarSystem = findViewById(R.id.current_solar_system);
-        String ssCurrent = "Current Solar System " + viewModel.getCurrentSolarSystem().getSolarSystemName();
+        String ssCurrent = "Current Solar System "
+                + viewModel.getCurrentSolarSystem().getSolarSystemName();
         cSolarSystem.setText(ssCurrent);
 
         //look into layout params for positioning image views, you can use the solar system
