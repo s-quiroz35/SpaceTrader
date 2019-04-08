@@ -2,6 +2,11 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.util.Random;
 
@@ -43,6 +48,39 @@ class Repository {
                 game.getPlayer().getSkills()[1], game.getPlayer().getSkills()[2],
                 game.getPlayer().getSkills()[3]));
         Log.w("Add", game.getUniverse().toString());
+    }
+
+    /**
+     * Saves game data
+     *
+     * @param file file to save data to
+     * @return true if saved correctly, false otherwise
+     */
+    boolean saveGame(File file) {
+        try {
+            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(file));
+            output.writeObject(game);
+            output.close();
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Checks for saved game and loads it if possible
+     *
+     * @param file file with game data
+     * @return true if load successful, false otherwise
+     */
+    boolean loadGame(File file) {
+        try {
+            ObjectInputStream input = new ObjectInputStream(new FileInputStream(file));
+            game = (Game) input.readObject();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**

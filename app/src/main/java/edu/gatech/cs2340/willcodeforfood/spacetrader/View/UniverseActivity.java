@@ -4,12 +4,15 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.List;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
@@ -67,6 +70,26 @@ public class UniverseActivity extends AppCompatActivity {
         //there could be alternatives
 
         // i'm gonna look into this for solar system view because it doesn't apply for solar systems
+    }
+
+    /**
+     * Saves game on button press
+     *
+     * @param view button pressed
+     */
+    public void onSavePressed(View view) {
+        File file = new File(this.getFilesDir(), "save.txt");
+        if (viewModel.saveGame(file)) {
+            Toast toast = Toast.makeText(UniverseActivity.this,
+                    "Save Successful!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        } else {
+            Toast toast = Toast.makeText(UniverseActivity.this,
+                    "Save Failed!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
     public void onCancel(View view) {

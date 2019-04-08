@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,7 +11,7 @@ import java.util.Random;
  * @author Emma Chadwick and Matt Bernet
  * @version 1.1
  */
-public class Coordinate {
+public class Coordinate implements Serializable {
     private int xCor;
     private int yCor;
     private static List<Integer> xCoordinates = new ArrayList<>();

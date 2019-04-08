@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
+import java.io.File;
 import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
@@ -45,6 +46,22 @@ public class Model {
      * @param game new game
      */
     public void addGame(Game game) { instance.repo.addGame(game); }
+
+    /**
+     * Checks for saved game and loads it if possible
+     *
+     * @param file file with game data
+     * @return true if load successful, false otherwise
+     */
+    public boolean loadGame(File file) { return instance.repo.loadGame(file); }
+
+    /**
+     * Saves game data
+     *
+     * @param file file to save data to
+     * @return true if saved correctly, false otherwise
+     */
+    public boolean saveGame(File file) { return instance.repo.saveGame(file); }
 
     /**
      * @return current game

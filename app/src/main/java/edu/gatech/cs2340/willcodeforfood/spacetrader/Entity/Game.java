@@ -1,12 +1,14 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * Represents a game
  *
  * @author Matt Bernet
  * @version 1.0
  */
-public class Game {
+public class Game implements Serializable {
 
     private Player player;
     private Difficulty difficulty;

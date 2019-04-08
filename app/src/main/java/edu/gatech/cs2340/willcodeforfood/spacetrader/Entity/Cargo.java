@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * @author Sam Quiroz and Matt Bernet
  * @version 1.1
  */
-public class Cargo {
+public class Cargo implements Serializable {
 
     private Map<GoodType, Integer> inventory;
     private int capacity;

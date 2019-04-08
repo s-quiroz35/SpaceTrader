@@ -4,6 +4,8 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import java.io.File;
+
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 
@@ -32,4 +34,12 @@ public class ConfigViewModel extends AndroidViewModel {
     public void addGame(Game game) {
         Model.getInstance().addGame(game);
     }
+
+    /**
+     * Checks for saved game and loads it if possible
+     *
+     * @param file file with game data
+     * @return true if load successful, false otherwise
+     */
+    public boolean loadGame(File file) { return Model.getInstance().loadGame(file); }
 }

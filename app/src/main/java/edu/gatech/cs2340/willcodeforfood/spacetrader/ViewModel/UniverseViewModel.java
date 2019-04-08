@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import java.io.File;
 import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
@@ -34,6 +35,14 @@ public class UniverseViewModel extends AndroidViewModel {
     public UniverseViewModel(@NonNull Application application) {
         super(application);
     }
+
+    /**
+     * Saves game data
+     *
+     * @param file file to save data to
+     * @return true if saved correctly, false otherwise
+     */
+    public boolean saveGame(File file) { return Model.getInstance().saveGame(file); }
 
     /**
      * Checks to see if random event occurred on travel
