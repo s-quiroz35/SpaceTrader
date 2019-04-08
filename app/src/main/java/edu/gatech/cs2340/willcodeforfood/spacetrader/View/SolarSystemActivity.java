@@ -54,6 +54,10 @@ public class SolarSystemActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Returns to previous activity
+     * @param view the button
+     */
     public void onCancel(View view) {
         onBackPressed();
     }

@@ -162,6 +162,7 @@ public class Model {
      * Buys item
      *
      * @param good bought item
+     * @return if the item was bought
      */
     public boolean buyItem(GoodType good) { return instance.repo.buyItem(good); }
 
@@ -169,6 +170,7 @@ public class Model {
      * Sells item
      *
      * @param good sold item
+     * @return if the item was sold
      */
     public boolean sellItem(GoodType good) { return instance.repo.sellItem(good); }
 

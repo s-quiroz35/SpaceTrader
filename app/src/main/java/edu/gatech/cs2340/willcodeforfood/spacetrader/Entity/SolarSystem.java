@@ -31,6 +31,8 @@ public class SolarSystem implements Serializable {
 
     /**
      * Initializes a random solar system
+     *
+     * @param n the name of the solar system
      */
     public SolarSystem(String n) {
         Random rn = new Random();

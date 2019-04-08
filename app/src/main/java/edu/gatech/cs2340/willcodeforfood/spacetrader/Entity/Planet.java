@@ -22,6 +22,10 @@ public class Planet implements Serializable {
 
     /**
      * Initializes a random planet
+     *
+     * @param n name of the planet
+     * @param r tech level of the planet
+     * @param t resource level of the planet
      */
     public Planet(String n, TechLevel t, ResourceLevel r) {
         name = n;
