@@ -64,6 +64,13 @@ public class Model {
     public boolean saveGame(File file) { return instance.repo.saveGame(file); }
 
     /**
+     * Adjusts market prices when traveling to planet
+     *
+     * @param planet destination planet
+     */
+    public void setMarketPrices(Planet planet) { instance.repo.setMarketPrices(planet); }
+
+    /**
      * @return current game
      */
     public Game getGame() { return instance.repo.getGame(); }

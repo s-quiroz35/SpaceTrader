@@ -67,6 +67,7 @@ public class TravelPopUp extends AppCompatActivity {
         if (fuel - fuelCost >= 0) {
             viewModel.useFuel(fuelCost);
             viewModel.setCurrentPlanet(travelPlanet);
+            viewModel.setMarketPrices(travelPlanet);
             String event = viewModel.checkForEvent();
             if (event.equals("pirate")) {
                 startActivity(new Intent(TravelPopUp.this, PirateActivity.class));

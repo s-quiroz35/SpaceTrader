@@ -84,6 +84,17 @@ class Repository {
     }
 
     /**
+     * Adjusts market prices when traveling to planet
+     *
+     * @param planet destination planet
+     */
+    void setMarketPrices(Planet planet) {
+        for (GoodType good: planet.getMarket().keySet()) {
+            good.setPrice(planet.getTechLevel(), planet.getResourceLevel());
+        }
+    }
+
+    /**
      * @return current game
      */
     Game getGame() { return game; }

@@ -54,6 +54,13 @@ public class UniverseViewModel extends AndroidViewModel {
     }
 
     /**
+     * Adjusts market prices when traveling to planet
+     *
+     * @param planet destination planet
+     */
+    public void setMarketPrices(Planet planet) { Model.getInstance().setMarketPrices(planet); }
+
+    /**
      * @return current player
      */
     public Player getPlayer() { return player; }
