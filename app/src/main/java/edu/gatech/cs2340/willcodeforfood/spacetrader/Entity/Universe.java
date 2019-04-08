@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.Random;
  * @author Matt Bernet and Emma Chadwick
  * @version 1.2
  */
-public class Universe {
+public class Universe implements Serializable {
 
     private List<SolarSystem> solarSystems;
 

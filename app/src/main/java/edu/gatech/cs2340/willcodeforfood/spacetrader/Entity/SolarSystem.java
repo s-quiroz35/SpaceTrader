@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @author Matt Bernet and Emma Chadwick
  * @version 1.3
  */
-public class SolarSystem {
+public class SolarSystem implements Serializable {
 
     private String name;
     private Coordinate coordinate;

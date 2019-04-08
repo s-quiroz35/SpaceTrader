@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
@@ -8,7 +10,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  * @author Matt Bernet and Emma Chadwick
  * @version 1.3
  */
-public class Ship {
+public class Ship implements Serializable {
 
     private ShipType type;
     private String color;

@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -10,7 +11,7 @@ import java.util.Random;
  * @author Matt Bernet and Emma Chadwick
  * @version 1.3
  */
-public class Planet {
+public class Planet implements Serializable {
 
     //Note: Planets have same tech level and resource level as parent solar system
     private String name;
