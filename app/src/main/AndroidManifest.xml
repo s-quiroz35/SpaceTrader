@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.ConfigActivity"></activity>
-        <activity android:name=".View.UniverseActivity"></activity>
-        <activity android:name=".View.PlanetActivity"></activity>
-        <activity android:name=".View.MarketActivity"></activity>
-        <activity android:name=".View.SolarSystemActivity"></activity>
-        <activity android:name=".View.MarketBuyActivity"></activity>
-        <activity android:name=".View.MarketSellActivity"></activity>
-        <activity android:name=".View.TravelPopUp"></activity>
-        <activity android:name=".View.PirateActivity"></activity>
+        <activity android:name=".View.ConfigActivity"/>
+        <activity android:name=".View.UniverseActivity"/>
+        <activity android:name=".View.PlanetActivity"/>
+        <activity android:name=".View.MarketActivity"/>
+        <activity android:name=".View.SolarSystemActivity"/>
+        <activity android:name=".View.MarketBuyActivity"/>
+        <activity android:name=".View.MarketSellActivity"/>
+        <activity android:name=".View.TravelPopUp"/>
+        <activity android:name=".View.PirateActivity"/>
         <activity android:name=".View.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
