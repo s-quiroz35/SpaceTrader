@@ -15,8 +15,6 @@ public class Player implements Serializable {
     private int credits;
     private Ship ship;
     private int[] skills;
-    private int fuel;
-    private int fuelCapacity;
 
     /**
      * Initializes a player
