@@ -14,6 +14,7 @@ public class Ship implements Serializable {
 
     private ShipType type;
     private String color;
+    private int fuelCapacity;
     private int fuel;
     private Cargo cargo;
 
@@ -26,7 +27,8 @@ public class Ship implements Serializable {
     public Ship(ShipType type, String color) {
         this.type = type;
         this.color = color;
-        fuel = type.getFuelCapacity();
+        fuelCapacity = type.getFuelCapacity();
+        fuel = fuelCapacity;
         cargo = new Cargo();
     }
 
@@ -50,7 +52,19 @@ public class Ship implements Serializable {
     /**
      * @return ship fuel capacity
      */
-    public int getFuelCapacity() { return fuel; }
+    public int getFuelCapacity() { return fuelCapacity; }
+
+    /**
+     *
+     * @return ship fuel contents
+     */
+    public int getFuel() { return fuel;}
+
+    /**
+     * Sets the fuel contents
+     * @param fuel new fuel
+     */
+    public void setFuel(int fuel) {this.fuel = fuel;}
 
     /**
      * @return ship cargo

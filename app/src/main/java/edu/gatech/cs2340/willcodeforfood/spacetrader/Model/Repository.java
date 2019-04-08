@@ -152,9 +152,9 @@ class Repository {
      */
     void setSolarSystem(SolarSystem s) { game.getUniverse().setCurrentSolarSystem(s);}
 
-    int getFuelCapacity() { return game.getPlayer().getFuelCapacity(); }
+    int getFuelCapacity() { return game.getPlayer().getShip().getFuelCapacity(); }
 
-    int getFuelContents() { return game.getPlayer().getFuel(); }
+    int getFuelContents() { return game.getPlayer().getShip().getFuel(); }
 
     /**
      * Uses a certain amount of fuel
@@ -162,8 +162,8 @@ class Repository {
      * @param spentGas the amount of gas being spent
      */
     void useFuel(int spentGas) {
-        int fuel = game.getPlayer().getFuel() - spentGas;
-        game.getPlayer().setFuel(fuel);
+        int fuel = game.getPlayer().getShip().getFuel() - spentGas;
+        game.getPlayer().getShip().setFuel(fuel);
     }
 
     /**
@@ -184,7 +184,7 @@ class Repository {
     void buyFuel() {
         Planet currentPlanet = game.getUniverse().getCurrentPlanet();
         int techLevel = currentPlanet.getTechLevel().getTechLevel();
-        int fuel = game.getPlayer().getFuel();
+        int fuel = game.getPlayer().getShip().getFuel();
 
         int pricePerGallon = (int) ((.6 * techLevel) + 2);
         int fuelCapacity = this.getFuelCapacity();
@@ -193,14 +193,14 @@ class Repository {
         if ((fuel + 25) <= fuelCapacity) {
             afterCredits = credits - (25 * pricePerGallon);
             if (afterCredits >= 0) {
-                game.getPlayer().setFuel(fuel + 25);
+                game.getPlayer().getShip().setFuel(fuel + 25);
                 game.getPlayer().setCredits(credits - (25 * pricePerGallon));
             }
         } else {
             int remainingFuel = fuelCapacity - fuel;
             afterCredits = credits - (remainingFuel * pricePerGallon);
             if (afterCredits >= 0) {
-                game.getPlayer().setFuel(fuel + remainingFuel);
+                game.getPlayer().getShip().setFuel(fuel + remainingFuel);
                 game.getPlayer().setCredits(afterCredits);
             }
         }

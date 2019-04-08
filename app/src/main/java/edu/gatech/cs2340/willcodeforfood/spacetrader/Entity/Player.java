@@ -34,8 +34,6 @@ public class Player implements Serializable {
         this.skillPoints = skillPoints;
         credits = 1000;
         ship = new Ship(ShipType.GNAT, "black");
-        fuelCapacity = ship.getFuelCapacity();
-        fuel = fuelCapacity;
         skills = new int[]{pilot, fighter, trader, engineer};
     }
 
@@ -91,13 +89,7 @@ public class Player implements Serializable {
      *
      * @param ship new ship
      */
-    public void setShip(Ship ship) {
-        this.ship = ship;
-        this.fuelCapacity = ship.getFuelCapacity();
-        if (fuelCapacity < fuel) {
-            fuel = fuelCapacity;
-        }
-    }
+    public void setShip(Ship ship) { this.ship = ship; }
 
     /**
      * @return player skills
@@ -115,22 +107,4 @@ public class Player implements Serializable {
      * @return ship cargo
      */
     public Cargo getCargo() { return ship.getCargo(); }
-
-    /**
-     *
-     * @return fuel contents
-     */
-    public int getFuel() {return fuel;}
-
-    /**
-     *
-     * @return fuel capacity
-     */
-    public int getFuelCapacity() {return fuelCapacity;}
-
-    /**
-     *
-     * @param fuel new fuel contents
-     */
-    public void setFuel(int fuel) {this.fuel = fuel;}
 }
