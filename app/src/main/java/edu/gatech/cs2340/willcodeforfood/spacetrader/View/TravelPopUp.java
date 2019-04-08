@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;

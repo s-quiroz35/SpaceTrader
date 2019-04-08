@@ -2,7 +2,6 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 import java.io.Serializable;
 
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
  * Represents a Ship

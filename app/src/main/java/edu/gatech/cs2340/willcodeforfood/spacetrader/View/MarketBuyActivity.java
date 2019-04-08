@@ -12,7 +12,6 @@ import android.widget.Toast;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
 /**
  * Handles market buy activity

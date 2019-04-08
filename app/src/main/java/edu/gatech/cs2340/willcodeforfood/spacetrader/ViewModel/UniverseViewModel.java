@@ -5,10 +5,8 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import java.io.File;
-import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
