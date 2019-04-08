@@ -100,7 +100,7 @@ public class UniverseViewModel extends AndroidViewModel {
     public Planet getCurrentPlanet() { return Model.getInstance().getCurrentPlanet(); }
     /**
      *
-     * @return current solarsystem
+     * @return current solar system
      */
     public SolarSystem getCurrentSolarSystem() { return Model.getInstance().getCurrentSolarSystem(); }
     /**
