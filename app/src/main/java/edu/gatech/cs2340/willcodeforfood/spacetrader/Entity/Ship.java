@@ -50,52 +50,8 @@ public class Ship implements Serializable {
     /**
      * @return ship fuel capacity
      */
-    public int getFuelCapacity() { return type.getFuelCapacity(); }
+    public int getFuelCapacity() { return fuel; }
 
-    /**
-     * @return ship fuel
-     */
-    public int getFuel() { return fuel; }
-
-    /**
-     * Sets ship fuel
-     *
-     * @param fuel new fuel amount
-     */
-    public void setFuel(int fuel) { this.fuel = fuel; }
-
-    public void spendFuel(int fuelCost) { fuel = fuel - fuelCost;}
-
-    public int fuelPrice() {
-        Planet currentPlanet = Model.getInstance().getCurrentPlanet();
-        int techLevel = currentPlanet.getTechLevel().getTechLevel();
-
-        return (int) (.6 * (techLevel + 2)) * 25;
-    }
-
-    public void buyFuel() {
-        Planet currentPlanet = Model.getInstance().getCurrentPlanet();
-        int techLevel = currentPlanet.getTechLevel().getTechLevel();
-
-        int pricePerGallon = (int) ((.6 * techLevel) + 2);
-        int fuelCapacity = this.getFuelCapacity();
-        int credits = Model.getInstance().getPlayer().getCredits();
-        int afterCredits = 0;
-        if ((fuel + 25) <= fuelCapacity) {
-            afterCredits = credits - (25 * pricePerGallon);
-            if (afterCredits >= 0) {
-                fuel += 25;
-                Model.getInstance().getPlayer().setCredits(credits - (25 * pricePerGallon));
-            }
-        } else {
-            int remainingFuel = fuelCapacity - fuel;
-            afterCredits = credits - (remainingFuel * pricePerGallon);
-            if (afterCredits >= 0) {
-                fuel += remainingFuel;
-                Model.getInstance().getPlayer().setCredits(afterCredits);
-            }
-        }
-    }
     /**
      * @return ship cargo
      */

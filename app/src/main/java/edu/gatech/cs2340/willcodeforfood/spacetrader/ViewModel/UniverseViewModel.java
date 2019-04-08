@@ -23,10 +23,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class UniverseViewModel extends AndroidViewModel {
 
-    private Player player = Model.getInstance().getPlayer();
-    private Planet currentPlanet = Model.getInstance().getCurrentPlanet();
-    private SolarSystem currentSolarSystem = Model.getInstance().getCurrentSolarSystem();
-
     /**
      * Initializes the view model
      *
@@ -43,7 +39,6 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return true if saved correctly, false otherwise
      */
     public boolean saveGame(File file) { return Model.getInstance().saveGame(file); }
-
     /**
      * Checks to see if random event occurred on travel
      *
@@ -52,58 +47,88 @@ public class UniverseViewModel extends AndroidViewModel {
     public String checkForEvent() {
         return Model.getInstance().checkForEvent();
     }
-
     /**
      * Adjusts market prices when traveling to planet
      *
      * @param planet destination planet
      */
     public void setMarketPrices(Planet planet) { Model.getInstance().setMarketPrices(planet); }
-
     /**
      * @return current player
      */
-    public Player getPlayer() { return player; }
-
+    public Player getPlayer() { return Model.getInstance().getPlayer(); }
     /**
      * @return current universe
      */
     public Universe getUniverse() { return Model.getInstance().getUniverse(); }
-
+    /**
+     *
+     * @return fuel capacity
+     */
     public int getFuelCapacity() { return Model.getInstance().getFuelCapacity(); }
-
+    /**
+     *
+     * @return fuel contents
+     */
     public int getFuelContents() { return Model.getInstance().getFuelContents(); }
 
+    /**
+     * Uses fuel
+     * @param cost the fuel used
+     */
     public void useFuel(int cost) { Model.getInstance().useFuel(cost);}
 
+    /**
+     * Gets the fuel price per gallon
+     * @return the fuel amount
+     */
     public int getFuelPrice() { return Model.getInstance().fuelPrice(); }
 
+    /**
+     * Buys fuel
+     */
     public void buyFuel() { Model.getInstance().buyFuel(); }
 
+    /**
+     * Calculates the gas cost to travel to a planet
+     * @return the gas cost
+     */
     public int getGasCost() { return Model.getInstance().getUniverse().gasPrice(this.getTravelPlanet());}
-
     /**
      * @return current planet
      */
-    public Planet getCurrentPlanet() { return currentPlanet; }
-
-    public SolarSystem getCurrentSolarSystem() { return currentSolarSystem; }
-
+    public Planet getCurrentPlanet() { return Model.getInstance().getCurrentPlanet(); }
+    /**
+     *
+     * @return current solarsystem
+     */
+    public SolarSystem getCurrentSolarSystem() { return Model.getInstance().getCurrentSolarSystem(); }
+    /**
+     *
+     * @return the current selected planet
+     */
     public Planet getTravelPlanet() { return Model.getInstance().getTravelPlanet(); }
-
+    /**
+     *
+     * @param p the new current planet
+     */
     public void setCurrentPlanet(Planet p) {
-        currentPlanet = p;
-        Model.getInstance().setCurrentPlanet(currentPlanet);
+        Model.getInstance().setCurrentPlanet(p);
     }
+    /**
+     *
+     * @param p the new travel planet
+     */
     public void setTravelPlanet(Planet p) {
         Model.getInstance().setTravelPlanet(p);
     }
-
+    /**
+     *
+     * @param s the new current solar system
+     */
     public void setCurrentSolarSystem(SolarSystem s) {
-        currentSolarSystem = s;
-        Model.getInstance().setCurrentSolarSystem(currentSolarSystem);
+        Model.getInstance().setCurrentSolarSystem(s);
     }
-
     /**
      * @return player cargo
      */

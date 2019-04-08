@@ -152,15 +152,59 @@ class Repository {
      */
     void setSolarSystem(SolarSystem s) { game.getUniverse().setCurrentSolarSystem(s);}
 
-    int getFuelCapacity() { return game.getPlayer().getShip().getFuelCapacity(); }
+    int getFuelCapacity() { return game.getPlayer().getFuelCapacity(); }
 
-    int getFuelContents() { return game.getPlayer().getShip().getFuel(); }
+    int getFuelContents() { return game.getPlayer().getFuel(); }
 
-    void useFuel(int spentGas) { game.getPlayer().getShip().spendFuel(spentGas); }
+    /**
+     * Uses a certain amount of fuel
+     *
+     * @param spentGas the amount of gas being spent
+     */
+    void useFuel(int spentGas) {
+        int fuel = game.getPlayer().getFuel() - spentGas;
+        game.getPlayer().setFuel(fuel);
+    }
 
-    int fuelPrice() { return game.getPlayer().getShip().fuelPrice(); }
+    /**
+     * calculates the price of the fuel
+     *
+     * @return the fuel price per gallon
+     */
+    int fuelPrice() {
+        Planet currentPlanet = game.getUniverse().getCurrentPlanet();
+        int techLevel = currentPlanet.getTechLevel().getTechLevel();
 
-    void buyFuel() { game.getPlayer().getShip().buyFuel(); }
+        return (int) (1.6 * (techLevel + 2)) * 25;
+    }
+
+    /**
+     * Buys fuel
+     */
+    void buyFuel() {
+        Planet currentPlanet = game.getUniverse().getCurrentPlanet();
+        int techLevel = currentPlanet.getTechLevel().getTechLevel();
+        int fuel = game.getPlayer().getFuel();
+
+        int pricePerGallon = (int) ((.6 * techLevel) + 2);
+        int fuelCapacity = this.getFuelCapacity();
+        int credits = game.getPlayer().getCredits();
+        int afterCredits;
+        if ((fuel + 25) <= fuelCapacity) {
+            afterCredits = credits - (25 * pricePerGallon);
+            if (afterCredits >= 0) {
+                game.getPlayer().setFuel(fuel + 25);
+                game.getPlayer().setCredits(credits - (25 * pricePerGallon));
+            }
+        } else {
+            int remainingFuel = fuelCapacity - fuel;
+            afterCredits = credits - (remainingFuel * pricePerGallon);
+            if (afterCredits >= 0) {
+                game.getPlayer().setFuel(fuel + remainingFuel);
+                game.getPlayer().setCredits(afterCredits);
+            }
+        }
+    }
 
     /**
      * Buys item
