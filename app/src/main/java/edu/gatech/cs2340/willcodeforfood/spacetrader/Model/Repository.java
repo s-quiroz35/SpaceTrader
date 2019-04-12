@@ -95,11 +95,6 @@ class Repository {
     }
 
     /**
-     * @return current game
-     */
-    Game getGame() { return game; }
-
-    /**
      * @return current player
      */
     Player getPlayer() { return game.getPlayer(); }

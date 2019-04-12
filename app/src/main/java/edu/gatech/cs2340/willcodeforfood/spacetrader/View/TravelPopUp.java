@@ -23,9 +23,9 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class TravelPopUp extends AppCompatActivity {
 
-    Planet travelPlanet;
-    UniverseViewModel viewModel;
-    int fuelCost;
+    private Planet travelPlanet;
+    private UniverseViewModel viewModel;
+    private int fuelCost;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {

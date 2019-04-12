@@ -4,13 +4,13 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * Ship types
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public enum ShipType {
     GNAT("Gnat", 1000);
 
-    private String type;
-    private int fuelCapacity;
+    private final String type;
+    private final int fuelCapacity;
 
     /**
      * Constructor for ShipType enumeration
@@ -21,11 +21,6 @@ public enum ShipType {
         this.type = type;
         this.fuelCapacity = fuelCapacity;
     }
-
-    /**
-     * @return ship type
-     */
-    public String getType() { return type; }
 
     /**
      * @return ship fuel capacity

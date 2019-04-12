@@ -10,14 +10,11 @@ import java.util.Random;
  * Represents a Universe
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.2
+ * @version 1.3
  */
 public class Universe implements Serializable {
 
-    private List<SolarSystem> solarSystems;
-
-    private final int maxX = 150;
-    private final int maxY = 100;
+    private final List<SolarSystem> solarSystems;
 
     private SolarSystem currentSolarSystem;
     private Planet currentPlanet;
@@ -58,20 +55,9 @@ public class Universe implements Serializable {
      */
     public List<SolarSystem> getSolarSystems() { return solarSystems; }
 
-    /**
-     * @return max length
-     */
-    public int getMaxLength() { return maxX; }
-
-    /**
-     * @return max width
-     */
-    public int getMaxWidth() {return maxY; }
-
     @Override
     public String toString() {
-        String string = "Universe Created: Width: " + maxX + ", Height: " + maxY
-                + ", Contains the solar systems: " + "\n";
+        String string = "Universe Created: Contains the solar systems: " + "\n";
         for (SolarSystem s : solarSystems) {
             string = string + s.toString() + "\n";
         }

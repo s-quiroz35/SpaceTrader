@@ -22,9 +22,9 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
  */
 public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.SellViewHolder> {
 
-    private Map<GoodType, Integer> cargo;
-    private List<GoodType> keys;
-    private SellClickListener listener;
+    private final Map<GoodType, Integer> cargo;
+    private final List<GoodType> keys;
+    private final SellClickListener listener;
 
     /**
      * Initializes Market Sell Adapter
@@ -62,10 +62,10 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
      * Holder for single cargo item in list
      */
     class SellViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView itemName;
-        private TextView itemPrice;
-        private TextView itemAmount;
-        private TextView sellText;
+        private final TextView itemName;
+        private final TextView itemPrice;
+        private final TextView itemAmount;
+        private final TextView sellText;
 
         SellViewHolder(@NonNull View itemView) {
             super(itemView);

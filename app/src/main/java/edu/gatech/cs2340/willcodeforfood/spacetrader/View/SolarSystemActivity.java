@@ -23,9 +23,9 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class SolarSystemActivity extends AppCompatActivity {
 
-    SolarSystem solarSystem;
-    List<Planet> planets;
-    UniverseViewModel viewModel;
+    private SolarSystem solarSystem;
+    private List<Planet> planets;
+    private UniverseViewModel viewModel;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {

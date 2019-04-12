@@ -15,14 +15,14 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * Handles business logic
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.6
+ * @version 1.7
  */
 public class Model {
 
-    private Repository repo;
+    private final Repository repo;
 
     //creates universal access
-    private static Model instance = new Model();
+    private final static Model instance = new Model();
 
     /**
      * @return model instance
@@ -69,11 +69,6 @@ public class Model {
      * @param planet destination planet
      */
     public void setMarketPrices(Planet planet) { instance.repo.setMarketPrices(planet); }
-
-    /**
-     * @return current game
-     */
-    public Game getGame() { return instance.repo.getGame(); }
 
     /**
      * @return current player

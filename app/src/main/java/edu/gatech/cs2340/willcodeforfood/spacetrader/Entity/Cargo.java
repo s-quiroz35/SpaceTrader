@@ -8,30 +8,21 @@ import java.util.Map;
  * Represents a Cargo for ship
  *
  * @author Sam Quiroz and Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class Cargo implements Serializable {
 
-    private Map<GoodType, Integer> inventory;
-    private int capacity;
+    private final Map<GoodType, Integer> inventory;
+    private final int capacity;
     private int contents;
 
     private static final int DEFAULT_CAPACITY = 100;
 
     /**
-     * Initializes cargo with a capacity of 1000
+     * Initializes cargo with a capacity of 100
      */
     public Cargo() {
-        this(DEFAULT_CAPACITY);
-    }
-
-    /**
-     * Initializes cargo with custom capacity
-     *
-     * @param capacity how many goods can fit
-     */
-    public Cargo(int capacity) {
-        this.capacity = capacity;
+        this.capacity = DEFAULT_CAPACITY;
         this.contents = 0;
         inventory = new HashMap<>();
     }

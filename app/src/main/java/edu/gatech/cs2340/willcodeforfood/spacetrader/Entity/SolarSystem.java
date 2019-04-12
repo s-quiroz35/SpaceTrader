@@ -10,15 +10,15 @@ import java.util.ArrayList;
  * Represents a Solar System
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class SolarSystem implements Serializable {
 
-    private String name;
-    private Coordinate coordinate;
-    private TechLevel techLevel;
-    private ResourceLevel resourceLevel;
-    private List<Planet> planets;
+    private final String name;
+    private final Coordinate coordinate;
+    private final TechLevel techLevel;
+    private final ResourceLevel resourceLevel;
+    private final List<Planet> planets;
 
     private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar",
             "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades", "Hamlet","Og",
@@ -58,16 +58,6 @@ public class SolarSystem implements Serializable {
      * @return solar system name
      */
     public String getSolarSystemName() { return name; }
-
-    /**
-     * @return solar system tech level
-     */
-    public TechLevel getTechLevel() { return techLevel; }
-
-    /**
-     * @return solar system resource level
-     */
-    public ResourceLevel getResourceLevel() { return resourceLevel; }
 
     /**
      * @return solar system planets

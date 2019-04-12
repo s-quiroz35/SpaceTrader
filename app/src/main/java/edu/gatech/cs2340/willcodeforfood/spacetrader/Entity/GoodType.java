@@ -6,7 +6,7 @@ import java.util.Random;
  * Type of Good
  *
  * @author Sam Quiroz and Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public enum GoodType {
     WATER("Water", 0, 0, 0, 2, 30, 3, 4, ResourceLevel.LOTSOFWATER, ResourceLevel.DESERT),
@@ -20,16 +20,16 @@ public enum GoodType {
     NARCOTICS("Narcotics", 0, 5, 0 ,5, 3500, -125, 150, ResourceLevel.WEIRDMUSHROOMS),
     ROBOTS("Robots", 0, 6, 4, 7, 5000, -150, 100);
 
-    private String name;
+    private final String name;
     private int planetPrice;
-    private int minTechToProduce;
-    private int minTechToUse;
-    private int techMostProduce;
-    private int basePrice;
-    private int priceIncPerLevel;
-    private int variance;
-    private ResourceLevel priceDecEvent;
-    private ResourceLevel priceIncEvent;
+    private final int minTechToProduce;
+    private final int minTechToUse;
+    private final int techMostProduce;
+    private final int basePrice;
+    private final int priceIncPerLevel;
+    private final int variance;
+    private final ResourceLevel priceDecEvent;
+    private final ResourceLevel priceIncEvent;
 
     /**
      * Constructor for no price increase or decrease events
@@ -145,44 +145,4 @@ public enum GoodType {
      * @return name of good
      */
     public String getName() { return name; }
-
-    /**
-     * @return min tech level to produce resource
-     */
-    public int getMinTechToProduce() { return minTechToProduce; }
-
-    /**
-     * @return min tech level to use resource
-     */
-    public int getMinTechToUse() { return minTechToUse; }
-
-    /**
-     * @return tech level that produces most of resource
-     */
-    public int getTechMostProduce() { return techMostProduce; }
-
-    /**
-     * @return base price of resource
-     */
-    public int getBasePrice() { return basePrice; }
-
-    /**
-     * @return price increase per tech level
-     */
-    public int getPriceIncPerLevel() { return priceIncPerLevel; }
-
-    /**
-     * @return max percentage price can vary above or below base
-     */
-    public int getVariance() { return variance; }
-
-    /**
-     * @return when present, price of resource is unusually low
-     */
-    public ResourceLevel getPriceDecEvent() { return priceDecEvent; }
-
-    /**
-     * @return when present, price of resource is unusually expensive
-     */
-    public ResourceLevel getPriceIncEvent() { return priceIncEvent; }
 }

@@ -1,10 +1,10 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 /**
- * Solar system resource level
+ * Resource level
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public enum ResourceLevel {
     NOSPECIALRESOURCES(0),
@@ -21,7 +21,7 @@ public enum ResourceLevel {
     ARTISTIC(11),
     WARLIKE(12);
 
-    private int level;
+    private final int level;
 
     /**
      * Constructor for ResourceLevel enumeration

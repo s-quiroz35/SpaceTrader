@@ -9,13 +9,13 @@ import java.util.Random;
  * Coordinates in the system
  *
  * @author Emma Chadwick and Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class Coordinate implements Serializable {
-    private int xCor;
-    private int yCor;
-    private static List<Integer> xCoordinates = new ArrayList<>();
-    private static List<Integer> yCoordinates = new ArrayList<>();
+    private final int xCor;
+    private final int yCor;
+    private final static List<Integer> xCoordinates = new ArrayList<>();
+    private final static List<Integer> yCoordinates = new ArrayList<>();
 
     /**
      * Creates a new unique coordinate

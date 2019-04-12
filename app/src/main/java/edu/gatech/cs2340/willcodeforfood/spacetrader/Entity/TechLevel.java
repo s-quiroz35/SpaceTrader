@@ -1,10 +1,10 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 /**
- * Solar system tech level
+ * Tech level
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public enum TechLevel {
     PREAGRICULTURE(0),
@@ -16,7 +16,7 @@ public enum TechLevel {
     POSTINDUSTRIAL(6),
     HITECH(7);
 
-    private int level;
+    private final int level;
 
     /**
      * Constructor for TechLevel enumeration

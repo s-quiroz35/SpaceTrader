@@ -9,16 +9,16 @@ import java.util.Random;
  * Represents a Planet
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class Planet implements Serializable {
 
     //Note: Planets have same tech level and resource level as parent solar system
-    private String name;
-    private TechLevel techLevel;
-    private ResourceLevel resourceLevel;
-    private Map<GoodType, Integer> market;
-    private Coordinate coordinate;
+    private final String name;
+    private final TechLevel techLevel;
+    private final ResourceLevel resourceLevel;
+    private final Map<GoodType, Integer> market;
+    private final Coordinate coordinate;
 
     /**
      * Initializes a random planet
