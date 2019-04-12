@@ -22,7 +22,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
  * Handles Player Config Activity
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class ConfigActivity extends AppCompatActivity {
 
@@ -76,7 +76,7 @@ public class ConfigActivity extends AppCompatActivity {
             Toast.makeText(this, "Must use all skill points",
                     Toast.LENGTH_SHORT).show();
         } else {
-            if (name.length() != 0 && !name.getText().toString().equals("Enter name")) {
+            if ((name.length() != 0) && (!"Enter name".equals(name.getText().toString()))) {
                 player.setName(name.getText().toString());
             } else {
                 player.setName("Guardian");
