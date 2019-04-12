@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Game implements Serializable {
 
     private final Player player;
-    private Difficulty difficulty;
+    private final Difficulty difficulty;
     private final Universe universe;
 
     /**
@@ -36,13 +36,6 @@ public class Game implements Serializable {
      * @return difficulty of this game
      */
     public Difficulty getDifficulty() { return difficulty; }
-
-    /**
-     * Change game difficulty
-     *
-     * @param diff new difficulty
-     */
-    public void setDifficulty(Difficulty diff) { this.difficulty = diff; }
 
     /**
      * @return universe of this game

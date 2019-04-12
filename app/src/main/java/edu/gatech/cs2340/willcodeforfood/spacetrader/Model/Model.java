@@ -71,11 +71,6 @@ public class Model {
     public void setMarketPrices(Planet planet) { instance.repo.setMarketPrices(planet); }
 
     /**
-     * @return current game
-     */
-    public Game getGame() { return instance.repo.getGame(); }
-
-    /**
      * @return current player
      */
     public Player getPlayer() { return instance.repo.getPlayer(); }

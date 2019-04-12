@@ -37,8 +37,6 @@ public class ConfigActivity extends AppCompatActivity {
     private TextView engineerCount;
     private TextView pointsCount;
 
-    private boolean editing;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

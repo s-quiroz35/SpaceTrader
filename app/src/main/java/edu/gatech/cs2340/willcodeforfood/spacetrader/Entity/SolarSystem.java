@@ -60,16 +60,6 @@ public class SolarSystem implements Serializable {
     public String getSolarSystemName() { return name; }
 
     /**
-     * @return solar system tech level
-     */
-    public TechLevel getTechLevel() { return techLevel; }
-
-    /**
-     * @return solar system resource level
-     */
-    public ResourceLevel getResourceLevel() { return resourceLevel; }
-
-    /**
      * @return solar system planets
      */
     public List<Planet> getPlanets() { return planets; }

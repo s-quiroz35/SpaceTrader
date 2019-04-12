@@ -145,44 +145,4 @@ public enum GoodType {
      * @return name of good
      */
     public String getName() { return name; }
-
-    /**
-     * @return min tech level to produce resource
-     */
-    public int getMinTechToProduce() { return minTechToProduce; }
-
-    /**
-     * @return min tech level to use resource
-     */
-    public int getMinTechToUse() { return minTechToUse; }
-
-    /**
-     * @return tech level that produces most of resource
-     */
-    public int getTechMostProduce() { return techMostProduce; }
-
-    /**
-     * @return base price of resource
-     */
-    public int getBasePrice() { return basePrice; }
-
-    /**
-     * @return price increase per tech level
-     */
-    public int getPriceIncPerLevel() { return priceIncPerLevel; }
-
-    /**
-     * @return max percentage price can vary above or below base
-     */
-    public int getVariance() { return variance; }
-
-    /**
-     * @return when present, price of resource is unusually low
-     */
-    public ResourceLevel getPriceDecEvent() { return priceDecEvent; }
-
-    /**
-     * @return when present, price of resource is unusually expensive
-     */
-    public ResourceLevel getPriceIncEvent() { return priceIncEvent; }
 }

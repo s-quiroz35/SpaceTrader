@@ -23,11 +23,6 @@ public enum ShipType {
     }
 
     /**
-     * @return ship type
-     */
-    public String getType() { return type; }
-
-    /**
      * @return ship fuel capacity
      */
     public int getFuelCapacity() { return fuelCapacity; }

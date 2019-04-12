@@ -129,8 +129,4 @@ public class UniverseViewModel extends AndroidViewModel {
     public void setCurrentSolarSystem(SolarSystem s) {
         Model.getInstance().setCurrentSolarSystem(s);
     }
-    /**
-     * @return player cargo
-     */
-    public Cargo getCargo() { return Model.getInstance().getCargo(); }
 }

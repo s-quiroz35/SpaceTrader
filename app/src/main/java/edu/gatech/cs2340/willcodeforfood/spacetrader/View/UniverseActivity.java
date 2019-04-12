@@ -31,22 +31,10 @@ public class UniverseActivity extends AppCompatActivity {
     private Universe universe;
     private List<SolarSystem> solarSystems;
 
-    private ImageView solarSystem1;
-    private ImageView solarSystem2;
-    private ImageView solarSystem3;
-    private ImageView solarSystem4;
-    private ImageView solarSystem5;
-
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_universe);
-
-        solarSystem1 = findViewById(R.id.solar_system_1);
-        solarSystem2 = findViewById(R.id.solar_system_2);
-        solarSystem3 = findViewById(R.id.solar_system_3);
-        solarSystem4 = findViewById(R.id.solar_system_4);
-        solarSystem5 = findViewById(R.id.solar_system_5);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
         universe = viewModel.getUniverse();
