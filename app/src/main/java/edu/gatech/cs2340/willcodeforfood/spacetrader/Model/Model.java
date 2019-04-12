@@ -15,14 +15,14 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * Handles business logic
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.7
+ * @version 1.8
  */
 public class Model {
 
     private final Repository repo;
 
     //creates universal access
-    private final static Model instance = new Model();
+    private static final Model instance = new Model();
 
     /**
      * @return model instance

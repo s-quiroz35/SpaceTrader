@@ -22,18 +22,11 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * Represents data abstraction
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.5
+ * @version 1.6
  */
 class Repository {
 
     private Game game;
-
-    /**
-     * Initializes repo
-     */
-    Repository() {
-        //nothing for now
-    }
 
     /**
      * Adds a new game
@@ -234,7 +227,7 @@ class Repository {
     boolean sellItem(GoodType good) {
         Player player = game.getPlayer();
         Map<GoodType, Integer> inventory = player.getCargo().getInventory();
-        if (inventory.get(good) == null || inventory.get(good) < 1) {
+        if ((inventory.get(good) == null) || (inventory.get(good) < 1)) {
             return false;
         }
 
