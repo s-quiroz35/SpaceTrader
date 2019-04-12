@@ -11,11 +11,10 @@ import java.io.Serializable;
  */
 public class Ship implements Serializable {
 
-    private ShipType type;
+    private final ShipType type;
     private String color;
-    private int fuelCapacity;
     private int fuel;
-    private Cargo cargo;
+    private final Cargo cargo;
 
     /**
      * Initializes a Ship
@@ -26,8 +25,7 @@ public class Ship implements Serializable {
     public Ship(ShipType type, String color) {
         this.type = type;
         this.color = color;
-        fuelCapacity = type.getFuelCapacity();
-        fuel = fuelCapacity;
+        fuel = type.getFuelCapacity();
         cargo = new Cargo();
     }
 
@@ -51,7 +49,7 @@ public class Ship implements Serializable {
     /**
      * @return ship fuel capacity
      */
-    public int getFuelCapacity() { return fuelCapacity; }
+    public int getFuelCapacity() { return type.getFuelCapacity(); }
 
     /**
      *

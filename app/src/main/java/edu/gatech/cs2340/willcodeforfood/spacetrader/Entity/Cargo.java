@@ -12,8 +12,8 @@ import java.util.Map;
  */
 public class Cargo implements Serializable {
 
-    private Map<GoodType, Integer> inventory;
-    private int capacity;
+    private final Map<GoodType, Integer> inventory;
+    private final int capacity;
     private int contents;
 
     private static final int DEFAULT_CAPACITY = 100;
@@ -30,7 +30,7 @@ public class Cargo implements Serializable {
      *
      * @param capacity how many goods can fit
      */
-    public Cargo(int capacity) {
+    private Cargo(int capacity) {
         this.capacity = capacity;
         this.contents = 0;
         inventory = new HashMap<>();

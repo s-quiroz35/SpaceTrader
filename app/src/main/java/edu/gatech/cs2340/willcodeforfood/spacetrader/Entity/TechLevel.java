@@ -16,7 +16,7 @@ public enum TechLevel {
     POSTINDUSTRIAL(6),
     HITECH(7);
 
-    private int level;
+    private final int level;
 
     /**
      * Constructor for TechLevel enumeration

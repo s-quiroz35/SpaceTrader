@@ -10,9 +10,9 @@ import java.io.Serializable;
  */
 public class Game implements Serializable {
 
-    private Player player;
+    private final Player player;
     private Difficulty difficulty;
-    private Universe universe;
+    private final Universe universe;
 
     /**
      * Initializes a new game

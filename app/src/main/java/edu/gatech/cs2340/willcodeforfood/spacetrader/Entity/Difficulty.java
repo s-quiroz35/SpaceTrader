@@ -13,7 +13,7 @@ public enum Difficulty {
     HARD("Hard"),
     IMPOSSIBLE("Impossible");
 
-    public String difficulty;
+    private final String difficulty;
 
     /**
      * Constructor for Difficulty enumeration

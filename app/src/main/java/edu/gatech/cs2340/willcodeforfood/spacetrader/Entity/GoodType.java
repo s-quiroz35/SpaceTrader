@@ -20,16 +20,16 @@ public enum GoodType {
     NARCOTICS("Narcotics", 0, 5, 0 ,5, 3500, -125, 150, ResourceLevel.WEIRDMUSHROOMS),
     ROBOTS("Robots", 0, 6, 4, 7, 5000, -150, 100);
 
-    private String name;
+    private final String name;
     private int planetPrice;
-    private int minTechToProduce;
-    private int minTechToUse;
-    private int techMostProduce;
-    private int basePrice;
-    private int priceIncPerLevel;
-    private int variance;
-    private ResourceLevel priceDecEvent;
-    private ResourceLevel priceIncEvent;
+    private final int minTechToProduce;
+    private final int minTechToUse;
+    private final int techMostProduce;
+    private final int basePrice;
+    private final int priceIncPerLevel;
+    private final int variance;
+    private final ResourceLevel priceDecEvent;
+    private final ResourceLevel priceIncEvent;
 
     /**
      * Constructor for no price increase or decrease events

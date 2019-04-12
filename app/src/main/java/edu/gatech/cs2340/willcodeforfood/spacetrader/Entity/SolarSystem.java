@@ -14,11 +14,11 @@ import java.util.ArrayList;
  */
 public class SolarSystem implements Serializable {
 
-    private String name;
-    private Coordinate coordinate;
-    private TechLevel techLevel;
-    private ResourceLevel resourceLevel;
-    private List<Planet> planets;
+    private final String name;
+    private final Coordinate coordinate;
+    private final TechLevel techLevel;
+    private final ResourceLevel resourceLevel;
+    private final List<Planet> planets;
 
     private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Acamar",
             "Adahn", "Damast", "Davlos","Frolix", "Gemulon", "Guinifer", "Hades", "Hamlet","Og",

@@ -21,7 +21,7 @@ public enum ResourceLevel {
     ARTISTIC(11),
     WARLIKE(12);
 
-    private int level;
+    private final int level;
 
     /**
      * Constructor for ResourceLevel enumeration

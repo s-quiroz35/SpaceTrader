@@ -19,10 +19,10 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  */
 public class Model {
 
-    private Repository repo;
+    private final Repository repo;
 
     //creates universal access
-    private static Model instance = new Model();
+    private final static Model instance = new Model();
 
     /**
      * @return model instance
