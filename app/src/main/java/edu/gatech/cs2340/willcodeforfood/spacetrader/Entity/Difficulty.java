@@ -4,7 +4,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * Game Difficulty
  *
  * @author Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public enum Difficulty {
     BEGINNER("Beginner"),

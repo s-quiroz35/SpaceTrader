@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Represents a Solar System
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class SolarSystem implements Serializable {
 

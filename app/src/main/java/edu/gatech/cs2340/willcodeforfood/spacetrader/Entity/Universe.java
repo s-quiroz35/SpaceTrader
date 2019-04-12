@@ -10,7 +10,7 @@ import java.util.Random;
  * Represents a Universe
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.2
+ * @version 1.3
  */
 public class Universe implements Serializable {
 

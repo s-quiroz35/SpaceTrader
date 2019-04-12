@@ -9,7 +9,7 @@ import java.util.Random;
  * Coordinates in the system
  *
  * @author Emma Chadwick and Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class Coordinate implements Serializable {
     private final int xCor;

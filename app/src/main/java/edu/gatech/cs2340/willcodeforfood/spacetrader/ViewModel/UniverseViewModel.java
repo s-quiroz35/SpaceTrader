@@ -17,7 +17,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  * View model for universe
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.5
+ * @version 1.6
  */
 public class UniverseViewModel extends AndroidViewModel {
 
@@ -93,6 +93,7 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public int getGasCost() { return Model.getInstance().getUniverse()
             .gasPrice(this.getTravelPlanet());}
+
     /**
      * @return current planet
      */

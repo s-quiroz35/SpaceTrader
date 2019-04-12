@@ -6,7 +6,7 @@ import java.util.Random;
  * Type of Good
  *
  * @author Sam Quiroz and Matt Bernet
- * @version 1.0
+ * @version 1.1
  */
 public enum GoodType {
     WATER("Water", 0, 0, 0, 2, 30, 3, 4, ResourceLevel.LOTSOFWATER, ResourceLevel.DESERT),

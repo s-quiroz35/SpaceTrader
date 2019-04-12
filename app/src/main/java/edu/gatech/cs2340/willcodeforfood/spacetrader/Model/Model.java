@@ -15,7 +15,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * Handles business logic
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.6
+ * @version 1.7
  */
 public class Model {
 

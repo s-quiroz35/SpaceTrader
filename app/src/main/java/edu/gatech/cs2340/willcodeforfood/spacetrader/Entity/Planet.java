@@ -9,7 +9,7 @@ import java.util.Random;
  * Represents a Planet
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class Planet implements Serializable {
 

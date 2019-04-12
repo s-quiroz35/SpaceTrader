@@ -54,6 +54,11 @@ public class Player implements Serializable {
     public void setName(String name) { this.name = name; }
 
     /**
+     * @return player skill points
+     */
+    public int getSkillPoints() { return skillPoints; }
+
+    /**
      * Sets player skill points
      *
      * @param skillPoints new skill point amount

@@ -23,7 +23,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  * Handles universe activity
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.1
+ * @version 1.2
  */
 public class UniverseActivity extends AppCompatActivity {
 

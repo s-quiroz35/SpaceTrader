@@ -8,7 +8,7 @@ import java.util.Map;
  * Represents a Cargo for ship
  *
  * @author Sam Quiroz and Matt Bernet
- * @version 1.1
+ * @version 1.2
  */
 public class Cargo implements Serializable {
 

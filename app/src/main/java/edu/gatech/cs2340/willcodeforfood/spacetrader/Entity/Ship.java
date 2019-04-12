@@ -7,11 +7,11 @@ import java.io.Serializable;
  * Represents a Ship
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.3
+ * @version 1.4
  */
 public class Ship implements Serializable {
 
-    private final ShipType type;
+    private ShipType type;
     private int fuel;
     private final Cargo cargo;
 
@@ -47,5 +47,4 @@ public class Ship implements Serializable {
      * @return ship cargo
      */
     public Cargo getCargo() { return cargo; }
-
 }
