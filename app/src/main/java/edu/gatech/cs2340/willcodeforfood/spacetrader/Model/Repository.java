@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Model;
 
-import android.util.Log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,12 +33,6 @@ class Repository {
      */
     void addGame(Game game) {
         this.game = game;
-        Log.w("Add", String.format("Game created: Name: %s, Difficulty: %s, Pilot: %d, " +
-                        "Fighter: %d, Trader: %d, Engineer: %d", game.getPlayer().getName()
-                ,game.getDifficulty(), game.getPlayer().getSkills()[0],
-                game.getPlayer().getSkills()[1], game.getPlayer().getSkills()[2],
-                game.getPlayer().getSkills()[3]));
-        Log.w("Add", game.getUniverse().toString());
     }
 
     /**
@@ -250,10 +242,8 @@ class Repository {
         Random rn = new Random();
         int check = rn.nextInt(2);
         if (check == 1) {
-            Log.w("Event", "Random event occurring!");
             return "pirate";
         } else {
-            Log.w("Event", "Random event did not occur!");
             return "nope";
         }
     }
