@@ -20,8 +20,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class UniverseViewModel extends AndroidViewModel {
 
-    private Universe universe;
-    private Model model;
+    private final Universe universe;
+    private final Model model;
 
     /**
      * Initializes the view model

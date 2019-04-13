@@ -91,6 +91,10 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
      * Interface with methods to be implemented in parent activity for click response
      */
     public interface SellClickListener {
+        /**
+         *
+         * @param good the good to sell
+         */
         void onSellClick(GoodType good);
     }
 }
