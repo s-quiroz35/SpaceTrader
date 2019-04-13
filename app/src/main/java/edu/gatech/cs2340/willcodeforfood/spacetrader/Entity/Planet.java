@@ -57,9 +57,27 @@ public class Planet implements Serializable {
     public Coordinate getCoordinate() { return coordinate; }
 
     /**
+     *
+     * @return x coordinate
+     */
+    public int getXCor() {return coordinate.getXCor(); }
+
+    /**
+     *
+     * @return y coordinate
+     */
+    public int getYCor() {return coordinate.getYCor(); }
+
+    /**
      * @return planet tech level
      */
     public TechLevel getTechLevel() { return techLevel; }
+
+    /**
+     *
+     * @return tech level in int form
+     */
+    public int getTechLevelInt() { return techLevel.getTechLevel();}
 
     /**
      * @return planet resource level

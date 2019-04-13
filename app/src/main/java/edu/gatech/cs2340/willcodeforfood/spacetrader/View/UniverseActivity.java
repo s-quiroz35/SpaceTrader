@@ -26,6 +26,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class UniverseActivity extends AppCompatActivity {
 
+    private SolarSystem currSolarSystem;
     private UniverseViewModel viewModel;
     private Universe universe;
     private List<SolarSystem> solarSystems;
@@ -36,6 +37,7 @@ public class UniverseActivity extends AppCompatActivity {
         setContentView(R.layout.content_universe);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        currSolarSystem = viewModel.getCurrentSolarSystem();
         universe = viewModel.getUniverse();
         solarSystems = universe.getSolarSystems();
 
@@ -49,7 +51,7 @@ public class UniverseActivity extends AppCompatActivity {
 
         TextView cSolarSystem = findViewById(R.id.current_solar_system);
         String ssCurrent = "Current Solar System "
-                + viewModel.getCurrentSolarSystem().getSolarSystemName();
+                + currSolarSystem.getSolarSystemName();
         cSolarSystem.setText(ssCurrent);
 
         //look into layout params for positioning image views, you can use the solar system

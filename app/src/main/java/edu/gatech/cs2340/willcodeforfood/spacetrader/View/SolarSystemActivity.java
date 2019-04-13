@@ -23,6 +23,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class SolarSystemActivity extends AppCompatActivity {
 
+    private Planet currPlanet;
     private SolarSystem solarSystem;
     private List<Planet> planets;
     private UniverseViewModel viewModel;
@@ -33,6 +34,7 @@ public class SolarSystemActivity extends AppCompatActivity {
         setContentView(R.layout.content_solar_system);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        currPlanet = viewModel.getCurrentPlanet();
 
         solarSystem = viewModel.getCurrentSolarSystem();
         planets = solarSystem.getPlanets();
@@ -49,7 +51,7 @@ public class SolarSystemActivity extends AppCompatActivity {
         gasNum.setText(num);
 
         TextView cPlanet = findViewById(R.id.planet_current);
-        String currentPlanet = "Current Planet " + viewModel.getCurrentPlanet().getPlanetName();
+        String currentPlanet = "Current Planet " + currPlanet.getPlanetName();
         cPlanet.setText(currentPlanet);
 
     }

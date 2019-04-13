@@ -20,6 +20,9 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class UniverseViewModel extends AndroidViewModel {
 
+    private Universe universe;
+    private Model model;
+
     /**
      * Initializes the view model
      *
@@ -27,6 +30,8 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public UniverseViewModel(@NonNull Application application) {
         super(application);
+        model = Model.getInstance();
+        universe = model.getUniverse();
     }
 
     /**
@@ -35,98 +40,98 @@ public class UniverseViewModel extends AndroidViewModel {
      * @param file file to save data to
      * @return true if saved correctly, false otherwise
      */
-    public boolean saveGame(File file) { return Model.getInstance().saveGame(file); }
+    public boolean saveGame(File file) { return model.saveGame(file); }
     /**
      * Checks to see if random event occurred on travel
      *
      * @return event key
      */
     public String checkForEvent() {
-        return Model.getInstance().checkForEvent();
+        return model.checkForEvent();
     }
     /**
      * Adjusts market prices when traveling to planet
      *
      * @param planet destination planet
      */
-    public void setMarketPrices(Planet planet) { Model.getInstance().setMarketPrices(planet); }
+    public void setMarketPrices(Planet planet) { model.setMarketPrices(planet); }
     /**
      * @return current player
      */
-    public Player getPlayer() { return Model.getInstance().getPlayer(); }
+    public Player getPlayer() { return model.getPlayer(); }
     /**
      * @return current universe
      */
-    public Universe getUniverse() { return Model.getInstance().getUniverse(); }
+    public Universe getUniverse() { return model.getUniverse(); }
     /**
      *
      * @return fuel capacity
      */
-    public int getFuelCapacity() { return Model.getInstance().getFuelCapacity(); }
+    public int getFuelCapacity() { return model.getFuelCapacity(); }
     /**
      *
      * @return fuel contents
      */
-    public int getFuelContents() { return Model.getInstance().getFuelContents(); }
+    public int getFuelContents() { return model.getFuelContents(); }
 
     /**
      * Uses fuel
      * @param cost the fuel used
      */
-    public void useFuel(int cost) { Model.getInstance().useFuel(cost);}
+    public void useFuel(int cost) { model.useFuel(cost);}
 
     /**
      * Gets the fuel price per gallon
      * @return the fuel amount
      */
-    public int getFuelPrice() { return Model.getInstance().fuelPrice(); }
+    public int getFuelPrice() { return model.fuelPrice(); }
 
     /**
      * Buys fuel
      */
-    public void buyFuel() { Model.getInstance().buyFuel(); }
+    public void buyFuel() { model.buyFuel(); }
 
     /**
      * Calculates the gas cost to travel to a planet
      * @return the gas cost
      */
-    public int getGasCost() { return Model.getInstance().getUniverse()
+    public int getGasCost() { return universe
             .gasPrice(this.getTravelPlanet());}
 
     /**
      * @return current planet
      */
-    public Planet getCurrentPlanet() { return Model.getInstance().getCurrentPlanet(); }
+    public Planet getCurrentPlanet() { return model.getCurrentPlanet(); }
     /**
      *
      * @return current solar system
      */
-    public SolarSystem getCurrentSolarSystem() { return Model.getInstance()
+    public SolarSystem getCurrentSolarSystem() { return model
             .getCurrentSolarSystem(); }
     /**
      *
      * @return the current selected planet
      */
-    public Planet getTravelPlanet() { return Model.getInstance().getTravelPlanet(); }
+    public Planet getTravelPlanet() { return model.getTravelPlanet(); }
     /**
      *
      * @param p the new current planet
      */
     public void setCurrentPlanet(Planet p) {
-        Model.getInstance().setCurrentPlanet(p);
+        model.setCurrentPlanet(p);
     }
     /**
      *
      * @param p the new travel planet
      */
     public void setTravelPlanet(Planet p) {
-        Model.getInstance().setTravelPlanet(p);
+        model.setTravelPlanet(p);
     }
     /**
      *
      * @param s the new current solar system
      */
     public void setCurrentSolarSystem(SolarSystem s) {
-        Model.getInstance().setCurrentSolarSystem(s);
+        model.setCurrentSolarSystem(s);
     }
 }

@@ -70,8 +70,8 @@ public class Universe implements Serializable {
      * @return total gallons of gas to travel
      */
     public int gasPrice(Planet p) {
-        int xDifference = p.getCoordinate().getXCor() - currentPlanet.getCoordinate().getXCor();
-        int yDifference = p.getCoordinate().getYCor() - currentPlanet.getCoordinate().getYCor();
+        int xDifference = p.getXCor() - currentPlanet.getXCor();
+        int yDifference = p.getYCor() - currentPlanet.getYCor();
         xDifference *= xDifference;
         yDifference *= yDifference;
         int totalDistance = xDifference + yDifference;
