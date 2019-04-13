@@ -17,6 +17,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
  */
 public class ConfigViewModel extends AndroidViewModel {
 
+    private Model model;
+
     /**
      * Initializes the view model
      *
@@ -24,6 +26,7 @@ public class ConfigViewModel extends AndroidViewModel {
      */
     public ConfigViewModel(@NonNull Application application) {
         super(application);
+        model = Model.getInstance();
     }
 
     /**
@@ -32,7 +35,7 @@ public class ConfigViewModel extends AndroidViewModel {
      * @param game new game
      */
     public void addGame(Game game) {
-        Model.getInstance().addGame(game);
+        model.addGame(game);
     }
 
     /**
@@ -41,5 +44,5 @@ public class ConfigViewModel extends AndroidViewModel {
      * @param file file with game data
      * @return true if load successful, false otherwise
      */
-    public boolean loadGame(File file) { return Model.getInstance().loadGame(file); }
+    public boolean loadGame(File file) { return model.loadGame(file); }
 }

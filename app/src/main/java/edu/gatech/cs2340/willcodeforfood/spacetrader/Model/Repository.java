@@ -72,6 +72,11 @@ class Repository {
         try {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(file));
             game = (Game) input.readObject();
+            universe = game.getUniverse();
+            player = game.getPlayer();
+            currPlanet = universe.getCurrentPlanet();
+            ship = player.getShip();
+            cargo = player.getCargo();
             return true;
         } catch (Exception e) {
             return false;
