@@ -164,8 +164,7 @@ class Repository {
      * @return the fuel price per gallon
      */
     int fuelPrice() {
-        Planet currentPlanet = universe.getCurrentPlanet();
-        int techLevel = currentPlanet.getTechLevelInt();
+        int techLevel = currPlanet.getTechLevelInt();
 
         return (int) (1.6 * (techLevel + 2)) * 25;
     }
