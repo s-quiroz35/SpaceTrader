@@ -79,7 +79,9 @@ public class TravelPopUp extends AppCompatActivity {
             String event = viewModel.checkForEvent();
             if ("pirate".equals(event)) {
                 startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
-            } else {
+            } else if (event.equals("trader")) {
+                startActivity(new Intent(TravelPopUp.this, TraderActivity.class));
+            }    else {
                 startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
             }
         } else {

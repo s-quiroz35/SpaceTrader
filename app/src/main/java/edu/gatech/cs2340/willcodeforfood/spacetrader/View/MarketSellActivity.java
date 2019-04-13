@@ -8,11 +8,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.widget.Toast;
+import android.content.Intent;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 
 /**
  * Handles market selling activity
@@ -34,14 +36,18 @@ public class MarketSellActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         cargo = viewModel.getCargo();
 
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        Trader trader = (Trader) bundle.getSerializable("trader");
+
         RecyclerView rView = findViewById(R.id.market_sell_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);
-        adapter = new MarketSellAdapter(cargo.getInventory(),
+        adapter = new MarketSellAdapter(viewModel.getCargo().getInventory(), trader,
                 new MarketSellAdapter.SellClickListener() {
             @Override
-            public void onSellClick(GoodType good) {
-                if (viewModel.sellItem(good)) {
+            public void onSellClick(GoodType good, Trader trader) {
+                if (viewModel.sellItem(good, trader)) {
                     Toast toast = Toast.makeText(MarketSellActivity.this,
                             "Sell successful!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);

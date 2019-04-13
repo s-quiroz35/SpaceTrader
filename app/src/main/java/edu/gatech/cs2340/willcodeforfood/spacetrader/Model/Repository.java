@@ -16,6 +16,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Ship;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 
 /**
  * Represents data abstraction
@@ -205,9 +206,10 @@ class Repository {
      * Buys item
      *
      * @param good bought item
+     * @param trader trader if it exists
      * @return true if bought item, false otherwise
      */
-    boolean buyItem(GoodType good) {
+    boolean buyItem(GoodType good, Trader trader) {
         if (player.getCredits() < good.getPrice()) {
             return false;
         }
@@ -219,7 +221,11 @@ class Repository {
         }
 
         cargo.add(good, 1);
-        currPlanet.removeGood(good, 1);
+        if (trader == null) {
+            currPlanet.removeGood(good, 1);
+        } else {
+            trader.removeGood(good, 1);
+        }
         player.setCredits(player.getCredits() - good.getPrice());
         return true;
     }
@@ -228,20 +234,29 @@ class Repository {
      * Sells item
      *
      * @param good sold item
+     * @param trader trader if it exists
      * @return true if sold item, false otherwise
      */
-    boolean sellItem(GoodType good) {
+    boolean sellItem(GoodType good, Trader trader) {
         Map<GoodType, Integer> inventory = cargo.getInventory();
         if ((inventory.get(good) == null) || (inventory.get(good) < 1)) {
             return false;
         }
 
-        if (!good.canSell(currPlanet.getTechLevel())) {
-            return false;
+        if (trader == null) {
+            if (!good.canSell(game.getUniverse().getCurrentPlanet().getTechLevel())) {
+                return false;
+            }
+            cargo.remove(good, 1);
+            currPlanet.addGood(good, 1);
+        } else {
+            if (!good.canSell(trader.getTechLevel())) {
+                return false;
+            }
+            cargo.remove(good, 1);
+            trader.addGood(good, 1);
         }
 
-        cargo.remove(good, 1);
-        currPlanet.addGood(good, 1);
         player.setCredits(player.getCredits() + good.getPrice());
         return true;
     }
@@ -253,9 +268,11 @@ class Repository {
      */
     String checkForEvent() {
         Random rn = new Random();
-        int check = rn.nextInt(2);
+        int check = rn.nextInt(3);
         if (check == 1) {
             return "pirate";
+        } else if (check == 2){
+            return "trader";
         } else {
             return "nope";
         }
