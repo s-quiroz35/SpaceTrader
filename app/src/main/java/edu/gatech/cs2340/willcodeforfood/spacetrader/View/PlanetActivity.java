@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
@@ -18,6 +19,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class PlanetActivity extends AppCompatActivity {
 
+    private Planet currPlanet;
     private TextView planetName;
     private UniverseViewModel viewModel;
 
@@ -27,9 +29,10 @@ public class PlanetActivity extends AppCompatActivity {
         setContentView(R.layout.content_planet);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        currPlanet = viewModel.getCurrentPlanet();
 
         planetName = findViewById(R.id.planet_name);
-        planetName.setText(viewModel.getCurrentPlanet().getPlanetName());
+        planetName.setText(currPlanet.getPlanetName());
     }
 
     /**

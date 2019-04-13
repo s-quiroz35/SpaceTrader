@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
@@ -20,6 +21,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class MarketActivity extends AppCompatActivity {
 
+    private Player player;
     private TextView credits;
     private UniverseViewModel viewModel;
 
@@ -31,7 +33,8 @@ public class MarketActivity extends AppCompatActivity {
         credits = findViewById(R.id.player_credits);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
-        credits.setText(String.format("Currency: %d", viewModel.getPlayer().getCredits()));
+        player = viewModel.getPlayer();
+        credits.setText(String.format("Currency: %d", player.getCredits()));
 
         Button buyGas = findViewById(R.id.buy_gas);
         String gasPrices = "Gas Price: $" + viewModel.getFuelPrice() + " per Gallon";
@@ -49,7 +52,7 @@ public class MarketActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        credits.setText(String.format("Currency: %d", viewModel.getPlayer().getCredits()));
+        credits.setText(String.format("Currency: %d", player.getCredits()));
     }
 
     public void onCancel(View view) {
@@ -86,6 +89,6 @@ public class MarketActivity extends AppCompatActivity {
         String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
         gasNum.setText(num);
 
-        credits.setText(String.format("Currency: %d", viewModel.getPlayer().getCredits()));
+        credits.setText(String.format("Currency: %d", player.getCredits()));
     }
 }

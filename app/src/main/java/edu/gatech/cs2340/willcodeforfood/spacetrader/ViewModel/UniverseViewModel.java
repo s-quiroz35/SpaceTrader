@@ -20,6 +20,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class UniverseViewModel extends AndroidViewModel {
 
+    private Universe universe;
+
     /**
      * Initializes the view model
      *
@@ -27,6 +29,7 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public UniverseViewModel(@NonNull Application application) {
         super(application);
+        universe = Model.getInstance().getUniverse();
     }
 
     /**
@@ -90,7 +93,7 @@ public class UniverseViewModel extends AndroidViewModel {
      * Calculates the gas cost to travel to a planet
      * @return the gas cost
      */
-    public int getGasCost() { return Model.getInstance().getUniverse()
+    public int getGasCost() { return universe
             .gasPrice(this.getTravelPlanet());}
 
     /**
