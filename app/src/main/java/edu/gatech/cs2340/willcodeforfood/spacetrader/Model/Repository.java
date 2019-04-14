@@ -239,7 +239,7 @@ class Repository {
      */
     boolean sellItem(GoodType good, Trader trader) {
         Map<GoodType, Integer> inventory = cargo.getInventory();
-        if ((inventory.get(good) == null) || (inventory.get(good) < 1)) {
+        if ((inventory.get(good) == null)) {
             return false;
         }
 

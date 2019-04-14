@@ -35,7 +35,7 @@ public class Model {
     /**
      * Initializes model
      */
-    private Model() {
+    public Model() {
         repo = new Repository();
     }
 
