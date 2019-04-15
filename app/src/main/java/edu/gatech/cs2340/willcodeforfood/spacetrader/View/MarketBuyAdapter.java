@@ -44,7 +44,8 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
     @NonNull
     @Override
     public BuyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        return new BuyViewHolder(LayoutInflater.from(parent.getContext())
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        return new BuyViewHolder(inflater
                 .inflate(R.layout.market_buy_item, parent, false));
     }
 
@@ -84,7 +85,7 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
         @Override
         public void onClick(View view) {
             if (view.getId() == buyText.getId()) {
-                listener.onBuyClick(keys.get(getAdapterPosition()), trader);
+                listener.onBuyClick(keys.get(getAdapterPosition()));
                 notifyDataSetChanged();
             }
         }
@@ -95,11 +96,10 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      */
     public interface BuyClickListener {
         /**
-         * Buys a good when "buy" is pressed
+         * Click activity for buying
          *
-         * @param good the good to be bought
-         * @param trader the trader if it exists
+         * @param good good bought
          */
-        void onBuyClick(GoodType good, Trader trader);
+        void onBuyClick(GoodType good);
     }
 }

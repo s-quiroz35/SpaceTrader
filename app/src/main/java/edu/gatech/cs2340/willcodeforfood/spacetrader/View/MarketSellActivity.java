@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +35,8 @@ public class MarketSellActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_market_sell);
 
-        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(MarketViewModel.class);
         cargo = viewModel.getCargo();
 
         Intent intent = this.getIntent();
@@ -56,8 +58,8 @@ public class MarketSellActivity extends AppCompatActivity {
                     trader,
                     new MarketSellAdapter.SellClickListener() {
                         @Override
-                        public void onSellClick(GoodType good, Trader trader) {
-                            if (viewModel.sellItem(good, trader)) {
+                        public void onSellClick(GoodType good) {
+                            if (viewModel.sellItem(good, null)) {
                                 Toast toast = Toast.makeText(MarketSellActivity.this,
                                         "Sell successful!", Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.CENTER, 0, 0);

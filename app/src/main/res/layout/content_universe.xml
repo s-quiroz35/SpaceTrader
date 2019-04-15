@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/universe_title"
         android:text="Universe"
-        android:textSize="50dp"
+        android:textSize="50sp"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -59,7 +59,7 @@
         android:id="@+id/gas_numbers"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/universe_title"
-        android:layout_alignRight="@+id/gas_bar"
+        android:layout_alignEnd="@+id/gas_bar"
         android:textSize="15sp"/>
 
     <ImageView
@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="160dp"
+        android:layout_marginStart="160dp"
         android:id="@+id/cancel_button"
         android:text="Cancel"
         android:onClick="onCancel"/>

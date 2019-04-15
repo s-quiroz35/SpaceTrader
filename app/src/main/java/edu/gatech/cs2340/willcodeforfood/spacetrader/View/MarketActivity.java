@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +33,8 @@ public class MarketActivity extends AppCompatActivity {
 
         credits = findViewById(R.id.player_credits);
 
-        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(UniverseViewModel.class);
         player = viewModel.getPlayer();
         credits.setText(String.format("Currency: %d", player.getCredits()));
 
@@ -76,7 +78,7 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     /**
-     * Returns to planet view on button press
+     * Goes back on button press
      *
      * @param view button pressed
      */
@@ -104,7 +106,7 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     /**
-     * Buys fuel on button press
+     * Buys gas on button press
      *
      * @param view button pressed
      */

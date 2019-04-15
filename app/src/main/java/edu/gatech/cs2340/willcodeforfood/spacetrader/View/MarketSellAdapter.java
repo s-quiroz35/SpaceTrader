@@ -44,7 +44,8 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
     @NonNull
     @Override
     public SellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        return new SellViewHolder(LayoutInflater.from(parent.getContext())
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        return new SellViewHolder(inflater
                 .inflate(R.layout.market_sell_item, parent, false));
     }
 
@@ -84,7 +85,7 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
         @Override
         public void onClick(View view) {
             if (view.getId() == sellText.getId()) {
-                listener.onSellClick(keys.get(getAdapterPosition()), trader);
+                listener.onSellClick(keys.get(getAdapterPosition()));
                 notifyDataSetChanged();
             }
         }
@@ -98,8 +99,7 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
          * Sells a good when "sell" is pressed
          *
          * @param good the good to be sold
-         * @param trader the trader to be sold to if it exists
          */
-        void onSellClick(GoodType good, Trader trader);
+        void onSellClick(GoodType good);
     }
 }

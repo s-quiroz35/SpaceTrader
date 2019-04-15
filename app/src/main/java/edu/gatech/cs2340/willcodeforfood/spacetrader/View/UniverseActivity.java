@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +37,8 @@ public class UniverseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_universe);
 
-        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(UniverseViewModel.class);
         currSolarSystem = viewModel.getCurrentSolarSystem();
         universe = viewModel.getUniverse();
         solarSystems = universe.getSolarSystems();

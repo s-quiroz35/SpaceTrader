@@ -49,7 +49,8 @@ public class Universe implements Serializable {
         }
 
         currentSolarSystem = solarSystems.get(0);
-        currentPlanet = currentSolarSystem.getPlanets().get(0);
+        List<Planet> planets = currentSolarSystem.getPlanets();
+        currentPlanet = planets.get(0);
     }
 
     /**

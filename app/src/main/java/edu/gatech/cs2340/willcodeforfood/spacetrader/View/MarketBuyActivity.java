@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,8 @@ public class MarketBuyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_market_buy);
 
-        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(MarketViewModel.class);
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -53,8 +55,8 @@ public class MarketBuyActivity extends AppCompatActivity {
         MarketBuyAdapter adapter = new MarketBuyAdapter(market, trader,
                     new MarketBuyAdapter.BuyClickListener() {
                         @Override
-                        public void onBuyClick(GoodType good, Trader trader) {
-                            if (viewModel.buyItem(good, trader)) {
+                        public void onBuyClick(GoodType good) {
+                            if (viewModel.buyItem(good, null)) {
                                 Toast toast = Toast.makeText(MarketBuyActivity.this,
                                         "Purchase Successful!", Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.CENTER, 0, 0);
