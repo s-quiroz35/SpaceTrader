@@ -18,7 +18,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
  * @author Matt Bernet and Emma Chadwick
  * @version 1.8
  */
-public class Model {
+public final class Model {
 
     private final Repository repo;
 
@@ -35,7 +35,7 @@ public class Model {
     /**
      * Initializes model
      */
-    public Model() {
+    private Model() {
         repo = new Repository();
     }
 

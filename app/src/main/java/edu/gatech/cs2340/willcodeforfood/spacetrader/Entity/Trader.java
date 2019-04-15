@@ -13,9 +13,9 @@ import java.util.Random;
  * @version 1.0
  */
 public class Trader implements Serializable {
-    private Map<GoodType, Integer> market;
-    private TechLevel techLevel;
-    private ResourceLevel resourceLevel;
+    private final Map<GoodType, Integer> market;
+    private final TechLevel techLevel;
+    private final ResourceLevel resourceLevel;
 
     /**
      * Initializes a new trader with random techLevel and resourceLevel
@@ -31,11 +31,22 @@ public class Trader implements Serializable {
         resourceLevel = resourceLevels[rn.nextInt(13)];
 
         for (GoodType good: GoodType.values()) {
-            if (good.canBuy(techLevel)) {
+            if (canBuy(good, techLevel)) {
                 good.setPrice(techLevel, resourceLevel);
                 market.put(good, rn.nextInt(21) + 1);
             }
         }
+    }
+
+    /**
+     * Returns whether the good can be bought
+     *
+     * @param g The goodtype to be bought
+     * @param t The planet's techLevel
+     * @return Can the good be bought
+     */
+    private boolean canBuy(GoodType g, TechLevel t) {
+        return g.canBuy(t);
     }
 
     /**
@@ -79,10 +90,10 @@ public class Trader implements Serializable {
         return techLevel;
     }
 
-    /**
-     * @return this trader's resourceLevel
-     */
-    public ResourceLevel getResourceLevel() {
-        return resourceLevel;
-    }
+//    /**
+//     * @return this trader's resourceLevel
+//     */
+//    public ResourceLevel getResourceLevel() {
+//        return resourceLevel;
+//    }
 }

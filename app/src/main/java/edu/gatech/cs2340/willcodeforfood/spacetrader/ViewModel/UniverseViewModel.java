@@ -20,8 +20,8 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class UniverseViewModel extends AndroidViewModel {
 
-    private Universe universe;
-    private Model model;
+    private final Universe universe;
+    private final Model model;
 
     /**
      * Initializes the view model
@@ -46,7 +46,7 @@ public class UniverseViewModel extends AndroidViewModel {
      *
      * @return event key
      */
-    public String checkForEvent() {
+    private String checkForEvent() {
         return model.checkForEvent();
     }
     /**
@@ -54,7 +54,7 @@ public class UniverseViewModel extends AndroidViewModel {
      *
      * @param planet destination planet
      */
-    public void setMarketPrices(Planet planet) { model.setMarketPrices(planet); }
+    private void setMarketPrices(Planet planet) { model.setMarketPrices(planet); }
     /**
      * @return current player
      */
@@ -78,7 +78,7 @@ public class UniverseViewModel extends AndroidViewModel {
      * Uses fuel
      * @param cost the fuel used
      */
-    public void useFuel(int cost) { model.useFuel(cost);}
+    private void useFuel(int cost) { model.useFuel(cost);}
 
     /**
      * Gets the fuel price per gallon
@@ -117,7 +117,7 @@ public class UniverseViewModel extends AndroidViewModel {
      *
      * @param p the new current planet
      */
-    public void setCurrentPlanet(Planet p) {
+    private void setCurrentPlanet(Planet p) {
         model.setCurrentPlanet(p);
     }
     /**
@@ -133,5 +133,19 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public void setCurrentSolarSystem(SolarSystem s) {
         model.setCurrentSolarSystem(s);
+    }
+
+    /**
+     * Performs all of the necessary functions for travelling
+     *
+     * @param fuelCost the fuel required to travel
+     * @param travelPlanet the destination planet
+     * @return an event if one occurs
+     */
+    public String travelToPlanet(int fuelCost, Planet travelPlanet) {
+        useFuel(fuelCost);
+        setCurrentPlanet(travelPlanet);
+        setMarketPrices(travelPlanet);
+        return checkForEvent();
     }
 }

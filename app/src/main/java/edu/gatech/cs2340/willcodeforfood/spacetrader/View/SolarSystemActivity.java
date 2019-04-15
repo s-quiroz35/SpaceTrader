@@ -23,8 +23,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class SolarSystemActivity extends AppCompatActivity {
 
-    private Planet currPlanet;
-    private SolarSystem solarSystem;
     private List<Planet> planets;
     private UniverseViewModel viewModel;
 
@@ -34,26 +32,64 @@ public class SolarSystemActivity extends AppCompatActivity {
         setContentView(R.layout.content_solar_system);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
-        currPlanet = viewModel.getCurrentPlanet();
+        Planet currPlanet = getCurrentPlanet(viewModel);
 
-        solarSystem = viewModel.getCurrentSolarSystem();
+        SolarSystem solarSystem = getCurrentSolarSystem(viewModel);
         planets = solarSystem.getPlanets();
 
         TextView solarSystemName = findViewById(R.id.solar_system_title);
         solarSystemName.setText(solarSystem.getSolarSystemName());
 
         ProgressBar gasBar = findViewById(R.id.gas_bar);
-        gasBar.setMax(viewModel.getFuelCapacity());
-        gasBar.setProgress(viewModel.getFuelContents());
+        gasBar.setMax(getFuelCapacity(viewModel));
+        gasBar.setProgress(getFuelContents(viewModel));
 
         TextView gasNum = findViewById(R.id.gas_numbers);
-        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
+        String num = getFuelContents(viewModel) + "/" + getFuelCapacity(viewModel);
         gasNum.setText(num);
 
         TextView cPlanet = findViewById(R.id.planet_current);
         String currentPlanet = "Current Planet " + currPlanet.getPlanetName();
         cPlanet.setText(currentPlanet);
 
+    }
+
+    /**
+     * Returns the current solar system
+     *
+     * @param vm The current universe view model
+     * @return the current solar system
+     */
+    private SolarSystem getCurrentSolarSystem(UniverseViewModel vm) {
+        return vm.getCurrentSolarSystem();
+    }
+
+    /**
+     * Returns the current planet
+     *
+     * @param vm The current universe view model
+     * @return the current planet
+     */
+    private Planet getCurrentPlanet(UniverseViewModel vm) { return vm.getCurrentPlanet(); }
+
+    /**
+     * Returns the fuel contents of a player's ship
+     *
+     * @param vm The current universe view model
+     * @return the current fuel content
+     */
+    private int getFuelContents(UniverseViewModel vm) {
+        return vm.getFuelContents();
+    }
+
+    /**
+     * Return the fuel capacity of a player's ship
+     *
+     * @param vm The current universe view model
+     * @return the total fuel capacity
+     */
+    private int getFuelCapacity(UniverseViewModel vm) {
+        return vm.getFuelCapacity();
     }
 
     /**

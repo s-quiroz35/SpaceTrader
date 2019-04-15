@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
 
+/**
+ * Handles Trader activity
+ *
+ * @author Sam Quiroz
+ * @version 1.0
+ */
 public class TraderActivity extends AppCompatActivity{
     private TextView credits;
     private TextView techLevel;
@@ -33,15 +37,24 @@ public class TraderActivity extends AppCompatActivity{
 
         trader = new Trader();
 
-        techLevel.setText(String.format("TechLevel: %s (%d)", trader.getTechLevel(), trader.getTechLevel().getTechLevel()));
+        techLevel.setText(String.format("TechLevel: %s (%d)", trader.getTechLevel(),
+                                                    trader.getTechLevel().getTechLevel()));
     }
 
     @Override
     public void onResume() {
         super.onResume();
         credits.setText(String.format("Currency: %d", viewModel.getPlayer().getCredits()));
+        techLevel.setText(String.format("TechLevel: %s (%d)", trader.getTechLevel(),
+                                                    trader.getTechLevel().getTechLevel()));
+
     }
 
+    /**
+     * Transfers to the planet activity
+     *
+     * @param view Button pressed
+     */
     public void onCancel(View view) {
         startActivity(new Intent(TraderActivity.this, PlanetActivity.class));
     }

@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -56,12 +58,15 @@ public class Universe implements Serializable {
     public List<SolarSystem> getSolarSystems() { return solarSystems; }
 
     @Override
+    @NonNull
     public String toString() {
         String string = "Universe Created: Contains the solar systems: " + "\n";
+        StringBuilder sb = new StringBuilder(string);
         for (SolarSystem s : solarSystems) {
-            string = string + s.toString() + "\n";
+            //string = string + s.toString() + "\n";
+            sb.append(s.toString()).append("\n");
         }
-        return string;
+        return sb.toString();
     }
 
     /**
@@ -70,14 +75,30 @@ public class Universe implements Serializable {
      * @return total gallons of gas to travel
      */
     public int gasPrice(Planet p) {
-        int xDifference = p.getXCor() - currentPlanet.getXCor();
-        int yDifference = p.getYCor() - currentPlanet.getYCor();
+        int xDifference = getXCor(p) - getXCor(currentPlanet);
+        int yDifference = getYCor(p) - getYCor(currentPlanet);
         xDifference *= xDifference;
         yDifference *= yDifference;
         int totalDistance = xDifference + yDifference;
         totalDistance = (int)(Math.sqrt(totalDistance));
         return (int)(totalDistance * 1.4);
     }
+
+    /**
+     * Returns the x coordinate of a planet
+     *
+     * @param p the planet
+     * @return the x coordinate
+     */
+    private int getXCor(Planet p) { return p.getXCor(); }
+
+    /**
+     * Returns the y coordinate of a planet
+     *
+     * @param p the planet
+     * @return the y coordinate
+     */
+    private int getYCor(Planet p) { return p.getYCor(); }
 
     /**
      * @return current solar system

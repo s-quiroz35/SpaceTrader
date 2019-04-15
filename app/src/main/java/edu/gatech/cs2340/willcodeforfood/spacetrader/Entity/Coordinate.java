@@ -2,7 +2,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Random;
 
 /**
@@ -14,8 +14,8 @@ import java.util.Random;
 public class Coordinate implements Serializable {
     private final int xCor;
     private final int yCor;
-    private static final List<Integer> xCoordinates = new ArrayList<>();
-    private static final List<Integer> yCoordinates = new ArrayList<>();
+    private static final Collection<Integer> xCoordinates = new ArrayList<>();
+    private static final Collection<Integer> yCoordinates = new ArrayList<>();
 
     /**
      * Creates a new unique coordinate

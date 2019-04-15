@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.util.Random;
@@ -13,8 +14,10 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.ResourceLevel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Ship;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.TechLevel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 
@@ -54,7 +57,7 @@ class Repository {
      */
     boolean saveGame(File file) {
         try {
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(file));
+            ObjectOutput output = new ObjectOutputStream(new FileOutputStream(file));
             output.writeObject(game);
             output.close();
             return true;
@@ -91,9 +94,21 @@ class Repository {
      */
     void setMarketPrices(Planet planet) {
         for (GoodType good: planet.getMarket().keySet()) {
-            good.setPrice(planet.getTechLevel(), planet.getResourceLevel());
+            good.setPrice(getPlanetTechLevel(planet), getPlanetResourceLevel(planet));
         }
     }
+
+    /**
+     * @param p the planet
+     * @return a planet's resource level
+     */
+    private ResourceLevel getPlanetResourceLevel(Planet p) { return p.getResourceLevel(); }
+
+    /**
+     * @param p the planet
+     * @return a planet's tech level
+     */
+    private TechLevel getPlanetTechLevel(Planet p) { return p.getTechLevel(); }
 
     /**
      * @return current player
@@ -180,11 +195,11 @@ class Repository {
      */
     void buyFuel() {
         int techLevel = currPlanet.getTechLevelInt();
-        int fuel = ship.getFuel();
+        int fuel = getFuel(ship);
 
-        int pricePerGallon = (int) ((.6 * techLevel) + 2);
+        int pricePerGallon = (int) ((0.6 * techLevel) + 2);
         int fuelCapacity = this.getFuelCapacity();
-        int credits = player.getCredits();
+        int credits = getCredits(player);
         int afterCredits;
         if ((fuel + 25) <= fuelCapacity) {
             afterCredits = credits - (25 * pricePerGallon);
@@ -203,6 +218,20 @@ class Repository {
     }
 
     /**
+     * @param s the ship
+     * @return the ships current fuel amount
+     */
+    private int getFuel(Ship s) { return s.getFuel(); }
+
+    /**
+     * @param p the player
+     * @return player's credits
+     */
+    private int getCredits(Player p) {
+        return p.getCredits();
+    }
+
+    /**
      * Buys item
      *
      * @param good bought item
@@ -210,11 +239,11 @@ class Repository {
      * @return true if bought item, false otherwise
      */
     boolean buyItem(GoodType good, Trader trader) {
-        if (player.getCredits() < good.getPrice()) {
+        if (getCredits(player) < good.getPrice()) {
             return false;
         }
-        int contents = cargo.getContents();
-        int capacity = cargo.getCapacity();
+        int contents = getContents(cargo);
+        int capacity = getCapacity(cargo);
 
         if ((contents + 1) > capacity) {
             return false;
@@ -226,7 +255,7 @@ class Repository {
         } else {
             trader.removeGood(good, 1);
         }
-        player.setCredits(player.getCredits() - good.getPrice());
+        player.setCredits(getCredits(player) - good.getPrice());
         return true;
     }
 
@@ -238,7 +267,7 @@ class Repository {
      * @return true if sold item, false otherwise
      */
     boolean sellItem(GoodType good, Trader trader) {
-        Map<GoodType, Integer> inventory = cargo.getInventory();
+        Map<GoodType, Integer> inventory = getCargoInventory(cargo);
         if ((inventory.get(good) == null)) {
             return false;
         }
@@ -257,9 +286,33 @@ class Repository {
             trader.addGood(good, 1);
         }
 
-        player.setCredits(player.getCredits() + good.getPrice());
+        player.setCredits(getCredits(player) + getPrice(good));
         return true;
     }
+
+    /**
+     * @param c the cargo
+     * @return the cargo's inventory
+     */
+    private Map<GoodType, Integer> getCargoInventory(Cargo c) { return c.getInventory(); }
+
+    /**
+     * @param c the cargo
+     * @return the cargo's capacity
+     */
+    private int getCapacity(Cargo c) { return c.getCapacity(); }
+
+    /**
+     * @param c the cargo
+     * @return the cargo's contents
+     */
+    private int getContents(Cargo c) { return c.getContents(); }
+
+    /**
+     * @param g the good
+     * @return the good's price
+     */
+    private int getPrice(GoodType g) { return g.getPrice(); }
 
     /**
      * Checks to see if random event occurred on travel

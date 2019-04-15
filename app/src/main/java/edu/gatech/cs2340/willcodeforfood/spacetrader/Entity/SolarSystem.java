@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Random;
@@ -65,14 +67,16 @@ public class SolarSystem implements Serializable {
     public List<Planet> getPlanets() { return planets; }
 
     @Override
+    @NonNull
     public String toString() {
         String string = String.format("Name: %s, xCoor: %d, yCoor: %d, TechLevel: %d, " +
                         "ResourceLevel: %d . With the following planets", name,
                 coordinate.getXCor(), coordinate.getYCor(), techLevel.getTechLevel(),
                 resourceLevel.getResourceLevel());
+        StringBuilder sb = new StringBuilder(string);
         for (Planet p : planets) {
-            string = string + " " + p.toString();
+            sb.append(" ").append(p.toString());
         }
-        return string;
+        return sb.toString();
     }
 }

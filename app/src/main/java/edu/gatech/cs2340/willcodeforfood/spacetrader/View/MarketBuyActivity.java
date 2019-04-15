@@ -25,7 +25,6 @@ import java.util.Map;
  */
 public class MarketBuyActivity extends AppCompatActivity {
 
-    private MarketBuyAdapter adapter;
     private MarketViewModel viewModel;
 
     @Override
@@ -37,33 +36,45 @@ public class MarketBuyActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        Trader trader = (Trader) bundle.getSerializable("trader");
+        Trader trader;
+        boolean isBundle = bundle != null;
+        if (bundle != null) {
+            trader = (Trader) bundle.getSerializable("trader");
+        } else {
+            trader = null;
+        }
 
-        Map<GoodType, Integer> market = trader == null ? viewModel.getMarket() : trader.getMarket();
+        Map<GoodType, Integer> market = (trader == null)
+                    ? getMarket(viewModel) : trader.getMarket();
 
         RecyclerView rView = findViewById(R.id.market_buy_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);
-        adapter = new MarketBuyAdapter(market, trader,
-                new MarketBuyAdapter.BuyClickListener() {
-                    @Override
-                    public void onBuyClick(GoodType good, Trader trader) {
-                        if (viewModel.buyItem(good, trader)) {
-                            Toast toast = Toast.makeText(MarketBuyActivity.this,
-                                    "Purchase Successful!", Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.CENTER, 0, 0);
-                            toast.show();
-                        } else {
-                            Toast toast = Toast.makeText(MarketBuyActivity.this,
-                                    "Unable to Purchase!", Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.CENTER, 0, 0);
-                            toast.show();
+        MarketBuyAdapter adapter = new MarketBuyAdapter(market, trader,
+                    new MarketBuyAdapter.BuyClickListener() {
+                        @Override
+                        public void onBuyClick(GoodType good, Trader trader) {
+                            if (viewModel.buyItem(good, trader)) {
+                                Toast toast = Toast.makeText(MarketBuyActivity.this,
+                                        "Purchase Successful!", Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            } else {
+                                Toast toast = Toast.makeText(MarketBuyActivity.this,
+                                        "Unable to Purchase!", Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
                         }
-                    }
-                });
+                    });
+
         rView.setAdapter(adapter);
         DividerItemDecoration divider = new DividerItemDecoration(rView.getContext(),
                 manager.getOrientation());
         rView.addItemDecoration(divider);
+    }
+
+    private Map<GoodType, Integer> getMarket(MarketViewModel vm) {
+        return vm.getMarket();
     }
 }

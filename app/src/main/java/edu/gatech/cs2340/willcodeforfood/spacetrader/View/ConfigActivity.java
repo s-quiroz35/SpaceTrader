@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.PlayerInit;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
@@ -55,8 +56,8 @@ public class ConfigActivity extends AppCompatActivity {
         diffAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         diffSpinner.setAdapter(diffAdapter);
 
-        player = new Player("Matt", 16, 0, 0, 0, 0);
-        pointsCount.setText(String.format("%d", 16));
+        player = new Player(new PlayerInit("Matt"), 0, 0, 0, 0);
+        pointsCount.setText(String.format("%d", player.getSkillPoints()));
         viewModel = ViewModelProviders.of(this).get(ConfigViewModel.class);
     }
 
@@ -77,9 +78,9 @@ public class ConfigActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         } else {
             if ((name.length() != 0) && (!"Enter name".equals(name.getText().toString()))) {
-                player.setName(name.getText().toString());
+                setName(player, name.getText().toString());
             } else {
-                player.setName("Guardian");
+                setName(player, "Guardian");
             }
             player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
@@ -92,6 +93,16 @@ public class ConfigActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    /**
+     * Set's the name of a new player
+     *
+     * @param p Player whose name needs to be set
+     * @param s The name
+     */
+    private void setName(Player p, String s) {
+        p.setName(s);
     }
 
     /**

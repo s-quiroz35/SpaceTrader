@@ -26,9 +26,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class UniverseActivity extends AppCompatActivity {
 
-    private SolarSystem currSolarSystem;
     private UniverseViewModel viewModel;
-    private Universe universe;
     private List<SolarSystem> solarSystems;
 
     @Override
@@ -37,16 +35,16 @@ public class UniverseActivity extends AppCompatActivity {
         setContentView(R.layout.content_universe);
 
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
-        currSolarSystem = viewModel.getCurrentSolarSystem();
-        universe = viewModel.getUniverse();
+        SolarSystem currSolarSystem = viewModel.getCurrentSolarSystem();
+        Universe universe = viewModel.getUniverse();
         solarSystems = universe.getSolarSystems();
 
         ProgressBar gasBar = findViewById(R.id.gas_bar);
-        gasBar.setMax(viewModel.getFuelCapacity());
-        gasBar.setProgress(viewModel.getFuelContents());
+        gasBar.setMax(getFuelCapacity(viewModel));
+        gasBar.setProgress(getFuelContents(viewModel));
 
         TextView gasNum = findViewById(R.id.gas_numbers);
-        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
+        String num = getFuelContents(viewModel) + "/" + getFuelCapacity(viewModel);
         gasNum.setText(num);
 
         TextView cSolarSystem = findViewById(R.id.current_solar_system);
@@ -59,6 +57,26 @@ public class UniverseActivity extends AppCompatActivity {
         //there could be alternatives
 
         // i'm gonna look into this for solar system view because it doesn't apply for solar systems
+    }
+
+    /**
+     * Returns the fuel contents of a player's ship
+     *
+     * @param vm The current universe view model
+     * @return the current fuel content
+     */
+    private int getFuelContents(UniverseViewModel vm) {
+        return vm.getFuelContents();
+    }
+
+    /**
+     * Return the fuel capacity of a player's ship
+     *
+     * @param vm The current universe view model
+     * @return the total fuel capacity
+     */
+    private int getFuelCapacity(UniverseViewModel vm) {
+        return vm.getFuelCapacity();
     }
 
     /**
