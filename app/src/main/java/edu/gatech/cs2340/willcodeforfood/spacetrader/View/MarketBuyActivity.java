@@ -12,6 +12,7 @@ import android.widget.Toast;
 import android.content.Intent;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.NullTrader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
@@ -43,7 +44,7 @@ public class MarketBuyActivity extends AppCompatActivity {
         if (bundle != null) {
             trader = (Trader) bundle.getSerializable("trader");
         } else {
-            trader = null;
+            trader = new NullTrader();
         }
 
         Map<GoodType, Integer> market = (trader == null)
@@ -55,8 +56,8 @@ public class MarketBuyActivity extends AppCompatActivity {
         MarketBuyAdapter adapter = new MarketBuyAdapter(market, trader,
                     new MarketBuyAdapter.BuyClickListener() {
                         @Override
-                        public void onBuyClick(GoodType good) {
-                            if (viewModel.buyItem(good, null)) {
+                        public void onBuyClick(GoodType good, Trader trader) {
+                            if (viewModel.buyItem(good, trader)) {
                                 Toast toast = Toast.makeText(MarketBuyActivity.this,
                                         "Purchase Successful!", Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.CENTER, 0, 0);

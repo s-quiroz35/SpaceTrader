@@ -15,6 +15,7 @@ import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.NullTrader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
@@ -47,7 +48,7 @@ public class MarketSellActivity extends AppCompatActivity {
         if (bundle != null) {
             trader = (Trader) bundle.getSerializable("trader");
         } else {
-            trader = null;
+            trader = new NullTrader();
         }
 
         RecyclerView rView = findViewById(R.id.market_sell_list);
@@ -58,8 +59,8 @@ public class MarketSellActivity extends AppCompatActivity {
                     trader,
                     new MarketSellAdapter.SellClickListener() {
                         @Override
-                        public void onSellClick(GoodType good) {
-                            if (viewModel.sellItem(good, null)) {
+                        public void onSellClick(GoodType good, Trader trader) {
+                            if (viewModel.sellItem(good, trader)) {
                                 Toast toast = Toast.makeText(MarketSellActivity.this,
                                         "Sell successful!", Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.CENTER, 0, 0);

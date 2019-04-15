@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,11 +37,12 @@ public class TraderActivity extends AppCompatActivity{
 
         techLevel = findViewById(R.id.trader_techLevel);
 
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(UniverseViewModel.class);
         player = viewModel.getPlayer();
-        level = trader.getTechLevel();
-
-        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
         credits.setText(String.format("Currency: %d", player.getCredits()));
+
+        level = trader.getTechLevel();
 
         trader = new Trader();
 

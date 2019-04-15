@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
@@ -10,8 +9,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.ResourceLevel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.TechLevel;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertArrayEquals;
 public class SetPriceUnitTest {
 
     @Test

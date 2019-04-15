@@ -246,7 +246,7 @@ class Repository {
 
         addCargoGood(cargo, good);
 
-        if (trader == null) {
+        if (trader.isNull()) {
             currPlanet.removeGood(good, 1);
         } else {
             trader.removeGood(good, 1);
@@ -296,7 +296,7 @@ class Repository {
         if ((inventory.get(good) == null)) {
             return false;
         }
-        if (trader == null) {
+        if (isTraderNull(trader)) {
             if (good.canSell(currPlanet.getTechLevel())) {
                 return false;
             }
@@ -312,6 +312,13 @@ class Repository {
         player.setCredits(player.getCredits() + getGoodPrice(good));
         return true;
     }
+
+    /**
+     *
+     * @param t trader
+     * @return if the trader is null
+     */
+    private boolean isTraderNull(Trader t) { return t.isNull(); }
 
     /**
      *

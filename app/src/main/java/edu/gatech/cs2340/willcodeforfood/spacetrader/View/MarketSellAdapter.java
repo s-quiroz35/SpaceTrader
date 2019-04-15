@@ -85,7 +85,7 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
         @Override
         public void onClick(View view) {
             if (view.getId() == sellText.getId()) {
-                listener.onSellClick(keys.get(getAdapterPosition()));
+                listener.onSellClick(keys.get(getAdapterPosition()), trader);
                 notifyDataSetChanged();
             }
         }
@@ -99,7 +99,8 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
          * Sells a good when "sell" is pressed
          *
          * @param good the good to be sold
+         * @param trader the trader if it exists
          */
-        void onSellClick(GoodType good);
+        void onSellClick(GoodType good, Trader trader);
     }
 }

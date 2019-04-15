@@ -85,7 +85,7 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
         @Override
         public void onClick(View view) {
             if (view.getId() == buyText.getId()) {
-                listener.onBuyClick(keys.get(getAdapterPosition()));
+                listener.onBuyClick(keys.get(getAdapterPosition()), trader);
                 notifyDataSetChanged();
             }
         }
@@ -99,7 +99,8 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
          * Click activity for buying
          *
          * @param good good bought
+         * @param trader the trader if it exists
          */
-        void onBuyClick(GoodType good);
+        void onBuyClick(GoodType good, Trader trader);
     }
 }

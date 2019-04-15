@@ -89,6 +89,12 @@ public class Trader implements Serializable {
         return techLevel;
     }
 
+    /**
+     *
+     * @return Whether this trader is really null
+     */
+    public boolean isNull() { return false; }
+
 //    /**
 //     * @return this trader's resourceLevel
 //     */
