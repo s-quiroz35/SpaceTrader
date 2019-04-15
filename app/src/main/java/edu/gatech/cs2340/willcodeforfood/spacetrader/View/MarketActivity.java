@@ -55,6 +55,11 @@ public class MarketActivity extends AppCompatActivity {
         credits.setText(String.format("Currency: %d", player.getCredits()));
     }
 
+    /**
+     * Goes back on button press
+     *
+     * @param view button pressed
+     */
     public void onCancel(View view) {
         onBackPressed();
     }
@@ -78,6 +83,11 @@ public class MarketActivity extends AppCompatActivity {
         startActivity(new Intent(MarketActivity.this, MarketSellActivity.class));
     }
 
+    /**
+     * Buys gas on button press
+     *
+     * @param view button pressed
+     */
     public void onBuyGas(View view) {
         viewModel.buyFuel();
 
