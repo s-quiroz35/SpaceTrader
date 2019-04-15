@@ -17,7 +17,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
  */
 public class ConfigViewModel extends AndroidViewModel {
 
-    private Model model;
+    private final Model model;
 
     /**
      * Initializes the view model
