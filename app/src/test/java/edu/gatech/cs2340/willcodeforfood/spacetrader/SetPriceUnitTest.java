@@ -9,6 +9,13 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.ResourceLevel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.TechLevel;
 
 import static org.junit.Assert.assertEquals;
+
+/**
+ * Set Price Test
+ *
+ * @author Sam Quiroz
+ * @version 1.0
+ */
 public class SetPriceUnitTest {
 
     @Test
