@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;

@@ -91,6 +91,11 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      * Interface with methods to be implemented in parent activity for click response
      */
     public interface BuyClickListener {
+        /**
+         * Click activity for buying
+         *
+         * @param good good bought
+         */
         void onBuyClick(GoodType good);
     }
 }
