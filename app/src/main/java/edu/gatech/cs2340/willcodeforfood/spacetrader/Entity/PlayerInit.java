@@ -9,7 +9,7 @@ public class PlayerInit {
     private int skillPoints;
 
     /**
-     * Initialies a PlayerInit
+     * Initializes a PlayerInit
      * @param name player's name
      */
     public PlayerInit(String name) {
@@ -41,8 +41,8 @@ public class PlayerInit {
     }
 
     /**
-     * sets the skillpoints
-     * @param skillPoints the number of skillpoints
+     * sets the skill points
+     * @param skillPoints the number of skill points
      */
     public void setSkillPoints(int skillPoints) {
         this.skillPoints = skillPoints;

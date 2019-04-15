@@ -51,7 +51,7 @@ public class Planet implements Serializable {
     /**
      * Returns whether the good can be bought
      *
-     * @param g The goodtype to be bought
+     * @param g The good type to be bought
      * @param t The planet's techLevel
      * @return Can the good be bought
      */

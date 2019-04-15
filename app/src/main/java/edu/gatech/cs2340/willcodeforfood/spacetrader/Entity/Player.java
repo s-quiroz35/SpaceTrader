@@ -22,7 +22,7 @@ public class Player implements Serializable {
     /**
      * Initializes a player
      *
-     * @param playerInit the name and skillpoints
+     * @param playerInit the name and skill points
      * @param pilot pilot skill level
      * @param fighter fighter skill level
      * @param trader trader skill level
