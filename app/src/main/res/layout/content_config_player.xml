@@ -252,7 +252,7 @@
         android:layout_below="@id/player_points_header"
         android:layout_marginTop="40sp"
         android:text="Create Player"
-        android:layout_alignParentRight = "true"
+        android:layout_alignParentEnd = "true"
         android:onClick="onCreatePlayerPressed" />
     <Button
         android:layout_width="wrap_content"
