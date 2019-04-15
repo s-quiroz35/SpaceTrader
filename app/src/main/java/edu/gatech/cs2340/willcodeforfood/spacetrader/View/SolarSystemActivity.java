@@ -45,11 +45,11 @@ public class SolarSystemActivity extends AppCompatActivity {
         solarSystemName.setText(solarSystem.getSolarSystemName());
 
         ProgressBar gasBar = findViewById(R.id.gas_bar);
-        gasBar.setMax(viewModel.getFuelCapacity());
-        gasBar.setProgress(viewModel.getFuelContents());
+        gasBar.setMax(getFuelCapacity(viewModel));
+        gasBar.setProgress(getFuelContents(viewModel));
 
         TextView gasNum = findViewById(R.id.gas_numbers);
-        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
+        String num = getFuelContents(viewModel) + "/" + getFuelCapacity(viewModel);
         gasNum.setText(num);
 
         TextView cPlanet = findViewById(R.id.planet_current);
@@ -57,6 +57,20 @@ public class SolarSystemActivity extends AppCompatActivity {
         cPlanet.setText(currentPlanet);
 
     }
+
+    /**
+     *
+     * @param vm the viewModel
+     * @return the fuel capacity
+     */
+    private int getFuelCapacity(UniverseViewModel vm) { return vm.getFuelCapacity(); }
+
+    /**
+     *
+     * @param vm the viewModel
+     * @return the current fuel contents
+     */
+    private int getFuelContents(UniverseViewModel vm) { return vm.getFuelContents(); }
 
     /**
      * Returns to previous activity

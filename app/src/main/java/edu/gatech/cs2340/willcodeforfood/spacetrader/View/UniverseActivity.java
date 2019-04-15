@@ -44,11 +44,11 @@ public class UniverseActivity extends AppCompatActivity {
         solarSystems = universe.getSolarSystems();
 
         ProgressBar gasBar = findViewById(R.id.gas_bar);
-        gasBar.setMax(viewModel.getFuelCapacity());
-        gasBar.setProgress(viewModel.getFuelContents());
+        gasBar.setMax(getFuelCapacity(viewModel));
+        gasBar.setProgress(getFuelContents(viewModel));
 
         TextView gasNum = findViewById(R.id.gas_numbers);
-        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
+        String num = getFuelContents(viewModel) + "/" + getFuelCapacity(viewModel);
         gasNum.setText(num);
 
         TextView cSolarSystem = findViewById(R.id.current_solar_system);
@@ -61,6 +61,24 @@ public class UniverseActivity extends AppCompatActivity {
         //there could be alternatives
 
         // i'm gonna look into this for solar system view because it doesn't apply for solar systems
+    }
+
+    /**
+     *
+     * @param vm current view model
+     * @return fuel contents
+     */
+    private int getFuelContents(UniverseViewModel vm) {
+        return vm.getFuelContents();
+    }
+
+    /**
+     *
+     * @param vm current view model
+     * @return fuel capacity
+     */
+    private int getFuelCapacity(UniverseViewModel vm) {
+        return vm.getFuelCapacity();
     }
 
     /**
@@ -131,5 +149,6 @@ public class UniverseActivity extends AppCompatActivity {
         viewModel.setCurrentSolarSystem(solarSystems.get(4));
         startActivity(new Intent(UniverseActivity.this, SolarSystemActivity.class));
     }
+
 
 }

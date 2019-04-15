@@ -10,6 +10,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 
 /**
  * Handles business logic
@@ -17,7 +18,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
  * @author Matt Bernet and Emma Chadwick
  * @version 1.8
  */
-public class Model {
+public final class Model {
 
     private final Repository repo;
 
@@ -34,7 +35,7 @@ public class Model {
     /**
      * Initializes model
      */
-    public Model() {
+    private Model() {
         repo = new Repository();
     }
 
@@ -157,17 +158,23 @@ public class Model {
      * Buys item
      *
      * @param good bought item
+     * @param trader trader if it exists
      * @return if the item was bought
      */
-    public boolean buyItem(GoodType good) { return instance.repo.buyItem(good); }
+    public boolean buyItem(GoodType good, Trader trader) {
+        return instance.repo.buyItem(good, trader);
+    }
 
     /**
      * Sells item
      *
      * @param good sold item
+     * @param trader trader if it exists
      * @return if the item was sold
      */
-    public boolean sellItem(GoodType good) { return instance.repo.sellItem(good); }
+    public boolean sellItem(GoodType good, Trader trader) {
+        return instance.repo.sellItem(good, trader);
+    }
 
     /**
      * Checks to see if random event occurred on travel

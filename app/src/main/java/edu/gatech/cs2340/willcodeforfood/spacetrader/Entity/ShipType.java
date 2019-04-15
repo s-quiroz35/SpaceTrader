@@ -9,6 +9,8 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 public enum ShipType {
     GNAT("Gnat", 1000);
 
+
+
     private final String type;
     private final int fuelCapacity;
 

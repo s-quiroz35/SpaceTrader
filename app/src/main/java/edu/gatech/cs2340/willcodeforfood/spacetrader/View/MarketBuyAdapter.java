@@ -13,6 +13,7 @@ import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 
 /**
  * Adapts market goods to recycler view to be bought
@@ -25,6 +26,7 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
     private final Map<GoodType, Integer> market;
     private final List<GoodType> keys;
     private final BuyClickListener listener;
+    private final Trader trader;
 
     /**
      * Initializes Market Buy Adapter
@@ -32,8 +34,9 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      * @param market market items
      * @param listener click listener
      */
-    MarketBuyAdapter(Map<GoodType, Integer> market, BuyClickListener listener) {
+    MarketBuyAdapter(Map<GoodType, Integer> market, Trader trader, BuyClickListener listener) {
         this.market = market;
+        this.trader = trader;
         keys = new ArrayList<>(market.keySet());
         this.listener = listener;
     }
@@ -82,7 +85,7 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
         @Override
         public void onClick(View view) {
             if (view.getId() == buyText.getId()) {
-                listener.onBuyClick(keys.get(getAdapterPosition()));
+                listener.onBuyClick(keys.get(getAdapterPosition()), trader);
                 notifyDataSetChanged();
             }
         }
@@ -96,7 +99,8 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
          * Click activity for buying
          *
          * @param good good bought
+         * @param trader the trader if it exists
          */
-        void onBuyClick(GoodType good);
+        void onBuyClick(GoodType good, Trader trader);
     }
 }
