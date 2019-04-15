@@ -1,12 +1,16 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,15 +36,20 @@ public class TravelPopUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_travel);
 
-        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(UniverseViewModel.class);
 
         DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        WindowManager manager = getWindowManager();
+        Display display = manager.getDefaultDisplay();
+
+        display.getMetrics(dm);
 
         int width = (int) (dm.widthPixels * .8);
         int height = (int)(dm.heightPixels * .6);
 
-        getWindow().setLayout(width,height);
+        Window newWindow = getWindow();
+        newWindow.setLayout(width,height);
 
         travelPlanet = viewModel.getTravelPlanet();
 
