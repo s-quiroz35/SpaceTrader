@@ -19,15 +19,19 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class PlanetActivity extends AppCompatActivity {
 
+    private Planet currPlanet;
+    private TextView planetName;
+    private UniverseViewModel viewModel;
+
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_planet);
 
-        UniverseViewModel viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
-        Planet currPlanet = viewModel.getCurrentPlanet();
+        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        currPlanet = viewModel.getCurrentPlanet();
 
-        TextView planetName = findViewById(R.id.planet_name);
+        planetName = findViewById(R.id.planet_name);
         planetName.setText(currPlanet.getPlanetName());
     }
 

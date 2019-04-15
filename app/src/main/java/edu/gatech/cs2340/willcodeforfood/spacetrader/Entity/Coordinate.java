@@ -11,7 +11,7 @@ import java.util.Random;
  * @author Emma Chadwick and Matt Bernet
  * @version 1.3
  */
-public class Coordinate implements Serializable {
+class Coordinate implements Serializable {
     private final int xCor;
     private final int yCor;
     private static final Collection<Integer> xCoordinates = new ArrayList<>();

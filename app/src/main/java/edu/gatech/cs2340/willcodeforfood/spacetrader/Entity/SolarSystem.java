@@ -75,7 +75,8 @@ public class SolarSystem implements Serializable {
                 resourceLevel.getResourceLevel());
         StringBuilder sb = new StringBuilder(string);
         for (Planet p : planets) {
-            sb.append(" ").append(p.toString());
+            sb.append(" ");
+            sb.append(p.toString());
         }
         return sb.toString();
     }

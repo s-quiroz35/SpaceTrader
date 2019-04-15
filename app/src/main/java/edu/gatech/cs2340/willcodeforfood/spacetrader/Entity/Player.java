@@ -87,14 +87,14 @@ public class Player implements Serializable {
     /**
      * @return player skills
      */
-    public int[] getSkills() { return skills; }
+    public int[] getSkills() { return skills.clone(); }
 
     /**
      * Sets player skills
      *
      * @param skills new skills
      */
-    public void setSkills(int[] skills) { this.skills = skills; }
+    public void setSkills(int[] skills) { this.skills = skills.clone(); }
 
     /**
      * @return ship cargo

@@ -64,7 +64,8 @@ public class Universe implements Serializable {
         StringBuilder sb = new StringBuilder(string);
         for (SolarSystem s : solarSystems) {
             //string = string + s.toString() + "\n";
-            sb.append(s.toString()).append("\n");
+            sb.append(s.toString());
+            sb.append("\n");
         }
         return sb.toString();
     }

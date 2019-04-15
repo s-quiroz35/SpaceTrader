@@ -49,7 +49,7 @@ public class MarketViewModel extends AndroidViewModel {
      * @return true if bought item, false otherwise
      */
     public boolean buyItem(GoodType good, Trader trader) {
-        return Model.getInstance().buyItem(good, trader);
+        return model.buyItem(good, trader);
     }
 
     /**
@@ -60,6 +60,6 @@ public class MarketViewModel extends AndroidViewModel {
      * @return true if sold item, false otherwise
      */
     public boolean sellItem(GoodType good, Trader trader) {
-        return Model.getInstance().sellItem(good, trader);
+        return model.sellItem(good, trader);
     }
 }

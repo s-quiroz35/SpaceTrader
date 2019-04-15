@@ -15,7 +15,6 @@ import java.util.Random;
 public class Trader implements Serializable {
     private final Map<GoodType, Integer> market;
     private final TechLevel techLevel;
-    private final ResourceLevel resourceLevel;
 
     /**
      * Initializes a new trader with random techLevel and resourceLevel
@@ -28,7 +27,7 @@ public class Trader implements Serializable {
         TechLevel[] techLevels = TechLevel.values();
         techLevel = techLevels[rn.nextInt(8)];
         ResourceLevel[] resourceLevels = ResourceLevel.values();
-        resourceLevel = resourceLevels[rn.nextInt(13)];
+        ResourceLevel resourceLevel = resourceLevels[rn.nextInt(13)];
 
         for (GoodType good: GoodType.values()) {
             if (canBuy(good, techLevel)) {

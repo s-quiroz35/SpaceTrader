@@ -9,27 +9,38 @@ import java.util.Random;
  * @version 1.1
  */
 public enum GoodType {
-    WATER("Water", 0, new GoodTypeInts(0, 0, 2,
+    WATER("Water", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(0, 0, 2),
             30, 3, 4),
             ResourceLevel.LOTSOFWATER, ResourceLevel.DESERT),
-    FURS("Furs", 0, new GoodTypeInts(0, 0, 0,
+    FURS("Furs", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(0, 0, 0),
             250, 10, 10),
             ResourceLevel.RICHFAUNA, ResourceLevel.LIFELESS),
-    FOOD("Food", 0, new GoodTypeInts(1, 0, 1,
+    FOOD("Food", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(1, 0, 1),
             100, 5, 5), ResourceLevel.RICHSOIL, ResourceLevel.POORSOIL),
-    ORE("Ore", 0, new GoodTypeInts(2, 2, 3, 350,
-            20, 10), ResourceLevel.MINERALRICH, ResourceLevel.MINERALPOOR),
-    GAMES("Games", 0, new GoodTypeInts(3, 1, 6,
+    ORE("Ore", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(2, 2, 3),
+            350,20, 10),
+            ResourceLevel.MINERALRICH, ResourceLevel.MINERALPOOR),
+    GAMES("Games", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(3, 1, 6),
             250, -10, 5), ResourceLevel.ARTISTIC),
-    FIREARMS("Firearms", 0, new GoodTypeInts(3, 1, 5,
+    FIREARMS("Firearms", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(3, 1, 5),
             1250, -75, 100), ResourceLevel.WARLIKE),
-    MEDICINE("Medicine", 0, new GoodTypeInts(4, 1, 6,
+    MEDICINE("Medicine", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(4, 1, 6),
             650, -20, 10), ResourceLevel.LOTSOFHERBS),
-    MACHINE("Machine", 0, new GoodTypeInts(4, 3, 5,
+    MACHINE("Machine", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(4, 3, 5),
             900, -30, 5)),
-    NARCOTICS("Narcotics", 0, new GoodTypeInts(5, 0 ,5,
+    NARCOTICS("Narcotics", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(5, 0 ,5),
             3500, -125, 150), ResourceLevel.WEIRDMUSHROOMS),
-    ROBOTS("Robots", 0, new GoodTypeInts(6, 4, 7,
+    ROBOTS("Robots", 0, new GoodTypeInts(
+            new GoodTypeTechLevelVars(6, 4, 7),
             5000, -150, 100));
 
     private final String name;
@@ -89,6 +100,7 @@ public enum GoodType {
      */
     public void setPrice(TechLevel t, ResourceLevel r) {
         Random rn = new Random();
+        rn.setSeed((long) t.getTechLevel());
         int var = rn.nextInt(variance());
         var = var / 100;
         int price = basePrice() + (priceIncPerLevel() * (t.getTechLevel()
@@ -113,13 +125,13 @@ public enum GoodType {
      * @return the price increase per level
      */
     private int priceIncPerLevel() {
-        return theInts.getBasePrice();
+        return theInts.getPriceIncPerLevel();
     }
 
     /**
      * @return the good's price variance
      */
-    private int variance() {
+    public int variance() {
         return theInts.getVariance();
     }
 
@@ -152,7 +164,7 @@ public enum GoodType {
      * @param t planet tech level
      * @return true if able to sell, false otherwise
      */
-    public boolean canSell(TechLevel t) { return t.getTechLevel() >= theInts.getMinTechToUse(); }
+    public boolean canSell(TechLevel t) { return t.getTechLevel() < theInts.getMinTechToUse(); }
 
     /**
      * @return name of good

@@ -12,6 +12,7 @@ import android.content.Intent;
 
 import java.util.Map;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
@@ -26,6 +27,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 public class MarketSellActivity extends AppCompatActivity {
 
     private MarketViewModel viewModel;
+    private Cargo cargo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MarketSellActivity extends AppCompatActivity {
         setContentView(R.layout.content_market_sell);
 
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
+        cargo = viewModel.getCargo();
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -75,7 +78,7 @@ public class MarketSellActivity extends AppCompatActivity {
     }
 
     private Map<GoodType, Integer> getCargoInventory(MarketViewModel vm) {
-        return vm.getCargo().getInventory();
+        return cargo.getInventory();
     }
 
 }

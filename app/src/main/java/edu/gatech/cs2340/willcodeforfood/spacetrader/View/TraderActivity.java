@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.TechLevel;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel;
@@ -22,6 +24,8 @@ public class TraderActivity extends AppCompatActivity{
     private TextView techLevel;
     private UniverseViewModel viewModel;
     private Trader trader;
+    private Player player;
+    private TechLevel level;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -32,21 +36,24 @@ public class TraderActivity extends AppCompatActivity{
 
         techLevel = findViewById(R.id.trader_techLevel);
 
+        player = viewModel.getPlayer();
+        level = trader.getTechLevel();
+
         viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
-        credits.setText(String.format("Currency: %d", viewModel.getPlayer().getCredits()));
+        credits.setText(String.format("Currency: %d", player.getCredits()));
 
         trader = new Trader();
 
-        techLevel.setText(String.format("TechLevel: %s (%d)", trader.getTechLevel(),
-                                                    trader.getTechLevel().getTechLevel()));
+        techLevel.setText(String.format("TechLevel: %s (%d)", level,
+                                                    level.getTechLevel()));
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        credits.setText(String.format("Currency: %d", viewModel.getPlayer().getCredits()));
-        techLevel.setText(String.format("TechLevel: %s (%d)", trader.getTechLevel(),
-                                                    trader.getTechLevel().getTechLevel()));
+        credits.setText(String.format("Currency: %d", player.getCredits()));
+        techLevel.setText(String.format("TechLevel: %s (%d)", level,
+                                                    level.getTechLevel()));
 
     }
 

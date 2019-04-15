@@ -89,9 +89,9 @@ public class ConfigActivity extends AppCompatActivity {
         } else {
             CharSequence nameChar = name.getText();
             if ((name.length() != 0) && (!"Enter name".equals(nameChar.toString()))) {
-                player.setName(nameChar.toString());
+                setPlayerName(player, nameChar.toString());
             } else {
-                player.setName("Guardian");
+                setPlayerName(player, "Guardian");
             }
             player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
@@ -104,6 +104,15 @@ public class ConfigActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    /**
+     * sets the player's name to a string
+     * @param p the player
+     * @param s the name
+     */
+    private void setPlayerName(Player p, String s) {
+        p.setName(s);
     }
 
     /**

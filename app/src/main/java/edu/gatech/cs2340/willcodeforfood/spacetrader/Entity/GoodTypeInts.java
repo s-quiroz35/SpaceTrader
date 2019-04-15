@@ -8,9 +8,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  */
 class GoodTypeInts {
 
-    private final int minTechToProduce;
-    private final int minTechToUse;
-    private final int techMostProduce;
+    private final GoodTypeTechLevelVars goodTypeTechLvlVars;
     private final int basePrice;
     private final int priceIncPerLevel;
     private final int variance;
@@ -18,18 +16,14 @@ class GoodTypeInts {
     /**
      * Initializes a GoodTypeInts
      *
-     * @param minTechToProduce min tech level to produce resource
-     * @param minTechToUse min tech level to use resource
-     * @param techMostProduce tech level that produces most of resource
+     * @param goodTypeTechLvlVars the tech level related attributes
      * @param basePrice base price of resource
      * @param priceIncPerLevel price increase per tech level
      * @param variance max percentage price can vary above or below base
      */
-    public GoodTypeInts(int minTechToProduce, int minTechToUse, int techMostProduce,
-                        int basePrice, int priceIncPerLevel, int variance) {
-        this.minTechToProduce = minTechToProduce;
-        this.minTechToUse = minTechToUse;
-        this.techMostProduce = techMostProduce;
+    public GoodTypeInts(GoodTypeTechLevelVars goodTypeTechLvlVars,
+                            int basePrice, int priceIncPerLevel, int variance) {
+        this.goodTypeTechLvlVars = goodTypeTechLvlVars;
         this.basePrice = basePrice;
         this.priceIncPerLevel = priceIncPerLevel;
         this.variance = variance;
@@ -53,14 +47,14 @@ class GoodTypeInts {
      * @return Minimum TechLevel required to produce
      */
     public int getMinTechToProduce() {
-        return minTechToProduce;
+        return goodTypeTechLvlVars.getMinTechToProduce();
     }
 
     /**
      * @return Minimum TechLevel to use
      */
     public int getMinTechToUse() {
-        return minTechToUse;
+        return goodTypeTechLvlVars.getMinTechToUse();
     }
 
     /**
@@ -74,6 +68,6 @@ class GoodTypeInts {
      * @return tech level that produces the most
      */
     public int getTechMostProduce() {
-        return techMostProduce;
+        return goodTypeTechLvlVars.getTechMostProduce();
     }
 }
