@@ -41,7 +41,7 @@ public class MarketSellActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         Trader trader;
-        boolean isBundle = bundle != null;
+
         if (bundle != null) {
             trader = (Trader) bundle.getSerializable("trader");
         } else {
@@ -52,7 +52,7 @@ public class MarketSellActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);
         //private Cargo cargo;
-        MarketSellAdapter adapter = new MarketSellAdapter(getCargoInventory(viewModel),
+        MarketSellAdapter adapter = new MarketSellAdapter(getCargoInventory(),
                     trader,
                     new MarketSellAdapter.SellClickListener() {
                         @Override
@@ -77,7 +77,7 @@ public class MarketSellActivity extends AppCompatActivity {
         rView.addItemDecoration(divider);
     }
 
-    private Map<GoodType, Integer> getCargoInventory(MarketViewModel vm) {
+    private Map<GoodType, Integer> getCargoInventory() {
         return cargo.getInventory();
     }
 

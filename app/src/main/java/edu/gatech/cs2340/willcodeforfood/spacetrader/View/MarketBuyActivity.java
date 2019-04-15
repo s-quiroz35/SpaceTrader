@@ -37,7 +37,7 @@ public class MarketBuyActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         Trader trader;
-        boolean isBundle = bundle != null;
+
         if (bundle != null) {
             trader = (Trader) bundle.getSerializable("trader");
         } else {

@@ -7,8 +7,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  * @version 1.1
  */
 public enum ShipType {
-    GNAT("Gnat", 1000),
-    HORNET("Hornet", 1200);
+    GNAT("Gnat", 1000);
 
 
 
