@@ -99,6 +99,17 @@ public class BuyFuelTest {
 
         assertEquals(credits, player.getCredits());
         assertEquals(fuelAfter, ship.getFuel());
+
+        ship.setFuel(980);
+        player.setCredits(0);
+        int newCredits = player.getCredits();
+        int newFuelAfter = ship.getFuel();
+
+
+        model.buyFuel();
+
+        assertEquals(newCredits, player.getCredits());
+        assertEquals(newFuelAfter, ship.getFuel());
     }
 
     /**

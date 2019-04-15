@@ -41,7 +41,8 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
     @NonNull
     @Override
     public SellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        return new SellViewHolder(LayoutInflater.from(parent.getContext())
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        return new SellViewHolder(inflater
                 .inflate(R.layout.market_sell_item, parent, false));
     }
 
