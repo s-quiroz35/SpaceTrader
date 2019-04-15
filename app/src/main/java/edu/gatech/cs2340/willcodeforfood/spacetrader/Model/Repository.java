@@ -89,7 +89,8 @@ class Repository {
      * @param planet destination planet
      */
     void setMarketPrices(Planet planet) {
-        for (GoodType good: planet.getMarket().keySet()) {
+        Map<GoodType, Integer> market = planet.getMarket();
+        for (GoodType good: market.keySet()) {
             good.setPrice(planet.getTechLevel(), planet.getResourceLevel());
         }
     }
