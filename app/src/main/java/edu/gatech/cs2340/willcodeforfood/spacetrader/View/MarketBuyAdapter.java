@@ -2,6 +2,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 
 /**
  * Adapts market goods to recycler view to be bought
@@ -26,7 +26,6 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
     private final Map<GoodType, Integer> market;
     private final List<GoodType> keys;
     private final BuyClickListener listener;
-    private final Trader trader;
 
     /**
      * Initializes Market Buy Adapter
@@ -34,9 +33,8 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      * @param market market items
      * @param listener click listener
      */
-    MarketBuyAdapter(Map<GoodType, Integer> market, Trader trader, BuyClickListener listener) {
+    MarketBuyAdapter(Map<GoodType, Integer> market, BuyClickListener listener) {
         this.market = market;
-        this.trader = trader;
         keys = new ArrayList<>(market.keySet());
         this.listener = listener;
     }
@@ -85,7 +83,7 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
         @Override
         public void onClick(View view) {
             if (view.getId() == buyText.getId()) {
-                listener.onBuyClick(keys.get(getAdapterPosition()), trader);
+                listener.onBuyClick(keys.get(getAdapterPosition()));
                 notifyDataSetChanged();
             }
         }
@@ -96,11 +94,9 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      */
     public interface BuyClickListener {
         /**
-         * Click activity for buying
          *
-         * @param good good bought
-         * @param trader the trader if it exists
+         * @param good the good to buy
          */
-        void onBuyClick(GoodType good, Trader trader);
+        void onBuyClick(GoodType good);
     }
 }

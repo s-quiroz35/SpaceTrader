@@ -45,8 +45,8 @@ public class TravelPopUp extends AppCompatActivity {
 
         display.getMetrics(dm);
 
-        int width = (int) (dm.widthPixels * 0.8);
-        int height = (int)(dm.heightPixels * 0.6);
+        int width = (int) (dm.widthPixels * .8);
+        int height = (int)(dm.heightPixels * .6);
 
         Window newWindow = getWindow();
         newWindow.setLayout(width,height);
@@ -82,12 +82,13 @@ public class TravelPopUp extends AppCompatActivity {
     public void onTravel(View view) {
         int fuel = viewModel.getFuelContents();
         if ((fuel - fuelCost) >= 0) {
-            String event = viewModel.travelToPlanet(fuelCost, travelPlanet);
+            viewModel.useFuel(fuelCost);
+            viewModel.setCurrentPlanet(travelPlanet);
+            viewModel.setMarketPrices(travelPlanet);
+            String event = viewModel.checkForEvent();
             if ("pirate".equals(event)) {
                 startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
-            } else if ("trader".equals(event)) {
-                startActivity(new Intent(TravelPopUp.this, TraderActivity.class));
-            }    else {
+            } else {
                 startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
             }
         } else {

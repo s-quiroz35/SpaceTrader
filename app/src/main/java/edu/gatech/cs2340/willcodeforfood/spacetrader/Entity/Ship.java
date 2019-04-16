@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 public class Ship implements Serializable {
 
-    private final ShipType type;
+    private ShipType type;
     private int fuel;
     private final Cargo cargo;
 

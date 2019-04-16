@@ -43,32 +43,12 @@ public class MarketActivity extends AppCompatActivity {
         buyGas.setText(gasPrices);
 
         ProgressBar gasBar = findViewById(R.id.gas_bar);
-        gasBar.setMax(getFuelCapacity(viewModel));
-        gasBar.setProgress(getFuelContents(viewModel));
+        gasBar.setMax(viewModel.getFuelCapacity());
+        gasBar.setProgress(viewModel.getFuelContents());
 
         TextView gasNum = findViewById(R.id.gas_numbers);
-        String num = getFuelContents(viewModel) + "/" + getFuelCapacity(viewModel);
+        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
         gasNum.setText(num);
-    }
-
-    /**
-     * Returns the fuel contents of a player's ship
-     *
-     * @param vm The current universe view model
-     * @return the current fuel content
-     */
-    private int getFuelContents(UniverseViewModel vm) {
-        return vm.getFuelContents();
-    }
-
-    /**
-     * Return the fuel capacity of a player's ship
-     *
-     * @param vm The current universe view model
-     * @return the total fuel capacity
-     */
-    private int getFuelCapacity(UniverseViewModel vm) {
-        return vm.getFuelCapacity();
     }
 
     @Override
@@ -78,9 +58,8 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     /**
-     * Goes back on button press
-     *
-     * @param view button pressed
+     * Return to previous activity
+     * @param view the button pressed
      */
     public void onCancel(View view) {
         onBackPressed();
@@ -106,19 +85,18 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     /**
-     * Buys gas on button press
-     *
+     * When gas is bought, change the gas bars/numbers and the currency
      * @param view button pressed
      */
     public void onBuyGas(View view) {
         viewModel.buyFuel();
 
         ProgressBar gasBar = findViewById(R.id.gas_bar);
-        gasBar.setMax(getFuelCapacity(viewModel));
-        gasBar.setProgress(getFuelContents(viewModel));
+        gasBar.setMax(viewModel.getFuelCapacity());
+        gasBar.setProgress(viewModel.getFuelContents());
 
         TextView gasNum = findViewById(R.id.gas_numbers);
-        String num = getFuelContents(viewModel) + "/" + getFuelCapacity(viewModel);
+        String num = viewModel.getFuelContents() + "/" + viewModel.getFuelCapacity();
         gasNum.setText(num);
 
         credits.setText(String.format("Currency: %d", player.getCredits()));

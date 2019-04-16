@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 
 /**
@@ -12,7 +10,6 @@ import java.io.Serializable;
  */
 public class Player implements Serializable {
 
-    private final PlayerInit playerInit;
     private String name;
     private int skillPoints;
     private int credits;
@@ -22,22 +19,23 @@ public class Player implements Serializable {
     /**
      * Initializes a player
      *
-     * @param playerInit the name and skill points
+     * @param name player name
+     * @param skillPoints player skill points
      * @param pilot pilot skill level
      * @param fighter fighter skill level
      * @param trader trader skill level
      * @param engineer engineer skill level
      */
-    public Player(PlayerInit playerInit, int pilot,
+    public Player(String name, int skillPoints, int pilot,
                   int fighter, int trader, int engineer) {
-        this.playerInit = playerInit;
+        this.name = name;
+        this.skillPoints = skillPoints;
         credits = 1000;
         ship = new Ship(ShipType.GNAT);
         skills = new int[]{pilot, fighter, trader, engineer};
     }
 
     @Override
-    @NonNull
     public String toString() {
         return String.format("Name: %s, Skills: Pilot %d, Fighter %d, Trader %d, Engineer %d",
                 name, skills[0], skills[1], skills[2], skills[3]);
@@ -46,26 +44,26 @@ public class Player implements Serializable {
     /**
      * @return player name
      */
-    public String getName() { return playerInit.getName(); }
+    public String getName() { return name; }
 
     /**
      * Sets player name
      *
      * @param name new name
      */
-    public void setName(String name) { playerInit.setName(name); }
+    public void setName(String name) { this.name = name; }
 
     /**
      * @return player skill points
      */
-    public int getSkillPoints() { return playerInit.getSkillPoints(); }
+    public int getSkillPoints() { return skillPoints; }
 
     /**
      * Sets player skill points
      *
      * @param skillPoints new skill point amount
      */
-    public void setSkillPoints(int skillPoints) { playerInit.setSkillPoints(skillPoints); }
+    public void setSkillPoints(int skillPoints) { this.skillPoints = skillPoints; }
 
     /**
      * @return player credits
@@ -87,14 +85,14 @@ public class Player implements Serializable {
     /**
      * @return player skills
      */
-    public int[] getSkills() { return skills.clone(); }
+    public int[] getSkills() { return skills; }
 
     /**
      * Sets player skills
      *
      * @param skills new skills
      */
-    public void setSkills(int[] skills) { this.skills = skills.clone(); }
+    public void setSkills(int[] skills) { this.skills = skills; }
 
     /**
      * @return ship cargo

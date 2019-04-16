@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +39,7 @@ public class Planet implements Serializable {
          */
         Random rn = new Random();
         for (GoodType good: GoodType.values()) {
-            if (canBuy(good, t)) {
+            if (good.canBuy(t)) {
                 good.setPrice(techLevel, resourceLevel);
                 market.put(good, rn.nextInt(21) + 1);
             }
@@ -49,20 +47,14 @@ public class Planet implements Serializable {
     }
 
     /**
-     * Returns whether the good can be bought
-     *
-     * @param g The good type to be bought
-     * @param t The planet's techLevel
-     * @return Can the good be bought
-     */
-    private boolean canBuy(GoodType g, TechLevel t) {
-        return g.canBuy(t);
-    }
-
-    /**
      * @return planet name
      */
     public String getPlanetName() { return name; }
+
+    /**
+     * @return planet's coordinates
+     */
+    public Coordinate getCoordinate() { return coordinate; }
 
     /**
      *
@@ -125,7 +117,6 @@ public class Planet implements Serializable {
     }
 
     @Override
-    @NonNull
     public String toString() {
         return String.format("Coordinates: %d,%d \n Resource Level: %d \n Tech Level: %d",
                 coordinate.getXCor(), coordinate.getYCor(), resourceLevel.getResourceLevel(),

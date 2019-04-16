@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Game implements Serializable {
 
     private final Player player;
-    private final Difficulty difficulty;
+    private Difficulty difficulty;
     private final Universe universe;
 
     /**

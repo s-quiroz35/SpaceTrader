@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
-import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.PlayerInit;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.ConfigViewModel;
@@ -57,7 +57,7 @@ public class ConfigActivity extends AppCompatActivity {
         diffAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         diffSpinner.setAdapter(diffAdapter);
 
-        player = new Player(new PlayerInit("Matt"), 0, 0, 0, 0);
+        player = new Player("Matt", 16, 0, 0, 0, 0);
         pointsCount.setText(String.format("%d", 16));
         ViewModelProvider provider = ViewModelProviders.of(this);
         viewModel = provider.get(ConfigViewModel.class);
@@ -88,9 +88,9 @@ public class ConfigActivity extends AppCompatActivity {
         } else {
             CharSequence nameChar = name.getText();
             if ((name.length() != 0) && (!"Enter name".equals(nameChar.toString()))) {
-                setPlayerName(player, nameChar.toString());
+                player.setName(nameChar.toString());
             } else {
-                setPlayerName(player, "Guardian");
+                player.setName("Guardian");
             }
             player.setSkillPoints(points);
             player.setSkills(new int[]{pilot, fighter, trader, engineer});
@@ -103,15 +103,6 @@ public class ConfigActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-    }
-
-    /**
-     * sets the player's name to a string
-     * @param p the player
-     * @param s the name
-     */
-    private void setPlayerName(Player p, String s) {
-        p.setName(s);
     }
 
     /**
