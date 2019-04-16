@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +33,8 @@ public class MarketActivity extends AppCompatActivity {
 
         credits = findViewById(R.id.player_credits);
 
-        viewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        viewModel = provider.get(UniverseViewModel.class);
         player = viewModel.getPlayer();
         credits.setText(String.format("Currency: %d", player.getCredits()));
 
@@ -55,6 +57,10 @@ public class MarketActivity extends AppCompatActivity {
         credits.setText(String.format("Currency: %d", player.getCredits()));
     }
 
+    /**
+     * Return to previous activity
+     * @param view the button pressed
+     */
     public void onCancel(View view) {
         onBackPressed();
     }
@@ -78,6 +84,10 @@ public class MarketActivity extends AppCompatActivity {
         startActivity(new Intent(MarketActivity.this, MarketSellActivity.class));
     }
 
+    /**
+     * When gas is bought, change the gas bars/numbers and the currency
+     * @param view button pressed
+     */
     public void onBuyGas(View view) {
         viewModel.buyFuel();
 

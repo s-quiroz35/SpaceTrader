@@ -18,7 +18,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class MarketViewModel extends AndroidViewModel {
 
-    private Model model;
+    private final Model model;
 
     /**
      * Initializes the view model

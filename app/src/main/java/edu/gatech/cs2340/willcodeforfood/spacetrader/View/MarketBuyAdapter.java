@@ -2,6 +2,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,8 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
     @NonNull
     @Override
     public BuyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        return new BuyViewHolder(LayoutInflater.from(parent.getContext())
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        return new BuyViewHolder(inflater
                 .inflate(R.layout.market_buy_item, parent, false));
     }
 
@@ -91,6 +93,10 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      * Interface with methods to be implemented in parent activity for click response
      */
     public interface BuyClickListener {
+        /**
+         *
+         * @param good the good to buy
+         */
         void onBuyClick(GoodType good);
     }
 }
