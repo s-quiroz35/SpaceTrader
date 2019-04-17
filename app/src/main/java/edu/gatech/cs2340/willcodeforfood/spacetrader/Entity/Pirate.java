@@ -8,20 +8,17 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
  */
 public class Pirate {
     private int health;
-    private int damage;
-    private boolean isDead;
+    private WeaponType weaponType;
 
     private static final int BASE_HEALTH = 100;
-    private static final int BASE_DAMAGE = 10;
 
     /**
      * Initializes a Pirate
      */
     public Pirate() {
-        //this will vary eventually
+        //this should vary eventually
         health = BASE_HEALTH;
-        damage = BASE_DAMAGE;
-        isDead = false;
+        weaponType = WeaponType.BEAMLASERS;
     }
 
     /**
@@ -30,14 +27,9 @@ public class Pirate {
     public int getHealth() { return health; }
 
     /**
-     * @return pirate damage
+     * @return pirate weapon
      */
-    public int getDamage() { return damage; }
-
-    /**
-     * @return whether pirate is dead or not
-     */
-    public boolean getIsDead() { return isDead; }
+    public WeaponType getWeaponType() { return weaponType; }
 
     /**
      * Set pirate health
@@ -48,7 +40,6 @@ public class Pirate {
         this.health = health;
         if (this.health <= 0) {
             this.health = 0;
-            isDead = true;
         }
     }
 }

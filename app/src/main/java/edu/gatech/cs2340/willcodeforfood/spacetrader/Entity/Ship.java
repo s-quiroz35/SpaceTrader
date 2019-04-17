@@ -16,7 +16,6 @@ public class Ship implements Serializable {
     private int fuel;
     private final Cargo cargo;
     private int health;
-    private boolean isDead;
 
     private static final int STARTING_HEALTH = 500;
 
@@ -31,7 +30,6 @@ public class Ship implements Serializable {
         fuel = type.getFuelCapacity();
         cargo = new Cargo();
         health = STARTING_HEALTH;
-        isDead = false;
     }
 
     /**
@@ -75,12 +73,6 @@ public class Ship implements Serializable {
         this.health = health;
         if (this.health <= 0) {
             this.health = 0;
-            isDead = true;
         }
     }
-
-    /**
-     * @return whether ship is dead or not
-     */
-    public boolean getIsDead() { return isDead; }
 }
