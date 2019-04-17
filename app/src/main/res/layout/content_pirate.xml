@@ -11,13 +11,68 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_health"
+        android:text="Health"
+        android:textSize="20sp"
+        android:layout_below="@id/pirate_header"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="65sp"
+        android:layout_marginTop="200sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pirate_health"
+        android:text="Health"
+        android:textSize="20sp"
+        android:layout_below="@id/pirate_header"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="65sp"
+        android:layout_marginTop="200sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_ship"
+        android:layout_below="@id/player_health"
+        android:layout_marginStart="60sp"
+        android:layout_marginTop="20sp"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pirate_ship"
+        android:layout_below="@id/pirate_health"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="60sp"
+        android:layout_marginTop="20sp"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/attack_button"
+        android:text="Attack"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50sp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/player_ship"
+        android:onClick="onAttackPressed" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/flee_button"
         android:text="Flee"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50sp"
         android:layout_marginTop="70dp"
-        android:layout_below="@id/pirate_header"
+        android:layout_below="@id/pirate_ship"
         android:onClick="onFleePressed" />
 </RelativeLayout>

@@ -87,6 +87,7 @@ public class TravelPopUp extends AppCompatActivity {
             viewModel.setMarketPrices(travelPlanet);
             String event = viewModel.checkForEvent();
             if ("pirate".equals(event)) {
+                viewModel.getUniverse().createPirate();
                 startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
             } else {
                 startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
