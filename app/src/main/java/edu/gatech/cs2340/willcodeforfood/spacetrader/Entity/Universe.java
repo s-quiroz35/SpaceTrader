@@ -66,6 +66,7 @@ public class Universe implements Serializable {
     }
 
     /**
+     * Calculates gas cost from current to destination planet
      *
      * @param p planet to travel to
      * @return total gallons of gas to travel

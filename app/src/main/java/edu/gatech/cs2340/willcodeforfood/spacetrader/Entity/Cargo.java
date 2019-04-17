@@ -21,7 +21,7 @@ public class Cargo implements Serializable {
     /**
      * Initializes cargo with a capacity of 100
      */
-    public Cargo() {
+    Cargo() {
         this.capacity = DEFAULT_CAPACITY;
         this.contents = 0;
         inventory = new HashMap<>();
