@@ -18,8 +18,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
  */
 public class MarketViewModel extends AndroidViewModel {
 
-    private final Model model;
-
     /**
      * Initializes the view model
      *
@@ -27,18 +25,17 @@ public class MarketViewModel extends AndroidViewModel {
      */
     public MarketViewModel(@NonNull Application application) {
         super(application);
-        model = Model.getInstance();
     }
 
     /**
      * @return current planet market
      */
-    public Map<GoodType, Integer> getMarket() { return model.getMarket(); }
+    public Map<GoodType, Integer> getMarket() { return Model.getInstance().getMarket(); }
 
     /**
      * @return player cargo
      */
-    public Cargo getCargo() { return model.getCargo(); }
+    public Cargo getCargo() { return Model.getInstance().getCargo(); }
 
     /**
      * Buys item
@@ -47,7 +44,7 @@ public class MarketViewModel extends AndroidViewModel {
      * @return true if bought item, false otherwise
      */
     public boolean buyItem(GoodType good) {
-        return model.buyItem(good);
+        return Model.getInstance().buyItem(good);
     }
 
     /**
@@ -57,6 +54,6 @@ public class MarketViewModel extends AndroidViewModel {
      * @return true if sold item, false otherwise
      */
     public boolean sellItem(GoodType good) {
-        return model.sellItem(good);
+        return Model.getInstance().sellItem(good);
     }
 }
