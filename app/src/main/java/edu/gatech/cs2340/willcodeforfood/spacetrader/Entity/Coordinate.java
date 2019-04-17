@@ -11,7 +11,7 @@ import java.util.Random;
  * @author Emma Chadwick and Matt Bernet
  * @version 1.3
  */
-public class Coordinate implements Serializable {
+class Coordinate implements Serializable {
     private final int xCor;
     private final int yCor;
     private static final List<Integer> xCoordinates = new ArrayList<>();
@@ -20,7 +20,7 @@ public class Coordinate implements Serializable {
     /**
      * Creates a new unique coordinate
      */
-    public Coordinate() {
+    Coordinate() {
         Random rn = new Random();
 
         int x = rn.nextInt(151);
@@ -43,10 +43,10 @@ public class Coordinate implements Serializable {
     /**
      * @return the x coordinate of the system
      */
-    public int getXCor() { return xCor; }
+    int getXCor() { return xCor; }
 
     /**
      * @return the y coordinate of the system
      */
-    public int getYCor() { return yCor; }
+    int getYCor() { return yCor; }
 }

@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,17 +68,11 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void onCreatePlayerPressed(View view) {
-        CharSequence pilotChar = pilotCount.getText();
-        CharSequence fighterChar = fighterCount.getText();
-        CharSequence traderChar = traderCount.getText();
-        CharSequence engineerChar = engineerCount.getText();
-        CharSequence pointsChar = pointsCount.getText();
-
-        int pilot = Integer.parseInt(pilotChar.toString());
-        int fighter = Integer.parseInt(fighterChar.toString());
-        int trader = Integer.parseInt(traderChar.toString());
-        int engineer = Integer.parseInt(engineerChar.toString());
-        int points = Integer.parseInt(pointsChar.toString());
+        int pilot = Integer.parseInt(pilotCount.getText().toString());
+        int fighter = Integer.parseInt(fighterCount.getText().toString());
+        int trader = Integer.parseInt(traderCount.getText().toString());
+        int engineer = Integer.parseInt(engineerCount.getText().toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
 
         if (points != 0) {
             Toast toastText = Toast.makeText(this, "Must use all skill points",
@@ -120,10 +113,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void pilotIncPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence pilotChar = pilotCount.getText();
-        int points = Integer.parseInt(pointsChar.toString());
-        int pilotPoints = Integer.parseInt(pilotChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int pilotPoints = Integer.parseInt(pilotCount.getText().toString());
         if (points > 0) {
             pilotPoints++;
             points--;
@@ -138,10 +129,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void pilotDecPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence pilotChar = pilotCount.getText();
-        int points = Integer.parseInt(pointsChar.toString());
-        int pilotPoints = Integer.parseInt(pilotChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int pilotPoints = Integer.parseInt(pilotCount.getText().toString());
         if (pilotPoints != 0) {
             pilotPoints--;
             points++;
@@ -156,11 +145,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void fighterIncPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence fighterChar = fighterCount.getText();
-
-        int points = Integer.parseInt(pointsChar.toString());
-        int fighterPoints = Integer.parseInt(fighterChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int fighterPoints = Integer.parseInt(fighterCount.getText().toString());
         if (points > 0) {
             fighterPoints++;
             points--;
@@ -175,11 +161,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void fighterDecPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence fighterChar = fighterCount.getText();
-
-        int points = Integer.parseInt(pointsChar.toString());
-        int fighterPoints = Integer.parseInt(fighterChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int fighterPoints = Integer.parseInt(fighterCount.getText().toString());
         if (fighterPoints != 0) {
             fighterPoints--;
             points++;
@@ -194,11 +177,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void traderIncPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence traderChar = traderCount.getText();
-
-        int points = Integer.parseInt(pointsChar.toString());
-        int traderPoints = Integer.parseInt(traderChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int traderPoints = Integer.parseInt(traderCount.getText().toString());
         if (points > 0) {
             traderPoints++;
             points--;
@@ -213,11 +193,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void traderDecPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence traderChar = traderCount.getText();
-
-        int points = Integer.parseInt(pointsChar.toString());
-        int traderPoints = Integer.parseInt(traderChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int traderPoints = Integer.parseInt(traderCount.getText().toString());
         if (traderPoints != 0) {
             traderPoints--;
             points++;
@@ -232,11 +209,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void engineerIncPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence engineerChar = engineerCount.getText();
-
-        int points = Integer.parseInt(pointsChar.toString());
-        int engineerPoints = Integer.parseInt(engineerChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int engineerPoints = Integer.parseInt(engineerCount.getText().toString());
         if (points > 0) {
             engineerPoints++;
             points--;
@@ -251,11 +225,8 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void engineerDecPressed(View view) {
-        CharSequence pointsChar = pointsCount.getText();
-        CharSequence engineerChar = engineerCount.getText();
-
-        int points = Integer.parseInt(pointsChar.toString());
-        int engineerPoints = Integer.parseInt(engineerChar.toString());
+        int points = Integer.parseInt(pointsCount.getText().toString());
+        int engineerPoints = Integer.parseInt(engineerCount.getText().toString());
         if (engineerPoints != 0) {
             engineerPoints--;
             points++;

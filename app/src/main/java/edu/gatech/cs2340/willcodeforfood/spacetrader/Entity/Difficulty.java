@@ -23,4 +23,9 @@ public enum Difficulty {
     Difficulty(String diff) {
         difficulty = diff;
     }
+
+    /**
+     * @return difficulty
+     */
+    public String getDifficulty() { return difficulty; }
 }

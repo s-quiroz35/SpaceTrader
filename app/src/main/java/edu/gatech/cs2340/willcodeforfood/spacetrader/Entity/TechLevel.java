@@ -28,7 +28,7 @@ public enum TechLevel {
     }
 
     /**
-     * @return difficulty
+     * @return tech level
      */
     public int getTechLevel() { return level; }
 }
