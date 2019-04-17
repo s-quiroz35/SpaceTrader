@@ -93,6 +93,7 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
      */
     public interface SellClickListener {
         /**
+         * Sells good on click
          *
          * @param good the good to sell
          */

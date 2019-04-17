@@ -94,6 +94,7 @@ public class MarketBuyAdapter extends RecyclerView.Adapter<MarketBuyAdapter.BuyV
      */
     public interface BuyClickListener {
         /**
+         * Buys good on click
          *
          * @param good the good to buy
          */
