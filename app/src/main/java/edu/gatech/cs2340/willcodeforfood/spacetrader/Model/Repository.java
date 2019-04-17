@@ -18,19 +18,15 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
 /**
- * Represents data abstraction
+ * Stores data and manages game
  *
  * @author Matt Bernet and Emma Chadwick
- * @version 1.6
+ * @version 1.7
  */
 class Repository {
 
     private Game game;
-    private Universe universe;
-    private Player player;
-    private Planet currPlanet;
-    private Ship ship;
-    private Cargo cargo;
+
     /**
      * Adds a new game
      *
@@ -38,11 +34,6 @@ class Repository {
      */
     void addGame(Game game) {
         this.game = game;
-        this.universe = game.getUniverse();
-        this.player = game.getPlayer();
-        this.currPlanet = universe.getCurrentPlanet();
-        this.ship = player.getShip();
-        this.cargo = player.getCargo();
     }
 
     /**
@@ -72,11 +63,6 @@ class Repository {
         try {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(file));
             game = (Game) input.readObject();
-            universe = game.getUniverse();
-            player = game.getPlayer();
-            currPlanet = universe.getCurrentPlanet();
-            ship = player.getShip();
-            cargo = player.getCargo();
             return true;
         } catch (Exception e) {
             return false;
@@ -108,51 +94,63 @@ class Repository {
     /**
      * @return player cargo
      */
-    Cargo getCargo() { return player.getCargo(); }
+    Cargo getCargo() { return game.getPlayer().getCargo(); }
+
+    /**
+     * @return player ship
+     */
+    Ship getShip() { return game.getPlayer().getShip(); }
 
     /**
      * @return current planet market
      */
-    Map<GoodType, Integer> getMarket() { return currPlanet.getMarket(); }
+    Map<GoodType, Integer> getMarket() { return this.getCurrentPlanet().getMarket(); }
 
     /**
      * @return current planet
      */
-    Planet getCurrentPlanet() { return universe.getCurrentPlanet(); }
+    Planet getCurrentPlanet() { return game.getUniverse().getCurrentPlanet(); }
 
     /**
+     * Sets current planet
      *
      * @param p planet for new current planet
      */
-    void setCurrentPlanet(Planet p) { universe.setCurrentPlanet(p);
-    currPlanet = p;
-    }
+    void setCurrentPlanet(Planet p) { game.getUniverse().setCurrentPlanet(p); }
 
     /**
      * @return current planet
      */
-    Planet getTravelPlanet() { return universe.getTravelPlanet(); }
+    Planet getTravelPlanet() { return game.getUniverse().getTravelPlanet(); }
 
     /**
+     * Sets destination planet
      *
      * @param p planet for new current planet
      */
-    void setTravelPlanet(Planet p) { universe.setTravelPlanet(p);}
+    void setTravelPlanet(Planet p) { game.getUniverse().setTravelPlanet(p);}
 
     /**
      * @return current solar system
      */
-    SolarSystem getCurrentSolarSystem() { return universe.getCurrentSolarSystem(); }
+    SolarSystem getCurrentSolarSystem() { return game.getUniverse().getCurrentSolarSystem(); }
 
     /**
+     * Sets current solar system
      *
      * @param s new solar system
      */
-    void setSolarSystem(SolarSystem s) { universe.setCurrentSolarSystem(s);}
+    void setSolarSystem(SolarSystem s) { game.getUniverse().setCurrentSolarSystem(s); }
 
-    int getFuelCapacity() { return ship.getFuelCapacity(); }
+    /**
+     * @return ship fuel capacity
+     */
+    int getFuelCapacity() { return this.getShip().getFuelCapacity(); }
 
-    int getFuelContents() { return ship.getFuel(); }
+    /**
+     * @return ship fuel level
+     */
+    int getFuelContents() { return this.getShip().getFuel(); }
 
     /**
      * Uses a certain amount of fuel
@@ -160,8 +158,8 @@ class Repository {
      * @param spentGas the amount of gas being spent
      */
     void useFuel(int spentGas) {
-        int fuel = ship.getFuel() - spentGas;
-        ship.setFuel(fuel);
+        int fuel = this.getFuelContents() - spentGas;
+        this.getShip().setFuel(fuel);
     }
 
     /**
@@ -170,7 +168,7 @@ class Repository {
      * @return the fuel price per gallon
      */
     int fuelPrice() {
-        int techLevel = currPlanet.getTechLevelInt();
+        int techLevel = this.getCurrentPlanet().getTechLevelInt();
 
         return (int) (1.6 * (techLevel + 2)) * 25;
     }
@@ -179,25 +177,25 @@ class Repository {
      * Buys fuel
      */
     void buyFuel() {
-        int techLevel = currPlanet.getTechLevelInt();
-        int fuel = ship.getFuel();
+        int techLevel = this.getCurrentPlanet().getTechLevelInt();
+        int fuel = this.getFuelContents();
 
         int pricePerGallon = (int) ((.6 * techLevel) + 2);
         int fuelCapacity = this.getFuelCapacity();
-        int credits = player.getCredits();
+        int credits = game.getPlayer().getCredits();
         int afterCredits;
         if ((fuel + 25) <= fuelCapacity) {
             afterCredits = credits - (25 * pricePerGallon);
             if (afterCredits >= 0) {
-                ship.setFuel(fuel + 25);
-                player.setCredits(credits - (25 * pricePerGallon));
+                this.getShip().setFuel(fuel + 25);
+                game.getPlayer().setCredits(credits - (25 * pricePerGallon));
             }
         } else {
             int remainingFuel = fuelCapacity - fuel;
             afterCredits = credits - (remainingFuel * pricePerGallon);
             if (afterCredits >= 0) {
-                ship.setFuel(fuel + remainingFuel);
-                player.setCredits(afterCredits);
+                this.getShip().setFuel(fuel + remainingFuel);
+                game.getPlayer().setCredits(afterCredits);
             }
         }
     }
@@ -209,19 +207,19 @@ class Repository {
      * @return true if bought item, false otherwise
      */
     boolean buyItem(GoodType good) {
-        if (player.getCredits() < good.getPrice()) {
+        if (game.getPlayer().getCredits() < good.getPrice()) {
             return false;
         }
-        int contents = cargo.getContents();
-        int capacity = cargo.getCapacity();
+        int contents = this.getCargo().getContents();
+        int capacity = this.getCargo().getCapacity();
 
         if ((contents + 1) > capacity) {
             return false;
         }
 
-        cargo.add(good, 1);
-        currPlanet.removeGood(good, 1);
-        player.setCredits(player.getCredits() - good.getPrice());
+        this.getCargo().add(good, 1);
+        this.getCurrentPlanet().removeGood(good, 1);
+        game.getPlayer().setCredits(game.getPlayer().getCredits() - good.getPrice());
         return true;
     }
 
@@ -232,18 +230,18 @@ class Repository {
      * @return true if sold item, false otherwise
      */
     boolean sellItem(GoodType good) {
-        Map<GoodType, Integer> inventory = cargo.getInventory();
+        Map<GoodType, Integer> inventory = this.getCargo().getInventory();
         if ((inventory.get(good) == null)) {
             return false;
         }
 
-        if (!good.canSell(currPlanet.getTechLevel())) {
+        if (!good.canSell(this.getCurrentPlanet().getTechLevel())) {
             return false;
         }
 
-        cargo.remove(good, 1);
-        currPlanet.addGood(good, 1);
-        player.setCredits(player.getCredits() + good.getPrice());
+        this.getCargo().remove(good, 1);
+        this.getCurrentPlanet().addGood(good, 1);
+        game.getPlayer().setCredits(game.getPlayer().getCredits() + good.getPrice());
         return true;
     }
 
