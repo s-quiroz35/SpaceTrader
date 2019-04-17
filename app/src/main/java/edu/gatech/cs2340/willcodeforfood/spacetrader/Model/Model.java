@@ -8,6 +8,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Game;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Ship;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
@@ -74,6 +75,11 @@ public class Model {
      * @return current player
      */
     public Player getPlayer() { return instance.repo.getPlayer(); }
+
+    /**
+     * @return player ship
+     */
+    public Ship getShip() { return instance.repo.getShip(); }
 
     /**
      * @return current universe

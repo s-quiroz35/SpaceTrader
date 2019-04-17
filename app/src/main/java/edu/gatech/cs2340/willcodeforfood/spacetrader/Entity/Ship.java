@@ -12,8 +12,13 @@ import java.io.Serializable;
 public class Ship implements Serializable {
 
     private ShipType type;
+    private WeaponType weaponType;
     private int fuel;
     private final Cargo cargo;
+    private int health;
+    private boolean isDead;
+
+    private static final int STARTING_HEALTH = 500;
 
     /**
      * Initializes a Ship
@@ -22,9 +27,17 @@ public class Ship implements Serializable {
      */
     public Ship(ShipType type) {
         this.type = type;
+        this.weaponType = WeaponType.PULSELASERS;
         fuel = type.getFuelCapacity();
         cargo = new Cargo();
+        health = STARTING_HEALTH;
+        isDead = false;
     }
+
+    /**
+     * @return ship weapon
+     */
+    public WeaponType getWeaponType() { return weaponType; }
 
     /**
      * @return ship fuel capacity
@@ -47,4 +60,27 @@ public class Ship implements Serializable {
      * @return ship cargo
      */
     public Cargo getCargo() { return cargo; }
+
+    /**
+     * @return ship health
+     */
+    public int getHealth() { return health; }
+
+    /**
+     * Sets ship health
+     *
+     * @param health new health amount
+     */
+    public void setHealth(int health) {
+        this.health = health;
+        if (this.health <= 0) {
+            this.health = 0;
+            isDead = true;
+        }
+    }
+
+    /**
+     * @return whether ship is dead or not
+     */
+    public boolean getIsDead() { return isDead; }
 }

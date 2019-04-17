@@ -8,6 +8,7 @@ import java.io.File;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Ship;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
@@ -57,6 +58,11 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return current player
      */
     public Player getPlayer() { return Model.getInstance().getPlayer(); }
+
+    /**
+     * @return player ship
+     */
+    public Ship getShip() { return Model.getInstance().getShip(); }
 
     /**
      * @return current universe
