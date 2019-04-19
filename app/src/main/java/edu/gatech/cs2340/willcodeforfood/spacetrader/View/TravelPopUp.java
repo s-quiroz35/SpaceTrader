@@ -90,11 +90,14 @@ public class TravelPopUp extends AppCompatActivity {
                 case "pirate":
                     viewModel.getUniverse().createPirate();
                     startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
+                    break;
                 case "police":
                     startActivity(new Intent(TravelPopUp.this,
                             PoliceFineActivity.class));
+                    break;
                 default:
                     startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
+                    break;
             }
         } else {
             Toast toast = Toast.makeText(TravelPopUp.this,

@@ -27,9 +27,6 @@ class Repository {
 
     private Game game;
 
-    //if adding another event, increase this seed by one
-    private static final int EVENT_SEED = 3;
-
     /**
      * Adds a new game
      *
@@ -255,7 +252,7 @@ class Repository {
      */
     String checkForEvent() {
         Random rn = new Random();
-        int check = rn.nextInt(EVENT_SEED) + 1;
+        int check = rn.nextInt(4) + 1;
         switch(check) {
             case 1:
                 return "pirate";

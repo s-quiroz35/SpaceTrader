@@ -28,7 +28,6 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Difficulty;
 public class ConfigActivity extends AppCompatActivity {
 
     private ConfigViewModel viewModel;
-    private Player player;
 
     private EditText name;
     private Spinner diffSpinner;
@@ -56,7 +55,6 @@ public class ConfigActivity extends AppCompatActivity {
         diffAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         diffSpinner.setAdapter(diffAdapter);
 
-        player = new Player("Matt", 16, 0, 0, 0, 0);
         pointsCount.setText(String.format("%d", 16));
         ViewModelProvider provider = ViewModelProviders.of(this);
         viewModel = provider.get(ConfigViewModel.class);
@@ -68,6 +66,7 @@ public class ConfigActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void onCreatePlayerPressed(View view) {
+        Player p = new Player("Matt", 16, 0, 0, 0, 0);
         int pilot = Integer.parseInt(pilotCount.getText().toString());
         int fighter = Integer.parseInt(fighterCount.getText().toString());
         int trader = Integer.parseInt(traderCount.getText().toString());
@@ -81,16 +80,16 @@ public class ConfigActivity extends AppCompatActivity {
         } else {
             CharSequence nameChar = name.getText();
             if ((name.length() != 0) && (!"Enter name".equals(nameChar.toString()))) {
-                player.setName(nameChar.toString());
+                p.setName(nameChar.toString());
             } else {
-                player.setName("Guardian");
+                p.setName("Guardian");
             }
-            player.setSkillPoints(points);
-            player.setSkills(new int[]{pilot, fighter, trader, engineer});
+            p.setSkillPoints(points);
+            p.setSkills(new int[]{pilot, fighter, trader, engineer});
 
             Difficulty diff = (Difficulty) diffSpinner.getSelectedItem();
             Universe universe = new Universe();
-            viewModel.addGame(new Game(player, diff, universe));
+            viewModel.addGame(new Game(p, diff, universe));
 
             Intent intent = new Intent(this, PlanetActivity.class);
             startActivity(intent);
