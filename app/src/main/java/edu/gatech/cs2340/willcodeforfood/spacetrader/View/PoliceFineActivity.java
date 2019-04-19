@@ -20,9 +20,11 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.UniverseViewModel
  */
 public class PoliceFineActivity extends AppCompatActivity {
 
+    //This activity will only activate if player wanted level is greater than 0 in future
     private UniverseViewModel viewModel;
     private Player player;
 
+    private TextView wantedMessage;
     private TextView fineMessage;
 
     @Override
@@ -34,9 +36,10 @@ public class PoliceFineActivity extends AppCompatActivity {
         viewModel = provider.get(UniverseViewModel.class);
         player = viewModel.getPlayer();
 
+        wantedMessage = findViewById(R.id.wanted_message);
         fineMessage = findViewById(R.id.fine_message);
-        fineMessage.setText(String.format("Wanted level: %d, You must pay: %d",
-                player.getWantedLevel(), player.calcFine()));
+        wantedMessage.setText(String.format("Wanted level: %d", player.getWantedLevel()));
+        fineMessage.setText(String.format("Fine: %d", player.calcFine()));
     }
 
     /**
