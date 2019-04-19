@@ -1,38 +1,39 @@
 package edu.gatech.cs2340.willcodeforfood.spacetrader.Entity;
 
 /**
- * Represents a Pirate
+ * Represents Police officer
  *
  * @author Matt Bernet
  * @version 1.0
  */
-public class Pirate {
+public class Police {
+    //Exact same as pirate right now, but separate entity to support additions in future
     private int health;
     private WeaponType weaponType;
 
-    private static final int BASE_HEALTH = 100;
+    private static final int BASE_HEALTH = 500;
 
     /**
-     * Initializes a Pirate
+     * Initializes a police officer
      */
-    Pirate() {
+    Police() {
         //this should vary eventually
         health = BASE_HEALTH;
-        weaponType = WeaponType.BEAMLASERS;
+        weaponType = WeaponType.MILITARYLASERS;
     }
 
     /**
-     * @return pirate health
+     * @return police health
      */
     public int getHealth() { return health; }
 
     /**
-     * @return pirate weapon
+     * @return police weapon
      */
     public WeaponType getWeaponType() { return weaponType; }
 
     /**
-     * Set pirate health
+     * Set police health
      *
      * @param health new health amount
      */

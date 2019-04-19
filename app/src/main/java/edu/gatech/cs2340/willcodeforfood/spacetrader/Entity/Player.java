@@ -15,6 +15,9 @@ public class Player implements Serializable {
     private int credits;
     private final Ship ship;
     private int[] skills;
+    private int wantedLevel;
+
+    private static final int FINE_MULTIPLIER = 100;
 
     /**
      * Initializes a player
@@ -33,12 +36,20 @@ public class Player implements Serializable {
         credits = 1000;
         ship = new Ship(ShipType.GNAT);
         skills = new int[]{pilot, fighter, trader, engineer};
+        wantedLevel = 0;
     }
 
     @Override
     public String toString() {
         return String.format("Name: %s, Skills: Pilot %d, Fighter %d, Trader %d, Engineer %d",
                 name, skills[0], skills[1], skills[2], skills[3]);
+    }
+
+    /**
+     * @return player fine
+     */
+    public int calcFine() {
+        return wantedLevel * FINE_MULTIPLIER;
     }
 
     /**
@@ -98,4 +109,16 @@ public class Player implements Serializable {
      * @return ship cargo
      */
     public Cargo getCargo() { return ship.getCargo(); }
+
+    /**
+     * @return player wanted level
+     */
+    public int getWantedLevel() { return wantedLevel; }
+
+    /**
+     * Sets player wanted level
+     *
+     * @param level new level
+     */
+    public void setWantedLevel(int level) { wantedLevel = level; }
 }

@@ -20,6 +20,7 @@ public class Universe implements Serializable {
     private Planet currentPlanet;
     private Planet travelPlanet;
     private Pirate activePirate;
+    private Police activePolice;
 
     private static final ArrayList<String> openNames = new ArrayList<>(Arrays.asList("Aldea",
             "Andevian", "Antedi", "Balosnee", "Baratas", "Brax", "Bretel", "Calondia", "Campor",
@@ -58,9 +59,14 @@ public class Universe implements Serializable {
     public List<SolarSystem> getSolarSystems() { return solarSystems; }
 
     /**
-     * @return pirate to fight
+     * @return current pirate
      */
     public Pirate getPirate() { return activePirate; }
+
+    /**
+     * @return current police
+     */
+    public Police getPolice() { return activePolice; }
 
     @Override
     public String toString() {
@@ -124,9 +130,14 @@ public class Universe implements Serializable {
     public void setTravelPlanet(Planet p) { travelPlanet = p; }
 
     /**
-     * Instantiates a new pirate to fight against
+     * Instantiates a new pirate
      */
     public void createPirate() {
         activePirate = new Pirate();
     }
+
+    /**
+     * Instantiates a new police officer
+     */
+    public void createPolice() { activePolice = new Police(); }
 }
