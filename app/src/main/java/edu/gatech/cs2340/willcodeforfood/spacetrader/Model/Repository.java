@@ -15,6 +15,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Ship;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
 /**
@@ -143,6 +144,30 @@ class Repository {
     void setSolarSystem(SolarSystem s) { game.getUniverse().setCurrentSolarSystem(s); }
 
     /**
+     * @return current ship's health
+     */
+    private int getShipHealth() { return this.getShip().getHealth(); }
+
+    /**
+     * Sets the current ship's health
+     *
+     * @param health new health
+     */
+    private void setShipHealth(int health) { this.getShip().setHealth(health); }
+
+    /**
+     * Reduces the ship's health by a random amount
+     *
+     * @return the amount of damage taken
+     */
+    int takeDamage() {
+        Random rn = new Random();
+        int damage = 25 * (rn.nextInt(3) + 1);
+        this.setShipHealth(this.getShipHealth() - damage);
+        return damage;
+    }
+
+    /**
      * @return ship fuel capacity
      */
     int getFuelCapacity() { return this.getShip().getFuelCapacity(); }
@@ -204,9 +229,10 @@ class Repository {
      * Buys item
      *
      * @param good bought item
+     * @param trader if it exists
      * @return true if bought item, false otherwise
      */
-    boolean buyItem(GoodType good) {
+    boolean buyItem(GoodType good, Trader trader) {
         if (game.getPlayer().getCredits() < good.getPrice()) {
             return false;
         }
@@ -218,7 +244,13 @@ class Repository {
         }
 
         this.getCargo().add(good, 1);
-        this.getCurrentPlanet().removeGood(good, 1);
+
+        if (trader == null) {
+            this.getCurrentPlanet().removeGood(good, 1);
+        } else {
+            trader.removeGood(good, 1);
+        }
+
         game.getPlayer().setCredits(game.getPlayer().getCredits() - good.getPrice());
         return true;
     }
@@ -227,20 +259,29 @@ class Repository {
      * Sells item
      *
      * @param good sold item
+     * @param trader trader if it exists
      * @return true if sold item, false otherwise
      */
-    boolean sellItem(GoodType good) {
+    boolean sellItem(GoodType good, Trader trader) {
         Map<GoodType, Integer> inventory = this.getCargo().getInventory();
         if ((inventory.get(good) == null)) {
             return false;
         }
 
-        if (!good.canSell(this.getCurrentPlanet().getTechLevel())) {
-            return false;
+        if (trader == null) {
+            if (!good.canSell(game.getUniverse().getCurrentPlanet().getTechLevel())) {
+                return false;
+            }
+            this.getCargo().remove(good, 1);
+            this.getCurrentPlanet().addGood(good, 1);
+        } else {
+            if (!good.canSell(trader.getTechLevel())) {
+                return false;
+            }
+            this.getCargo().remove(good, 1);
+            trader.addGood(good, 1);
         }
 
-        this.getCargo().remove(good, 1);
-        this.getCurrentPlanet().addGood(good, 1);
         game.getPlayer().setCredits(game.getPlayer().getCredits() + good.getPrice());
         return true;
     }
@@ -252,11 +293,34 @@ class Repository {
      */
     String checkForEvent() {
         Random rn = new Random();
-        int check = rn.nextInt(2);
+        int check = rn.nextInt(5);
         if (check == 1) {
             return "pirate";
+        } else if (check == 2) {
+            return "trader";
+        } else if (check == 3) {
+            return "solarStorm";
+        } else if (check == 4) {
+            return "help";
         } else {
             return "nope";
+        }
+    }
+
+    /**
+     * Donates some amount of money
+     *
+     * @param amount how much to donate
+     * @return if the donation was successful
+     */
+    boolean donate(int amount) {
+        int newCredits = game.getPlayer().getCredits() - amount;
+
+        if (newCredits < 0) {
+            return false;
+        } else {
+            game.getPlayer().setCredits(newCredits);
+            return true;
         }
     }
 }

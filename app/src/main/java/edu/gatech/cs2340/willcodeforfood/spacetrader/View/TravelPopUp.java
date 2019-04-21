@@ -89,6 +89,18 @@ public class TravelPopUp extends AppCompatActivity {
             if ("pirate".equals(event)) {
                 viewModel.getUniverse().createPirate();
                 startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
+            } else if ("trader".equals(event)) {
+                startActivity(new Intent(TravelPopUp.this, TraderActivity.class));
+            } else if ("solarStorm".equals(event)) {
+                int damage = viewModel.takeDamage();
+                Toast toast = Toast.makeText(TravelPopUp.this,
+                        "You flew into a solar storm! Your ship took " + damage
+                                + " damage.", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
+            } else if ("help".equals(event)) {
+                startActivity(new Intent(TravelPopUp.this, HelpPlanetActivity.class));
             } else {
                 startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
             }

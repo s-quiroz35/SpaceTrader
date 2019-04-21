@@ -10,6 +10,7 @@ import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Planet;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Player;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Ship;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.SolarSystem;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Universe;
 
 /**
@@ -153,6 +154,13 @@ public class Model {
     public void buyFuel() { instance.repo.buyFuel();}
 
     /**
+     * Reduces the ship's health by a random amount
+     *
+     * @return the amount of damage taken
+     */
+    public int takeDamage() { return instance.repo.takeDamage(); }
+
+    /**
      *
      * @return the price of fuel per gallon
      */
@@ -163,17 +171,23 @@ public class Model {
      * Buys item
      *
      * @param good bought item
+     * @param trader if it exists
      * @return if the item was bought
      */
-    public boolean buyItem(GoodType good) { return instance.repo.buyItem(good); }
+    public boolean buyItem(GoodType good, Trader trader) {
+        return instance.repo.buyItem(good, trader);
+    }
 
     /**
      * Sells item
      *
      * @param good sold item
+     * @param trader if it exists
      * @return if the item was sold
      */
-    public boolean sellItem(GoodType good) { return instance.repo.sellItem(good); }
+    public boolean sellItem(GoodType good, Trader trader) {
+        return instance.repo.sellItem(good, trader);
+    }
 
     /**
      * Checks to see if random event occurred on travel
@@ -181,4 +195,12 @@ public class Model {
      * @return event key
      */
     public String checkForEvent() { return instance.repo.checkForEvent(); }
+
+    /**
+     * Donates some amount of credits
+     *
+     * @param amount how much to donate
+     * @return if the donation was successful
+     */
+    public boolean donate(int amount) { return instance.repo.donate(amount); }
 }

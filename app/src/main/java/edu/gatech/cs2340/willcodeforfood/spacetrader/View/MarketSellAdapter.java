@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 
 /**
@@ -25,15 +26,18 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
     private final Map<GoodType, Integer> cargo;
     private final List<GoodType> keys;
     private final SellClickListener listener;
+    private final Trader trader;
 
     /**
      * Initializes Market Sell Adapter
      *
      * @param cargo cargo items
+     * @param trader trader if it exists
      * @param listener click listener
      */
-    MarketSellAdapter(Map<GoodType, Integer> cargo, SellClickListener listener) {
+    MarketSellAdapter(Map<GoodType, Integer> cargo, Trader trader, SellClickListener listener) {
         this.cargo = cargo;
+        this.trader = trader;
         keys = new ArrayList<>(cargo.keySet());
         this.listener = listener;
     }
@@ -82,7 +86,7 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
         @Override
         public void onClick(View view) {
             if (view.getId() == sellText.getId()) {
-                listener.onSellClick(keys.get(getAdapterPosition()));
+                listener.onSellClick(keys.get(getAdapterPosition()), trader);
                 notifyDataSetChanged();
             }
         }
@@ -97,6 +101,6 @@ public class MarketSellAdapter extends RecyclerView.Adapter<MarketSellAdapter.Se
          *
          * @param good the good to sell
          */
-        void onSellClick(GoodType good);
+        void onSellClick(GoodType good, Trader trader);
     }
 }

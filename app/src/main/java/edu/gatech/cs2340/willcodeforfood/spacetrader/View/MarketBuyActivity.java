@@ -9,8 +9,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.widget.Toast;
+import android.content.Intent;
+
+import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
 
@@ -33,14 +37,25 @@ public class MarketBuyActivity extends AppCompatActivity {
         ViewModelProvider provider = ViewModelProviders.of(this);
         viewModel = provider.get(MarketViewModel.class);
 
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        Trader trader;
+        if (bundle == null) {
+            trader = null;
+        } else {
+            trader = (Trader) bundle.getSerializable("trader");
+        }
+
+        Map<GoodType, Integer> market = trader == null ? viewModel.getMarket() : trader.getMarket();
+
         RecyclerView rView = findViewById(R.id.market_buy_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);
-        adapter = new MarketBuyAdapter(viewModel.getMarket(),
+        adapter = new MarketBuyAdapter(market, trader,
                 new MarketBuyAdapter.BuyClickListener() {
                     @Override
-                    public void onBuyClick(GoodType good) {
-                        if (viewModel.buyItem(good)) {
+                    public void onBuyClick(GoodType good, Trader trader) {
+                        if (viewModel.buyItem(good, trader)) {
                             Toast toast = Toast.makeText(MarketBuyActivity.this,
                                     "Purchase Successful!", Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.CENTER, 0, 0);

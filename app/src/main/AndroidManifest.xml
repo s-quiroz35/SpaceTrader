@@ -19,6 +19,8 @@
         <activity android:name=".View.MarketSellActivity"/>
         <activity android:name=".View.TravelPopUp"/>
         <activity android:name=".View.PirateActivity"/>
+        <activity android:name=".View.TraderActivity"/>
+        <activity android:name=".View.HelpPlanetActivity"/>
 
         <activity android:name=".View.WelcomeActivity">
             <intent-filter>
