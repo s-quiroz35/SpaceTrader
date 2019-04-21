@@ -86,6 +86,7 @@ public class TravelPopUp extends AppCompatActivity {
             viewModel.setCurrentPlanet(travelPlanet);
             viewModel.setMarketPrices(travelPlanet);
             String event = viewModel.checkForEvent();
+
             switch(event) {
                 case "pirate":
                     viewModel.getUniverse().createPirate();
@@ -94,6 +95,22 @@ public class TravelPopUp extends AppCompatActivity {
                 case "police":
                     startActivity(new Intent(TravelPopUp.this,
                             PoliceFineActivity.class));
+                    break;
+                case "trader":
+                    startActivity(new Intent(TravelPopUp.this, TraderActivity.class));
+                    break;
+                case "solarStorm":
+                    int damage = viewModel.takeDamage();
+                    Toast toast = Toast.makeText(TravelPopUp.this,
+                            "You flew into a solar storm! Your ship took " + damage
+                                    + " damage.", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
+                    break;
+                case "help":
+                    startActivity(new Intent(TravelPopUp.this,
+                            HelpPlanetActivity.class));
                     break;
                 default:
                     startActivity(new Intent(TravelPopUp.this, PirateActivity.class));

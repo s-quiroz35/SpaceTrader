@@ -21,6 +21,8 @@
         <activity android:name=".View.PirateActivity"/>
         <activity android:name=".View.PoliceFineActivity"/>
         <activity android:name=".View.PoliceFightActivity"/>
+        <activity android:name=".View.TraderActivity"/>
+        <activity android:name=".View.HelpPlanetActivity"/>
 
         <activity android:name=".View.WelcomeActivity">
             <intent-filter>
