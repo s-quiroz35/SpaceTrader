@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/police_header"
+        android:text="Police Encounter"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wanted_message"
+        android:textSize="20sp"
+        android:layout_below="@id/police_header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="65sp"
+        android:layout_marginEnd="65sp"
+        android:layout_marginTop="80sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fine_message"
+        android:textSize="20sp"
+        android:layout_below="@id/wanted_message"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="65sp"
+        android:layout_marginEnd="65sp"
+        android:layout_marginTop="20sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/player_ship"
+        android:layout_below="@id/fine_message"
+        android:layout_marginStart="60sp"
+        android:layout_marginTop="100sp"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/police_ship"
+        android:layout_below="@id/fine_message"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="60sp"
+        android:layout_marginTop="100sp"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pay_button"
+        android:text="Pay Fine"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50sp"
+        android:layout_below="@id/player_ship"
+        android:onClick="onPayPressed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/refuse_button"
+        android:text="Refuse"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="50sp"
+        android:layout_marginTop="20sp"
+        android:layout_below="@id/pay_button"
+        android:onClick="onRefusePressed" />
+</RelativeLayout>

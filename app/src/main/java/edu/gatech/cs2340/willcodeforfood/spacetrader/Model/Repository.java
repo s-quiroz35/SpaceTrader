@@ -252,11 +252,14 @@ class Repository {
      */
     String checkForEvent() {
         Random rn = new Random();
-        int check = rn.nextInt(2);
-        if (check == 1) {
-            return "pirate";
-        } else {
-            return "nope";
+        int check = rn.nextInt(4) + 1;
+        switch(check) {
+            case 1:
+                return "pirate";
+            case 2:
+                return "police";
+            default:
+                return "";
         }
     }
 }
