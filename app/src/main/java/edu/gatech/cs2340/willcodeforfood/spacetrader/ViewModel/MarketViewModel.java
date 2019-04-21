@@ -8,6 +8,7 @@ import java.util.Map;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Model.Model;
 
 /**
@@ -41,19 +42,21 @@ public class MarketViewModel extends AndroidViewModel {
      * Buys item
      *
      * @param good good to be bought
+     * @param trader trader if it exists
      * @return true if bought item, false otherwise
      */
-    public boolean buyItem(GoodType good) {
-        return Model.getInstance().buyItem(good);
+    public boolean buyItem(GoodType good, Trader trader) {
+        return Model.getInstance().buyItem(good, trader);
     }
 
     /**
      * Sells item
      *
      * @param good good to be sold
+     * @param trader trader if it exists
      * @return true if sold item, false otherwise
      */
-    public boolean sellItem(GoodType good) {
-        return Model.getInstance().sellItem(good);
+    public boolean sellItem(GoodType good, Trader trader) {
+        return Model.getInstance().sellItem(good, trader);
     }
 }

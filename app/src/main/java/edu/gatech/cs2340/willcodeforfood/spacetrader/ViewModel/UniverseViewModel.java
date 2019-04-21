@@ -148,4 +148,18 @@ public class UniverseViewModel extends AndroidViewModel {
     public void setCurrentSolarSystem(SolarSystem s) {
         Model.getInstance().setCurrentSolarSystem(s);
     }
+
+    /**
+     * Reduces the ship's health by a random amount
+     *
+     * @return the amount of damage taken
+     */
+    public int takeDamage() { return Model.getInstance().takeDamage(); }
+
+    /**
+     * Donates some credits
+     *
+     * @param amount how much to donate
+     */
+    public boolean donate(int amount) { return Model.getInstance().donate(amount); }
 }

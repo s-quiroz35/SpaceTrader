@@ -2,6 +2,7 @@ package edu.gatech.cs2340.willcodeforfood.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Cargo;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.GoodType;
+import edu.gatech.cs2340.willcodeforfood.spacetrader.Entity.Trader;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.R;
 import edu.gatech.cs2340.willcodeforfood.spacetrader.ViewModel.MarketViewModel;
 
@@ -36,14 +38,23 @@ public class MarketSellActivity extends AppCompatActivity {
         viewModel = provider.get(MarketViewModel.class);
         cargo = viewModel.getCargo();
 
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        Trader trader;
+        if (bundle == null) {
+            trader = null;
+        } else {
+            trader = (Trader) bundle.getSerializable("trader");
+        }
+
         RecyclerView rView = findViewById(R.id.market_sell_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);
-        adapter = new MarketSellAdapter(cargo.getInventory(),
+        adapter = new MarketSellAdapter(cargo.getInventory(), trader,
                 new MarketSellAdapter.SellClickListener() {
             @Override
-            public void onSellClick(GoodType good) {
-                if (viewModel.sellItem(good)) {
+            public void onSellClick(GoodType good, Trader trader) {
+                if (viewModel.sellItem(good, trader)) {
                     Toast toast = Toast.makeText(MarketSellActivity.this,
                             "Sell successful!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
