@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -294,20 +295,39 @@ class Repository {
     String checkForEvent() {
         Random rn = new Random();
         int check = rn.nextInt(10) + 1;
+        String msg;
         switch (check) {
             case 1:
-                return "pirate";
+                msg = "pirate";
+                break;
             case 2:
-                return "police";
+                msg = "police";
+                break;
             case 3:
-                return "trader";
+                msg = "trader";
+                break;
             case 4:
-                return "solarStorm";
+                msg = "solarStorm";
+                break;
             case 5:
-                return "help";
+                msg = "help";
+                break;
             default:
-                return "";
+                msg = "";
         }
+
+        if (msg.equals("police") && game.getPlayer().getHonor() >= 0) {
+            return "";
+        }
+
+        if (msg.equals("pirate") && game.getPlayer().getHonor() < 0) {
+            int pRand = rn.nextInt(2);
+            if (pRand == 1) {
+                return "";
+            }
+        }
+
+        return msg;
     }
 
     /**
@@ -323,7 +343,51 @@ class Repository {
             return false;
         } else {
             game.getPlayer().setCredits(newCredits);
+            game.getPlayer().setHonor(game.getPlayer().getHonor() + 5);
             return true;
         }
+    }
+
+    /**
+     *
+     * @return How honorable the player is
+     */
+    String checkHonor() {
+        int honor = game.getPlayer().getHonor();
+        if (honor > 0) {
+            return "good";
+        } else if (honor < 0) {
+            return "bad";
+        } else {
+            return "neutral";
+        }
+    }
+
+    /**
+     * Resets market prices based on honor
+     */
+    Map<GoodType, Integer> resetPrices(Map<GoodType, Integer> market) {
+        String s = this.checkHonor();
+        Map<GoodType, Integer> newMarket = new HashMap<>();
+        if (s.equals("good")) {
+            for (GoodType g : market.keySet()) {
+                if (!(market.get(g) == null)) {
+                    Integer i = market.get(g);
+                    g.incPrice(game.getPlayer().getHonor() / 7);
+                    newMarket.put(g, i);
+                }
+            }
+            return newMarket;
+        } else if (s.equals("bad")) {
+            for (GoodType g : market.keySet()) {
+                if (!(market.get(g) == null)) {
+                    Integer i = market.get(g);
+                    g.decPrice((-1 * game.getPlayer().getHonor()) / 7);
+                    newMarket.put(g, i);
+                }
+            }
+            return newMarket;
+        }
+        return market;
     }
 }

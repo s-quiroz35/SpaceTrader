@@ -15,9 +15,9 @@ public class Player implements Serializable {
     private int credits;
     private final Ship ship;
     private int[] skills;
-    private int wantedLevel;
+    private int honor;
 
-    private static final int FINE_MULTIPLIER = 100;
+    private static final int FINE_MULTIPLIER = 50;
 
     /**
      * Initializes a player
@@ -36,7 +36,7 @@ public class Player implements Serializable {
         credits = 1000;
         ship = new Ship(ShipType.GNAT);
         skills = new int[]{pilot, fighter, trader, engineer};
-        wantedLevel = 0;
+        honor = 0;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Player implements Serializable {
      * @return player fine
      */
     public int calcFine() {
-        return wantedLevel * FINE_MULTIPLIER;
+        return -1 * honor * FINE_MULTIPLIER;
     }
 
     /**
@@ -113,12 +113,12 @@ public class Player implements Serializable {
     /**
      * @return player wanted level
      */
-    public int getWantedLevel() { return wantedLevel; }
+    public int getHonor() { return honor; }
 
     /**
      * Sets player wanted level
      *
      * @param level new level
      */
-    public void setWantedLevel(int level) { wantedLevel = level; }
+    public void setHonor(int level) { honor = level; }
 }
