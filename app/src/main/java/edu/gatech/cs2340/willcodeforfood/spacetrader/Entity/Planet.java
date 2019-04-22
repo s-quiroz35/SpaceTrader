@@ -17,7 +17,7 @@ public class Planet implements Serializable {
     private final String name;
     private final TechLevel techLevel;
     private final ResourceLevel resourceLevel;
-    private final Map<GoodType, Integer> market;
+    private Map<GoodType, Integer> market;
     private final Coordinate coordinate;
 
     /**
@@ -88,6 +88,12 @@ public class Planet implements Serializable {
      * @return planet market
      */
     public Map<GoodType, Integer> getMarket() { return market; }
+
+    /**
+     * Sets a planet's market
+     * @param market new market
+     */
+    public void setMarket(Map<GoodType, Integer> market) { this.market = market; }
 
     /**
      * Adds good to market

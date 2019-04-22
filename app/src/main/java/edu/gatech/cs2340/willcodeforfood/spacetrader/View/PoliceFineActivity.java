@@ -38,7 +38,7 @@ public class PoliceFineActivity extends AppCompatActivity {
 
         wantedMessage = findViewById(R.id.wanted_message);
         fineMessage = findViewById(R.id.fine_message);
-        wantedMessage.setText(String.format("Wanted level: %d", player.getWantedLevel()));
+        wantedMessage.setText(String.format("Wanted level: %d", player.getHonor()));
         fineMessage.setText(String.format("Fine: %d", player.calcFine()));
     }
 
@@ -49,7 +49,7 @@ public class PoliceFineActivity extends AppCompatActivity {
      */
     public void onPayPressed(View view) {
         player.setCredits(player.getCredits() - player.calcFine());
-        player.setWantedLevel(0);
+        player.setHonor(0);
         startActivity(new Intent(this, PlanetActivity.class));
     }
 

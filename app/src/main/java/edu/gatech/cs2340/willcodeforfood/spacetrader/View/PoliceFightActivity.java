@@ -62,7 +62,7 @@ public class PoliceFightActivity extends AppCompatActivity {
         police.setHealth(police.getHealth() - playerWeapon.getWeaponDamage());
         policeHealth.setText(String.format("HP: %d", police.getHealth()));
         if (police.getHealth() <= 0) {
-            player.setWantedLevel(player.getWantedLevel() + 1);
+            player.setHonor(player.getHonor() - 10);
             Toast toast = Toast.makeText(PoliceFightActivity.this,
                     "Wanted Level Increased!", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);

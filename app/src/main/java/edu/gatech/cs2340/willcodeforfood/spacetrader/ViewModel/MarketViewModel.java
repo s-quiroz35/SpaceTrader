@@ -59,4 +59,11 @@ public class MarketViewModel extends AndroidViewModel {
     public boolean sellItem(GoodType good, Trader trader) {
         return Model.getInstance().sellItem(good, trader);
     }
+
+    /**
+     * Resets good prices based on player's honor
+     */
+    public Map<GoodType, Integer> resetPrices(Map<GoodType, Integer> market) {
+        return Model.getInstance().resetPrices(market);
+    }
 }

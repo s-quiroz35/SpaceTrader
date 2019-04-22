@@ -48,6 +48,8 @@ public class MarketBuyActivity extends AppCompatActivity {
 
         Map<GoodType, Integer> market = trader == null ? viewModel.getMarket() : trader.getMarket();
 
+        market = viewModel.resetPrices(market);
+
         RecyclerView rView = findViewById(R.id.market_buy_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rView.setLayoutManager(manager);

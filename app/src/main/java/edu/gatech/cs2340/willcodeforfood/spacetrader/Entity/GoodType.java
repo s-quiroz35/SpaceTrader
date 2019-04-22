@@ -145,4 +145,24 @@ public enum GoodType {
      * @return name of good
      */
     public String getName() { return name; }
+
+    /**
+     * Increases price by some percent
+     *
+     * @param percent Amount to increase price by
+     */
+    public void incPrice(int percent) {
+        planetPrice *= (100 + percent);
+        planetPrice /= 100;
+    }
+
+    /**
+     * Decreases price by some percent
+     *
+     * @param percent Amount to decrease price by
+     */
+    public void decPrice(int percent) {
+        planetPrice *= (100 - percent);
+        planetPrice /= 100;
+    }
 }

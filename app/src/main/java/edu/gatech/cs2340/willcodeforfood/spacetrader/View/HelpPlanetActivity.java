@@ -69,7 +69,7 @@ public class HelpPlanetActivity extends AppCompatActivity {
     public void donate(View view) {
         if (viewModel.donate(100)) {
             Toast toast = Toast.makeText(HelpPlanetActivity.this,
-                    "Thank You!", Toast.LENGTH_SHORT);
+                    "Thank You! Your honor has increased.", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
 
@@ -88,6 +88,7 @@ public class HelpPlanetActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void refuse(View view) {
+        viewModel.getPlayer().setHonor(viewModel.getPlayer().getHonor() - 1);
         startActivity(new Intent(HelpPlanetActivity.this, PlanetActivity.class));
     }
 }

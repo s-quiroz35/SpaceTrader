@@ -203,4 +203,17 @@ public class Model {
      * @return if the donation was successful
      */
     public boolean donate(int amount) { return instance.repo.donate(amount); }
+
+    /**
+     *
+     * @return how honorable the player is
+     */
+    public String checkHonor() { return instance.repo.checkHonor(); }
+
+    /**
+     * Resets prices based on player's honor
+     */
+    public Map<GoodType, Integer> resetPrices(Map<GoodType, Integer> market) {
+        return instance.repo.resetPrices(market);
+    }
 }
