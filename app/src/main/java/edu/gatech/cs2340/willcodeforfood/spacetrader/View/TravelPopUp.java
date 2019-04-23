@@ -106,14 +106,15 @@ public class TravelPopUp extends AppCompatActivity {
                                     + " damage.", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                    startActivity(new Intent(TravelPopUp.this, PlanetActivity.class));
+                    startActivity(new Intent(TravelPopUp.this,
+                            WarpAnimActivity.class));
                     break;
                 case "help":
                     startActivity(new Intent(TravelPopUp.this,
                             HelpPlanetActivity.class));
                     break;
                 default:
-                    startActivity(new Intent(TravelPopUp.this, PirateActivity.class));
+                    startActivity(new Intent(TravelPopUp.this, WarpAnimActivity.class));
                     break;
             }
         } else {

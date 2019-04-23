@@ -71,7 +71,7 @@ public class PirateActivity extends AppCompatActivity {
                     "+100 Credits", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            startActivity(new Intent(PirateActivity.this, PlanetActivity.class));
+            startActivity(new Intent(PirateActivity.this, WarpAnimActivity.class));
         }
         ship.setHealth(ship.getHealth() - pirateWeapon.getWeaponDamage());
         playerHealth.setText(String.format("HP: %d", ship.getHealth()));
@@ -81,7 +81,7 @@ public class PirateActivity extends AppCompatActivity {
                     "-100 Credits", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            startActivity(new Intent(PirateActivity.this, PlanetActivity.class));
+            startActivity(new Intent(PirateActivity.this, WarpAnimActivity.class));
         }
     }
 
@@ -91,6 +91,6 @@ public class PirateActivity extends AppCompatActivity {
      * @param view button pressed
      */
     public void onFleePressed(View view) {
-        startActivity(new Intent(PirateActivity.this, PlanetActivity.class));
+        startActivity(new Intent(PirateActivity.this, WarpAnimActivity.class));
     }
 }

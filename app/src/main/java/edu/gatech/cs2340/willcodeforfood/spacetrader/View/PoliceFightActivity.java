@@ -67,7 +67,8 @@ public class PoliceFightActivity extends AppCompatActivity {
                     "Wanted Level Increased!", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            startActivity(new Intent(PoliceFightActivity.this, PlanetActivity.class));
+            startActivity(new Intent(PoliceFightActivity.this,
+                    WarpAnimActivity.class));
         }
         ship.setHealth(ship.getHealth() - policeWeapon.getWeaponDamage());
         playerHealth.setText(String.format("HP: %d", ship.getHealth()));
@@ -77,7 +78,8 @@ public class PoliceFightActivity extends AppCompatActivity {
                     "Forced fine payment", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            startActivity(new Intent(PoliceFightActivity.this, PlanetActivity.class));
+            startActivity(new Intent(PoliceFightActivity.this,
+                    WarpAnimActivity.class));
         }
     }
 }

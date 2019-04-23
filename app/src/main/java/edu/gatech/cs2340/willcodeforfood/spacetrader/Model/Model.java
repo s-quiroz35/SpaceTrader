@@ -216,4 +216,10 @@ public class Model {
     public Map<GoodType, Integer> resetPrices(Map<GoodType, Integer> market) {
         return instance.repo.resetPrices(market);
     }
+
+    /**
+     *
+     * @return whether the player has reached 1000000 credits
+     */
+    public boolean isGameOver() { return instance.repo.isGameOver(); }
 }

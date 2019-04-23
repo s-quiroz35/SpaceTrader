@@ -55,6 +55,9 @@ public class MarketActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         credits.setText(String.format("Currency: %d", player.getCredits()));
+        if (viewModel.isGameOver()) {
+            startActivity(new Intent(MarketActivity.this, GameOverActivity.class));
+        }
     }
 
     /**

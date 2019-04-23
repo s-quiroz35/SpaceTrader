@@ -390,4 +390,10 @@ class Repository {
         }
         return market;
     }
+
+    /**
+     *
+     * @return whether the player has earned 1000000 credits
+     */
+    boolean isGameOver() { return game.getPlayer().getCredits() == 1000000; }
 }

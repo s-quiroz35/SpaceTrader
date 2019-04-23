@@ -73,7 +73,7 @@ public class HelpPlanetActivity extends AppCompatActivity {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
 
-            startActivity(new Intent(HelpPlanetActivity.this, PlanetActivity.class));
+            startActivity(new Intent(HelpPlanetActivity.this, WarpAnimActivity.class));
         } else {
             Toast toast = Toast.makeText(HelpPlanetActivity.this,
                     "Unable to donate", Toast.LENGTH_SHORT);
@@ -89,6 +89,6 @@ public class HelpPlanetActivity extends AppCompatActivity {
      */
     public void refuse(View view) {
         viewModel.getPlayer().setHonor(viewModel.getPlayer().getHonor() - 1);
-        startActivity(new Intent(HelpPlanetActivity.this, PlanetActivity.class));
+        startActivity(new Intent(HelpPlanetActivity.this, WarpAnimActivity.class));
     }
 }

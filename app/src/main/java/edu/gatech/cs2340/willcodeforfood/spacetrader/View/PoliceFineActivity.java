@@ -50,7 +50,7 @@ public class PoliceFineActivity extends AppCompatActivity {
     public void onPayPressed(View view) {
         player.setCredits(player.getCredits() - player.calcFine());
         player.setHonor(0);
-        startActivity(new Intent(this, PlanetActivity.class));
+        startActivity(new Intent(this, WarpAnimActivity.class));
     }
 
     /**
