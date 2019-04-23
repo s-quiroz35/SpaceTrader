@@ -162,4 +162,16 @@ public class UniverseViewModel extends AndroidViewModel {
      * @param amount how much to donate
      */
     public boolean donate(int amount) { return Model.getInstance().donate(amount); }
+
+    /**
+     *
+     * @return the player's honor
+     */
+    public String checkHonor() { return Model.getInstance().checkHonor(); }
+
+    /**
+     *
+     * @return whether the player has reached 1000000 credits
+     */
+    public boolean isGameOver() { return Model.getInstance().isGameOver(); }
 }

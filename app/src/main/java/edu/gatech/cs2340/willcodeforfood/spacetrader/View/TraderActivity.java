@@ -54,7 +54,7 @@ public class TraderActivity extends AppCompatActivity{
      * @param view button pressed
      */
     public void onCancel(View view) {
-        startActivity(new Intent(TraderActivity.this, PlanetActivity.class));
+        startActivity(new Intent(TraderActivity.this, WarpAnimActivity.class));
     }
 
 
